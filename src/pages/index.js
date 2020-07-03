@@ -1,22 +1,64 @@
 import React from "react"
-import { Link } from "gatsby"
+import { graphql } from "gatsby"
 
-import Layout from "../components/layout"
-import Image from "../components/image"
+import Layout from "../components/layout/Layout.component"
+import Hero from "../components/hero/Hero.component"
+import Services from "../components/services/Services.component"
+import Jobs from "../components/jobs/Jobs.component"
+import About from "../components/about/About.component"
+import Skills from "../components/skills/Skills.component"
+import Blogs from "../components/blogs/Blogs.component"
+import LatestWorks from "../components/latest-works/LatestWorks.component"
+
 import SEO from "../components/seo"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link> <br />
-    <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-  </Layout>
-)
+export default ({ data }) => {
+  const {
+    allBlogs: { nodes: blogs },
+    allProjects: { nodes: projects },
+  } = data
 
-export default IndexPage
+  return (
+    <Layout>
+      <SEO title="Home" description="this is our home page" />
+      <Hero />
+      <About />
+      <Services />
+      <LatestWorks projects={projects} />
+      <Skills />
+      <Jobs />
+      <Blogs blogs={blogs} title="latest articles" showLink />
+    </Layout>
+  )
+}
+
+export const query = graphql`
+  {
+    allProjects(filter: { featured: { eq: true } }){
+      nodes{
+        github
+        id
+        description
+        title
+        subtitle
+        url
+        image
+      }
+    }
+    allBlogs(sort: { fields: created_at, order: DESC }, limit: 3) {
+      nodes {
+        slug
+        content
+        description
+        category{
+          id
+          name
+        }
+        created_at(formatString: "MMMM Do, YYYY")
+        id
+        title
+        image
+      }
+    }  
+  }
+`
