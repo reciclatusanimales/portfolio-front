@@ -3,6 +3,22 @@ import Image from "gatsby-image"
 
 export const Header = styled.header`
     background: ${({ theme }) => theme.primary10};
+    margin-top: -3.5rem;
+    padding-top: 3.5rem;
+    height: 100vh;
+    position: relative;
+    z-index: -999;
+    @media screen and (min-width: 992px) {
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 70%;
+            right: 0;
+            bottom: 0;
+            background: var(--clr-white);
+        }
+    }
 `;
 
 export const HeroCenter = styled.div`

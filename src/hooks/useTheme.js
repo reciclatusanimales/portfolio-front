@@ -6,7 +6,6 @@ export const useTheme = () => {
   const [componentMounted, setComponentMounted] = useState(false);
 
   const setMode = mode => {
-    console.log(mode)
     window.localStorage.setItem('theme', mode)
     setTheme(mode)
   };
@@ -21,7 +20,7 @@ export const useTheme = () => {
 
   useEffect(() => {
     const localTheme = window.localStorage.getItem('theme');
-    console.log(localTheme)
+
     if (localTheme) {
       setTheme(localTheme);
     } else {

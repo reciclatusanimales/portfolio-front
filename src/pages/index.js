@@ -2,6 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 
 import Layout from "../components/layout/Layout.component"
+import Timeline from "../components/timeline/Timeline.component"
 import Hero from "../components/hero/Hero.component"
 import Services from "../components/services/Services.component"
 import Jobs from "../components/jobs/Jobs.component"
@@ -24,6 +25,7 @@ export default ({ data }) => {
       <Hero />
       <About />
       <Services />
+      <Timeline />
       <LatestWorks projects={projects} />
       <Skills />
       <Jobs />

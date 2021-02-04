@@ -32,7 +32,7 @@ module.exports = {
     {
       resolve: "gatsby-source-custom-api",
         options: {
-          url: "http://reciclatusanimales.com/api/projects",
+          url: "http://api.reciclatusanimales.com/api/projects",
           rootKey: "projects",
           schemas:  {
             projects: `
@@ -49,7 +49,7 @@ module.exports = {
     {
       resolve: "gatsby-source-custom-api",
         options: {
-          url: "http://reciclatusanimales.com/api/jobs",
+          url: "http://api.reciclatusanimales.com/api/jobs",
           rootKey: "jobs",
           schemas:  {
             jobs: `
@@ -63,7 +63,7 @@ module.exports = {
     {
     resolve: "gatsby-source-custom-api",
       options: {
-          url: "http://reciclatusanimales.com/api/blogs",
+          url: "http://api.reciclatusanimales.com/api/blogs",
           rootKey: "blogs",
           schemas:  {
             blogs: `
@@ -78,7 +78,7 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-preload-fonts`,
       options: {
         fonts: [
           {

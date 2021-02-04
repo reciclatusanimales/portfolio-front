@@ -18,7 +18,7 @@ const LatestWorks = ({ projects }) => {
       </div>      
       <LatestWorksCenter className="section-center">
 
-        {projects.map((project, index) => {
+        {projects.slice(0, 4).map((project, index) => {
           return (
             <a href={project.url} className={`work-${index}`} key={index} target="_blank" rel="noreferrer">
               <Work>

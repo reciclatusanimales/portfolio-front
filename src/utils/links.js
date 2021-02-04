@@ -16,6 +16,11 @@ export default [
   },
   {
     id: 4,
+    text: "about",
+    url: "/about/",
+  },
+  {
+    id: 5,
     text: "contact",
     url: "/contact/",
   },

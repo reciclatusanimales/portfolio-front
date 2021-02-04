@@ -1,17 +1,24 @@
 import styled from 'styled-components';
 
 export const Nav = styled.nav`
-  height: 5rem;
+  height: 3.5rem;
   display: grid;
   -webkit-box-align: center;
   align-items: center;
   -webkit-transition: var(--transition);
   transition: var(--transition);
-  padding: 1rem;  
+  padding: .5rem 2rem;  
+  z-index: 200;
+  background: var(--clr-white);
 
-  @media screen and (min-width: 768px) {
-    background: ${({ theme }) => theme.primary10};
+  @media screen and (min-width: 992px) {
+    & {
+      background: transparent;
+    }
   }
+  ${'' /* @media screen and (min-width: 768px) {
+    background: ${({ theme }) => theme.primary10};
+  } */}
 `;
 
 export const NavCenter = styled.div`
@@ -40,7 +47,6 @@ export const NavBtn = styled.button`
   color: ${({ theme }) => theme.primary5};
   font-size: 2rem;
   cursor: pointer;
-  /* show later */
   justify-self: right;
 
   @media screen and (min-width: 768px) {
@@ -54,7 +60,7 @@ export const NavLinks = styled.ul`
 
   @media screen and (min-width: 768px) {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     justify-items: center;
     -webkit-column-gap: 2rem;
     -moz-column-gap: 2rem;

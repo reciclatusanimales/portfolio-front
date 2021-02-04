@@ -29,13 +29,11 @@ const Jobs = () => {
   const desc = []
 
   return (
-    <section className="section jobs">
+    <section className="section">
       <Title title="expierence" />
       <JobsCenter>
-        {/* btn container */}
         <BtnContainer>
           {jobs.map((item, index) => {
-            console.log(index === value)
             return (
               <JobButton
                 key={item.id}
@@ -47,7 +45,6 @@ const Jobs = () => {
             )
           })}
         </BtnContainer>
-        {/* job info */}
         <JobInfo>
           <h3>{position}</h3>
           <h4>{company}</h4>

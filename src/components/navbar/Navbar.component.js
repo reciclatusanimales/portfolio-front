@@ -17,7 +17,7 @@ const Navbar = ({ toggleSidebar, theme, toggleTheme }) => {
     const navbar = document.querySelector("#nav");
     const fixNavbar = () => {
       if (window.pageYOffset > 80) {
-        navbar.classList.add("navbar-fixed");
+        //navbar.classList.add("navbar-fixed");
         setShowTheme(false);
       } else {
         navbar.classList.remove("navbar-fixed");

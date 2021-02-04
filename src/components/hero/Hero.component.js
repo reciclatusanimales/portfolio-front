@@ -2,8 +2,6 @@ import React from "react"
 import { Link } from "gatsby"
 import { graphql, useStaticQuery } from "gatsby"
 
-import Image from "gatsby-image"
-
 import { Header, HeroCenter, HeroInfo, HeroImg, HeroTitle, HeroPhoto } from './Hero.stlyes'
 
 const query = graphql`
@@ -29,7 +27,7 @@ const Hero = () => {
   return (
 
     <Header>
-    <HeroCenter className="section-center">
+     <HeroCenter className="section-center">
       <HeroInfo>
         <HeroTitle>
           <div className="underline"></div>

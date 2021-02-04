@@ -6,7 +6,7 @@ export const LayoutStyles = createGlobalStyle`
         --clr-white: #fff;
         --ff-primary: "Roboto", sans-serif;
         --ff-secondary: "Open Sans", sans-serif;
-        --transition: all 0.2s linear;
+        --transition: all 0.3s linear;
         --spacing: 0.2rem;
         --radius: 0.5rem;
         --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -163,7 +163,6 @@ export const LayoutStyles = createGlobalStyle`
         left: 0;
         width: 100%;
         background: var(--clr-white);
-        z-index: 2;
         box-shadow: var(--light-shadow);
     }
 
