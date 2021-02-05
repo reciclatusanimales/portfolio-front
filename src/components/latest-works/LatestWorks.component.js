@@ -7,7 +7,7 @@ const LatestWorks = ({ projects }) => {
   return (
     <section className="section latest-works">    
       <div className="section-title">
-        <h2>latest works</h2>
+        <h2>proyectos</h2>
         <div className="underline"></div>
         <Text>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt sed

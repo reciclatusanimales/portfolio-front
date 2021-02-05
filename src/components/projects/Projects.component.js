@@ -4,17 +4,17 @@ import { Link } from "gatsby"
 import Title from "../title/Title.component"
 import Project from "../project/Project.component"
 
-import { ProjectsContainer } from "./Projects.styles"
+import { ProjectsContainer, SectionCenter } from "./Projects.styles"
 
 const Projects = ({ projects, title, showLink }) => {
   return (
-    <ProjectsContainer className="section">
+    <ProjectsContainer>
       <Title title={title} />
-      <div className="section-center">
+      <SectionCenter>
         {projects.map((project, index) => {
           return <Project key={project.id} index={index} {...project} />
         })}
-      </div>
+      </SectionCenter>
       {showLink && (
         <Link to="/projects" className="btn center-btn">
           projects

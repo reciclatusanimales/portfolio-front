@@ -9,7 +9,7 @@ import { Service } from './Services.styles'
 const Services = () => {
   return (
     <section className="section bg-grey">
-      <Title title="services" />
+      {/* <Title title="services" /> */}
       <div className="section-center services-center">
         {services.map(service => {
           const { id, icon, title, text } = service

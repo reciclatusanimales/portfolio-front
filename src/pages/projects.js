@@ -16,7 +16,7 @@ const ProjectsPage = ({
     <Layout>
       <SEO title="Projects" />
       <section className="projects-page">
-        <Projects projects={projects} title="all projects" />
+        <Projects projects={projects} title="proyectos" />
       </section>
     </Layout>
   )
@@ -27,10 +27,18 @@ export const query = graphql`
       nodes{
         github
         id
+        pk
+        content
         description
         title
         url
         image
+        stack{
+          id
+          slug
+          name
+          image
+        }
       }
     }
   }

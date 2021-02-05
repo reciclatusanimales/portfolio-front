@@ -3,7 +3,7 @@ const path = require("path")
 // create pages dynamically
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-  const result = await graphql(`
+  const blogs = await graphql(`
     {
       allBlogs {
         nodes {
@@ -13,7 +13,17 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  result.data.allBlogs.nodes.forEach(blog => {
+  const projects = await graphql(`
+    {
+      allProjects {
+        nodes {
+          pk
+        }          
+      }
+    }
+  `)
+
+  blogs.data.allBlogs.nodes.forEach(blog => {
     createPage({
       path: `/blogs/${blog.slug}`,
       component: path.resolve(`src/templates/blog-template.js`),
@@ -22,4 +32,15 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
+
+  projects.data.allProjects.nodes.forEach(project => {
+    createPage({
+      path: `/projects/${project.pk}`,
+      component: path.resolve(`src/templates/project-template.js`),
+      context: {
+        pk: project.pk,
+      },
+    })
+  })
+  
 }

@@ -25,7 +25,7 @@ export default ({ data }) => {
       <Hero />
       <About />
       <Services />
-      <Timeline />
+      {/* <Timeline /> */}
       <LatestWorks projects={projects} />
       <Skills />
       <Jobs />
@@ -40,11 +40,18 @@ export const query = graphql`
       nodes{
         github
         id
+        pk
         description
         title
         subtitle
         url
         image
+        stack{
+          id
+          slug
+          name
+          image
+        }
       }
     }
     allBlogs(sort: { fields: created_at, order: DESC }, limit: 3) {

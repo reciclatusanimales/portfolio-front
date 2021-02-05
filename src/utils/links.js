@@ -1,27 +1,27 @@
 export default [
   {
     id: 1,
-    text: "home",
+    text: "inicio",
     url: "/",
   },
   {
     id: 2,
-    text: "projects",
+    text: "proyectos",
     url: "/projects/",
   },
-  {
-    id: 3,
-    text: "blog",
-    url: "/blog/",
-  },
+  // {
+  //   id: 3,
+  //   text: "blog",
+  //   url: "/blog/",
+  // },
   {
     id: 4,
-    text: "about",
+    text: "sobre mí",
     url: "/about/",
   },
   {
     id: 5,
-    text: "contact",
+    text: "contacto",
     url: "/contact/",
   },
 ]

@@ -201,7 +201,7 @@ export const LayoutStyles = createGlobalStyle`
     margin-bottom: 4rem;
   }
 
-  .project-img {
+  ${'' /* .project-img {
     border-top-left-radius: var(--radius);
     border-top-right-radius: var(--radius);
     height: 19rem;
@@ -285,9 +285,9 @@ export const LayoutStyles = createGlobalStyle`
       align-items: center;
     }
     .project-img {
-      grid-column: 1 / span 8;
+      grid-column: 1 / span 8; */}
       /* grid-column-end: 8; */
-      grid-row: 1 / 1;
+      ${'' /* grid-row: 1 / 1;
       height: 30rem;
       border-radius: var(--radius);
       box-shadow: var(--dark-shadow);
@@ -309,7 +309,7 @@ export const LayoutStyles = createGlobalStyle`
       grid-row: 1 / 1;
       text-align: left;
     }
-  }
+  } */}
   /*
   ===============
   About Page
