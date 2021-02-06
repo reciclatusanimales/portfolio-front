@@ -3,119 +3,127 @@ import { FaGithubSquare, FaShareSquare } from "react-icons/fa"
 import { Link } from 'gatsby'
 
 export const ProjectImg = styled.img`
+    height: 100%;
+    width: 100%;
+    border-radius: inherit;
+`;
+
+
+
+export const ProjectImgContainer = styled.div`
+    position: relative;
     border-top-left-radius: var(--radius);
     border-top-right-radius: var(--radius);
-    height: 19rem;
+    height: 14rem;
     z-index: 1;
-    opacity: 0.3;
+    grid-column: 2 / span 10;
+    grid-row: 1 / span 1;
+    box-shadow: var(--dark-shadow);
+    z-index: 0;        
 
     &:after {
         content: "";
+        border-radius: inherit;
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(to bottom right, red, #222);
+        background: linear-gradient(to bottom right, ${({ theme }) => theme.primary5}, #222);
         opacity: 0.85;
         transition: var(--transition);
         z-index:10;
     }
-
+    
     @media screen and (min-width: 576px) {
-        height: 19rem;
-    }
-
-    @media screen and (min-width: 768px) {
-        grid-column: 2 / span 8;
+        grid-column: 2 / span 10;
         grid-row: 1 / span 1;
-        height: 22rem;
-        border-top-left-radius: var(--radius);
-        border-top-right-radius: var(--radius);
-        box-shadow: var(--dark-shadow);
+        height: 16rem;
     }
+    
+    @media screen and (min-width: 768px) {
+        grid-column: 2 / span 9;
+        grid-row: 1 / span 1;
+        height: 20rem;
+    }
+    
     @media screen and (min-width: 992px) {
         grid-column: 2 / span 8;
         grid-row: 1 / span 1;
         height: 30rem;
         border-radius: var(--radius);
-        box-shadow: var(--dark-shadow);
     }
 `;
 
 export const ProjectInfo = styled.div`
     background: var(--clr-white);
-    opacity: 0.8;
-    padding: 1rem 2rem;
+    padding: 1rem;
     border-bottom-left-radius: var(--radius);
     border-bottom-right-radius: var(--radius);
+    box-shadow: var(--dark-shadow);
+    grid-column: 2 / span 10;
+    grid-row: 2 / span 2;
+    z-index: 1;
 
     h3 {
         font-weight: 500;
         margin-bottom: 1.5rem;
         font-size: 1.5rem;
+    }    
+   
+    @media screen and (min-width: 576px) {
+        padding: 2rem 3rem;
+        grid-column: 2 / span 10;
+        grid-row: 2 / span 2;
     }
-
+    
     @media screen and (min-width: 768px) {
-        border-bottom-left-radius: var(--radius);
-        border-bottom-right-radius: var(--radius);
-        box-shadow: var(--dark-shadow);
-
-        z-index: 1;
-        grid-column: 2 / span 8;
+        padding: 2rem;
+        grid-column: 2 / span 9;
         grid-row: 2 / span 2;
     }
     
     @media screen and (min-width: 992px) {
         border-radius: var(--radius);
-        box-shadow: var(--dark-shadow);
-
-        z-index: 1;
-        grid-column: 5 / 12;
+        grid-column: 6 / span 6;
         grid-row: 1 / span 1;
     }
-    color: var(--primary);
+    
 `;
 
 export const ProjectContainer = styled.div`
     display: grid;
-    margin-bottom: 4rem;
-    padding: 0 20px;
-    cursor: pointer;
-
-    &:hover ${ProjectImg} {
-        opacity: 1;
-    }
-    &:hover ${ProjectInfo} {
-        opacity: 1;
-    }
+    margin-bottom: 5rem;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: center;
+    cursor: pointer;    
 
     &:nth-of-type(even) ${ProjectInfo} {
         text-align: right;
     }
 
-    @media screen and (min-width: 768px) {
-        grid-template-columns: repeat(12, 1fr);
-        align-items: center;
-        
-        &:nth-of-type(even) ${ProjectImg} {
-            grid-column: 4 / 12;
+    &:hover {
+        ${ProjectImgContainer}:after {
+            opacity: 0;
+        }
+    }
+    
+    @media screen and (min-width: 768px) {            
+        &:nth-of-type(even) ${ProjectImgContainer} {
+            grid-column: 3 / span 9;
             grid-row: 1 / 1;
         }
         
         &:nth-of-type(even) ${ProjectInfo} {
-            grid-column: 4 / 12;
+            grid-column: 3 / span 9;
             grid-row: 2 / 2;
             text-align: left;
         }
     }
 
     @media screen and (min-width: 992px) {
-        grid-template-columns: repeat(12, 1fr);
-        align-items: center;
-
-        &:nth-of-type(even) ${ProjectImg} {
-            grid-column: 5 / 12;
+        &:nth-of-type(even) ${ProjectImgContainer} {
+            grid-column: 4 / span 8;
             grid-row: 1 / 1;
         }
         
@@ -139,17 +147,20 @@ export const ProjectNumber = styled.span`
 `;
 
 export const ProjectDescription = styled.p`
-    word-spacing: 15px;
     color: ${({ theme }) => theme.grey3};
 `;
 
 export const StackImg = styled.img`
-    height: 50px !important;
+    height: 40px !important;
     width: auto !important;
 `;
 
 export const ProjectStack = styled.div`
-    margin-bottom: 1rem;
+    display: none;
+
+    @media screen and (min-width: 576px) {
+        display: block;
+    }
 
     ${StackImg} {
         display: inline-block;

@@ -44,8 +44,8 @@ const Layout = ({ children }) => {
       <ThemeProvider theme={themeMode}>
         <LayoutStyles />
         <Navbar toggleSidebar={toggleSidebar} theme={theme} toggleTheme={toggleTheme}/>
-          <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} />
-          {children}
+        <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} />
+        {children}
         <Footer />
       </ThemeProvider>
     </>

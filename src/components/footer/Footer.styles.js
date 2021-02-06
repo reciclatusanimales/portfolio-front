@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 export const FooterContainer = styled.footer`
-
-    padding-bottom: 2rem;
+    padding: 2rem;
     background: #222;
     display: grid;
     place-items: center;
@@ -14,11 +13,14 @@ export const FooterContainer = styled.footer`
 
 export const FooterSocialIcons = styled.ul`
     margin-bottom: 2rem;
+    margin-top: 2rem;    
     display: grid;
-    margin-top: 3rem;
-    width: 20rem;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     justify-items: center;
+
+    li {
+        padding: 1rem;
+    }
 `;
 
 export const FooterSocialIcon = styled.a`

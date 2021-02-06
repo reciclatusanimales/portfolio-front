@@ -1,13 +1,15 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { ProjectContainer, ProjectImg, ProjectInfo, ProjectNumber, ProjectTitle, ProjectDescription, ProjectStack, StackImg, ProjectGithub, ProjectSquare } from './Project.styles'
+import { ProjectContainer, ProjectImg, ProjectImgContainer, ProjectInfo, ProjectNumber, ProjectTitle, ProjectDescription, ProjectStack, StackImg, ProjectGithub, ProjectSquare } from './Project.styles'
 
 const Project = ({ pk, description, title, subtitle, github, stack, url, image, index }) => {
 
   return (
     <ProjectContainer>
       {image && (
-        <ProjectImg src={image} className="project-img" alt="project" />
+        <ProjectImgContainer>
+          <ProjectImg src={image} alt="project" />
+        </ProjectImgContainer>
         // <Image fluid={image.childImageSharp.fluid} className="project-img" />
       )}
       <ProjectInfo>
@@ -19,14 +21,14 @@ const Project = ({ pk, description, title, subtitle, github, stack, url, image, 
             return <StackImg src={item.image} key={item.id} alt={item.name} />
           })}
         </ProjectStack>
-        <div className="project-links">
+        {/* <div className="project-links">
           <a href={github}>
             <ProjectGithub className="project-icon" />
           </a>
           <a href={url}>
             <ProjectSquare className="project-icon" />
           </a>
-        </div>
+        </div> */}
       </ProjectInfo>
     </ProjectContainer>
   )

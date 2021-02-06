@@ -38,10 +38,10 @@ export const LayoutStyles = createGlobalStyle`
         text-decoration: none;
     }
 
-    img:not(.nav-logo) {
+    ${'' /* img:not(.nav-logo) {
         width: 100%;
         display: block;
-    }
+    } */}
 
     h1,
     h2,

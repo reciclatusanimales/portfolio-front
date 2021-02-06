@@ -24,7 +24,7 @@ const Footer = () => {
           )
         })}
       </FooterSocialIcons>
-      <p>&copy; <span id="date"></span> John Doe. All rights reserved.</p>
+      <p>&copy; <span id="date"></span> www.reciclatusanimales.com</p>
     </FooterContainer>
   )
 }

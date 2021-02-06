@@ -15,9 +15,10 @@ export const LatestWorksCenter = styled.div`
         column-gap: 2rem;
     }
     @media screen and (min-width: 992px) {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: 2fr 2fr;
    }
     @media screen and (min-width: 1170px) {
+        grid-template-columns: repeat(3, 1fr);
         grid-template-rows: 200px 200px;
         gap: 1rem;
         grid-template-areas:
@@ -59,7 +60,8 @@ export const WorkInfo = styled.div`
 `;
 
 export const WorkImg = styled.img`
-    
+    width: 100%;
+    display: block;
     -webkit-transition: var(--transition);
     transition: var(--transition);
     border-radius: var(--radius);
