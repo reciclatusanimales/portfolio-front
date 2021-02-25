@@ -1,4 +1,3 @@
-import { Link } from "gatsby"
 import styled from "styled-components"
 
 export const SectionContainer = styled.section`
@@ -11,6 +10,8 @@ export const SectionTitle = styled.div`
   text-align: center;
   color: #1a1a1a;
 `
+
+export const Title = styled.h2``
 
 export const Underline = styled.div`
   width: 5rem;
@@ -28,60 +29,33 @@ export const Text = styled.p`
   color: #1a1a1a;
 `
 
-export const LatestWorksCenter = styled.div`
-  padding-left: 5rem;
-  padding-right: 3rem;
-
-  @media screen and (min-width: 676px) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    -webkit-column-gap: 3rem;
-    -moz-column-gap: 3rem;
-    grid-gap: 2.5rem;
-    column-gap: 3rem;
-  }
-
-  @media screen and (min-width: 992px) {
-    grid-template-columns: 2fr 2fr;
-    grid-gap: 2.5rem;
-  }
-
-  @media screen and (min-width: 1170px) {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 200px 200px;
-    gap: 3.5rem;
-    grid-template-areas:
-      "a b b"
-      "a c d";
-
-    .work-1 {
-      grid-area: a;
-    }
-    .work-2 {
-      grid-area: b;
-    }
-    .work-3 {
-      grid-area: c;
-    }
-    .work-4 {
-      grid-area: d;
-    }
-  }
+export const Works = styled.ol`
+  margin: calc(8px * 2) auto calc(8px * 5);
+  display: grid;
+  grid-row-gap: calc(7px * 8);
+  grid-column-gap: calc(10px * 6);
+  grid-template-columns: repeat(auto-fit, minmax(calc(10px * 35), 1fr));
+  justify-items: center;
 `
 
-export const Work = styled.article`
+export const WorkList = styled.li`
+  cursor: pointer;
+  display: block;
   position: relative;
-  background: ${({ theme }) => theme.primary5};
-  border-radius: var(--radius);
-  margin-bottom: 5rem;
-  height: 15rem;
-  opacity: 0.9;
+  perspective: 1000px;
+  animation-name: animateIn;
+  animation-duration: 0.35s;
+  animation-delay: calc(1 * 100ms);
+  animation-fill-mode: both;
+  animation-timing-function: ease-in-out;
+  width: calc(10px * 35);
+  height: calc(7px * 35);
 
   &:before {
     content: "";
     position: absolute;
-    top: -22px;
-    left: -20px;
+    top: calc(10px * -2);
+    left: calc(7px * -2);
     border: 3px dashed #fff;
     border-radius: var(--radius);
     background-image: repeating-linear-gradient(
@@ -91,12 +65,9 @@ export const Work = styled.article`
       rgba(255, 255, 255, 0.75) 0,
       rgba(255, 255, 255, 0.75) 5px
     );
-    width: 100%;
-    height: 100%;
-  }
-
-  @media screen and (min-width: 1170px) {
-    height: 100%;
+    z-index: -1;
+    width: calc(10px * 35);
+    height: calc(7px * 35);
   }
 `
 
@@ -113,20 +84,44 @@ export const WorkContent = styled.div`
   flex-direction: column;
   border: 2px solid #fff;
   border-radius: var(--radius);
+
+  clip-path: polygon(0 0, 51% 0, 51% 100%, 0 100%);
+  -webkit-clip-path: polygon(0 0, 51% 0, 51% 100%, 0 100%);
 `
 
-export const WorkTitle = styled(Link)`
-  font-size: 2rem;
-  margin: 0 0 1rem;
+export const WorkSecondContent = styled.div`
+  background-color: #fff;
+  color: #1a1a1a;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: calc(8px * 2);
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #fff;
+  border-radius: var(--radius);
+
+  clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+  -webkit-clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+  transition: transform 0.5s ease-in-out, background-color 0.4s ease-in-out;
+`
+
+export const WorkLink = styled.a`
+  background-color: ${({ theme }) => theme.primary9};
+  border: 2px solid #fff;
+  border-radius: var(--radius);
+  display: block;
+  width: 100%;
+  height: 100%;
+`
+
+export const WorkTitle = styled.h2`
+  font-size: calc(8px * 4);
   line-height: 1.125;
   font-weight: 700;
   letter-spacing: -0.02em;
-  font-weight: bold;
-  color: inherit;
-`
-
-export const WorkDescription = styled.p`
-  color: #919495;
 `
 
 export const WorkFooter = styled.div`
@@ -141,8 +136,6 @@ export const WorkStackImg = styled.img`
   height: 40px !important;
   width: auto !important;
   margin: 5px;
-  display: flex;
-  align-items: center;
 `
 
 export const WorkStack = styled.div`

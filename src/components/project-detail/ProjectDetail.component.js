@@ -1,27 +1,28 @@
 import React from "react"
-import Markdown from "react-markdown"
-
+import ReactMarkdown from "react-markdown"
+import ReactMarkdownWithHtml from "react-markdown/with-html"
 import Button from "../layout/button/Button.component"
 import { ProjectTemplate, ProjectStack, StackImg } from "./ProjectDetail.styles"
+import { SectionCenter } from "../layout/layout/Layout.styles"
+import Title from "../layout/title/Title.component"
 
 const ProjectDetail = ({ project }) => {
   const { title, subtitle, image, content, description, stack } = project
+
   const markdown = `
-    # Header 1
-    ## Header 2
-  
-    _ italic _
-  
-    ** bold **
-  
-    <b> bold Html </b>
-    `
+  Clics es una red social construida en NodeJS (Express), NextJS (React) y TailwindCSS.
+
+  Here is some JavaScript code:
+  # Hello, *world*!
+
+`
+
   return (
     <ProjectTemplate>
-      <div className="section-center">
+      <SectionCenter>
         <article className="project-content">
-          <h1>{title}</h1>
-          <h3>{subtitle}</h3>
+          <Title title={title} />
+          {/* <h3>{subtitle}</h3> */}
 
           <ProjectStack>
             {stack.map(item => {
@@ -29,10 +30,14 @@ const ProjectDetail = ({ project }) => {
             })}
           </ProjectStack>
 
-          <Markdown source={content} />
+          <ReactMarkdownWithHtml
+            children={markdown}
+            //allowDangerousHtml={true}
+            //escapeHtml={false}
+          />
         </article>
         <Button to="/projects">proyectos</Button>
-      </div>
+      </SectionCenter>
     </ProjectTemplate>
   )
 }

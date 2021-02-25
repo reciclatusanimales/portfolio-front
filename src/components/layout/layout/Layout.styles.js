@@ -348,6 +348,90 @@ export const LayoutStyles = createGlobalStyle`
   }
 }
 
+.not-found {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.not-found-error{
+  text-align: center;
+  margin: 0;  
+  font-size: 96px;
+  letter-spacing: -7px;
+  animation: glitch 1s linear infinite;
+}
+
+@keyframes glitch{
+  2%,64%{
+    transform: translate(2px,0) skew(0deg);
+  }
+  4%,60%{
+    transform: translate(-2px,0) skew(0deg);
+  }
+  62%{
+    transform: translate(0,0) skew(5deg); 
+  }
+}
+
+.not-found-error:before,
+.not-found-error:after{
+  content: attr(title);
+  position: absolute;
+  left: 0;
+}
+
+.not-found-error:before{
+  text-align: center;
+  animation: glitchTop 1s linear infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+}
+
+@keyframes glitchTop{
+  2%,64%{
+    transform: translate(2px,-2px);
+  }
+  4%,60%{
+    transform: translate(-2px,2px);
+  }
+  62%{
+    transform: translate(13px,-1px) skew(-13deg); 
+  }
+}
+
+.not-found-error:after{
+  animation: glitchBotom 1.5s linear infinite;
+  clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+  -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+}
+
+@keyframes glitchBotom{
+  2%,64%{
+    transform: translate(-2px,0);
+  }
+  4%,60%{
+    transform: translate(-2px,0);
+  }
+  62%{
+    transform: translate(-22px,5px) skew(21deg); 
+  }
+}
+`
+
+export const SectionCenter = styled.div`
+  width: 90vw;
+  margin: 0 auto;
+  max-width: 1170px;
+
+  @media screen and (min-width: 992px) {
+    & {
+      width: 95vw;
+    }
+  }
 `
 
 export const ButtonDark = styled(Link)`

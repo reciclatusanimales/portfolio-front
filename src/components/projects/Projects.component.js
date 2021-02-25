@@ -2,9 +2,10 @@ import React from "react"
 import { Link } from "gatsby"
 
 import Title from "../layout/title/Title.component"
+import { SectionCenter } from "../layout/layout/Layout.styles"
 import Project from "../project/Project.component"
 
-import { ProjectsContainer, SectionCenter } from "./Projects.styles"
+import { ProjectsContainer } from "./Projects.styles"
 
 const Projects = ({ projects, title, showLink }) => {
   return (

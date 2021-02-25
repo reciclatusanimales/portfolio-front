@@ -6,9 +6,9 @@ import {
   WorkImg,
   Work,
   WorkInfo,
-} from "../latest-works/LatestWorks.styles"
+} from "../latest-works2/LatestWorksCopy.styles"
 
-const LatestWorks = ({ projects }) => {
+const LatestWorksCopy = ({ projects }) => {
   return (
     <section className="section latest-works">
       <div className="section-title">
@@ -47,4 +47,4 @@ const LatestWorks = ({ projects }) => {
   )
 }
 
-export default LatestWorks
+export default LatestWorksCopy

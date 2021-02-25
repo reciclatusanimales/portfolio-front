@@ -1,22 +1,22 @@
 import React from "react"
-import Title from "../layout/title/Title.component"
 
+import Button from "../layout/button/Button.component"
+import Title from "../layout/title/Title.component"
 import {
+  LatestWorksCenter,
+  Work,
   SectionContainer,
   SectionTitle,
   Text,
-  Works,
-  WorkList,
-  WorkLink,
   WorkContent,
-  WorkSecondContent,
   WorkTitle,
+  WorkDescription,
   WorkFooter,
   WorkStack,
   WorkStackImg,
 } from "./LatestWorks.styles"
 
-const LatestWorks = ({ projects }) => {
+const LatestWorksCopy = ({ projects }) => {
   return (
     <SectionContainer>
       <SectionTitle>
@@ -28,58 +28,43 @@ const LatestWorks = ({ projects }) => {
           officia temporibus inventore a.
         </Text>
       </SectionTitle>
-      <Works>
+      <LatestWorksCenter>
         {projects.slice(0, 4).map((project, index) => {
           return (
-            <WorkList key={index}>
-              <WorkLink
-                href={project.url}
-                className={`work-${index}`}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <WorkContent>
-                  <WorkTitle>{project.title}</WorkTitle>
-                  <WorkFooter>
-                    <p>{project.subtitle}</p>
-                    <WorkStack>
-                      {project.stack.map(item => {
-                        return (
-                          <WorkStackImg
-                            src={item.image}
-                            key={item.id}
-                            alt={item.name}
-                          />
-                        )
-                      })}
-                    </WorkStack>
-                  </WorkFooter>
-                </WorkContent>
-
-                <WorkSecondContent aria-hidden="true">
-                  <WorkTitle>{project.title}</WorkTitle>
-                  <WorkFooter>
-                    <p>{project.subtitle}</p>
-                    <WorkStack>
-                      {project.stack.map(item => {
-                        return (
-                          <WorkStackImg
-                            src={item.image}
-                            key={item.id}
-                            alt={item.name}
-                          />
-                        )
-                      })}
-                    </WorkStack>
-                  </WorkFooter>
-                </WorkSecondContent>
-              </WorkLink>
-            </WorkList>
+            <Work
+              key={index}
+              href={project.url}
+              className={`work-${index + 1}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <WorkContent>
+                <WorkTitle to={`/projects/${project.pk}`}>
+                  {project.title}
+                </WorkTitle>
+                <WorkDescription>{project.subtitle}</WorkDescription>
+                <WorkFooter>
+                  <WorkStack>
+                    {project.stack.map(item => {
+                      return (
+                        <WorkStackImg
+                          src={item.image}
+                          key={item.id}
+                          alt={item.name}
+                        />
+                      )
+                    })}
+                  </WorkStack>
+                </WorkFooter>
+              </WorkContent>
+            </Work>
           )
         })}
-      </Works>
+      </LatestWorksCenter>
+
+      <Button to={`/projects`}>todos</Button>
     </SectionContainer>
   )
 }
 
-export default LatestWorks
+export default LatestWorksCopy
