@@ -115,6 +115,36 @@ export const WorkLink = styled.a`
   display: block;
   width: 100%;
   height: 100%;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: calc(7px * 3);
+    width: calc(10px * 2);
+    height: calc(7px * 2);
+    margin-top: calc(10px * -1);
+    clip-path: polygon(75% 0, 100% 50%, 75% 100%, 0 100%, 25% 50%, 0 0);
+    -webkit-clip-path: polygon(75% 0, 100% 50%, 75% 100%, 0 100%, 25% 50%, 0 0);
+    background-color: #fff;
+    opacity: 0;
+    transition: opacity 0.5s ease-in, transform 0.3s ease-in-out 0ms;
+  }
+
+  &:hover {
+    &:after {
+      opacity: 1;
+      transform: translateX(calc(8px * 1.5));
+      transition: opacity 0.5s ease-in, transform 0.3s ease-in-out 0.25s;
+    }
+  }
+
+  &:hover {
+    ${WorkSecondContent} {
+      background-color: #f5f5f5;
+      transform: rotateY(-50deg);
+    }
+  }
 `
 
 export const WorkTitle = styled.h2`

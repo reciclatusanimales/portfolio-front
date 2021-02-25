@@ -1,12 +1,11 @@
 import React from "react"
 import { Link } from "gatsby"
 
-import Title from "../title/Title.component"
+import Title from "../layout/title/Title.component"
 import Blog from "../blog/Blog.component"
-import { BlogsCenter } from './Blogs.styles'
+import { BlogsCenter } from "./Blogs.styles"
 
 export const Blogs = ({ blogs, title, showLink }) => {
-
   return (
     <section className="section">
       <Title title={title} />

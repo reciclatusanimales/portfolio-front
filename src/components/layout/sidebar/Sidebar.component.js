@@ -3,13 +3,18 @@ import { Link } from "gatsby"
 
 import { FaTimes } from "react-icons/fa"
 
-import links from '../../utils/links'
-import socialLinks from "../../utils/socialLinks"
+import links from "../../../utils/links"
+import socialLinks from "../../../utils/socialLinks"
 
-import { Side, CloseBtn, SidebarLinks, SidebarSocialIcons, SidebarSocialIcon } from './Sidebar.styles'
+import {
+  Side,
+  CloseBtn,
+  SidebarLinks,
+  SidebarSocialIcons,
+  SidebarSocialIcon,
+} from "./Sidebar.styles"
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
-
   return (
     <Side isOpen={isOpen}>
       <CloseBtn onClick={toggleSidebar}>
@@ -17,7 +22,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       </CloseBtn>
       <SidebarLinks isOpen={isOpen}>
         {links.map(link => {
-          return(
+          return (
             <li key={link.id}>
               <Link to={link.url}>{link.text}</Link>
             </li>
@@ -26,16 +31,13 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       </SidebarLinks>
       <SidebarSocialIcons>
         {socialLinks.map(link => {
-          return(
+          return (
             <li key={link.id}>
-              <SidebarSocialIcon href={link.url}>
-                {link.icon}
-              </SidebarSocialIcon>
+              <SidebarSocialIcon href={link.url}>{link.icon}</SidebarSocialIcon>
             </li>
           )
         })}
       </SidebarSocialIcons>
-    
     </Side>
   )
 }

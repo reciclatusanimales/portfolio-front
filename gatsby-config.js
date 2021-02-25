@@ -31,69 +31,80 @@ module.exports = {
     },
     {
       resolve: "gatsby-source-custom-api",
-        options: {
-          url: "http://api.reciclatusanimales.com/api/projects",
-          rootKey: "projects",
-          schemas:  {
-            projects: `
+      options: {
+        url: "http://api.reciclatusanimales.com/api/projects",
+        rootKey: "projects",
+        schemas: {
+          projects: `
               title: String
               description: String
               image: String, 
               github: String, 
               url: String, 
               featured: Boolean
-            `
-        }
-      }
+            `,
+        },
+      },
     },
     {
       resolve: "gatsby-source-custom-api",
-        options: {
-          url: "http://api.reciclatusanimales.com/api/jobs",
-          rootKey: "jobs",
-          schemas:  {
-            jobs: `
+      options: {
+        url: "http://api.reciclatusanimales.com/api/stacks",
+        rootKey: "stacks",
+        schemas: {
+          stacks: `
+              name: String
+              slug: String
+              image: String, 
+              order: Int,                             
+            `,
+        },
+      },
+    },
+    {
+      resolve: "gatsby-source-custom-api",
+      options: {
+        url: "http://api.reciclatusanimales.com/api/jobs",
+        rootKey: "jobs",
+        schemas: {
+          jobs: `
               company: String
               position: String
               date: Date
-            `
-        }
-      }
+            `,
+        },
+      },
     },
     {
-    resolve: "gatsby-source-custom-api",
+      resolve: "gatsby-source-custom-api",
       options: {
-          url: "http://api.reciclatusanimales.com/api/blogs",
-          rootKey: "blogs",
-          schemas:  {
-            blogs: `
+        url: "http://api.reciclatusanimales.com/api/blogs",
+        rootKey: "blogs",
+        schemas: {
+          blogs: `
               title: String
               description: String
               image: String, 
               content: String, 
               slug: String,
               created_at: Date
-            `
-        }
-      }
+            `,
+        },
+      },
     },
     {
-      resolve: `gatsby-plugin-preload-fonts`,
+      resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
-          {
-            family: `Roboto`,
-            variants: [`400`, `700`],
-          },
-          {
-            family: `Open Sans`,
-          },
+          `Bitter`,
+          `source sans pro\:300,400,400i,700`, // you can also specify font weights and styles
         ],
+        display: "swap",
       },
     },
     `gatsby-plugin-emotion`,
     `gatsby-plugin-material-ui`,
-    `gatsby-plugin-styled-components`
+    `gatsby-plugin-styled-components`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

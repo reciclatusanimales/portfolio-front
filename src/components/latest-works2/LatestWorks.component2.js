@@ -14,7 +14,7 @@ import {
   WorkFooter,
   WorkStack,
   WorkStackImg,
-} from "./LatestWorks.styles"
+} from "../latest-works/LatestWorks.styles"
 
 const LatestWorks = ({ projects }) => {
   return (

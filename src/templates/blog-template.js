@@ -1,20 +1,18 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Layout from "../components/layout/Layout.component"
+import Layout from "../components/layout/layout/Layout.component"
 import SEO from "../components/seo"
 
-import BlogDetail from '../components/blog-detail/BlogDetail.component'
+import BlogDetail from "../components/blog-detail/BlogDetail.component"
 
 const BlogTemplate = ({ data }) => {
-
   const { title, description } = data.blog
 
   return (
     <Layout>
       <SEO title={title} description={description} />
-      
-      <BlogDetail blog={data.blog} />
 
+      <BlogDetail blog={data.blog} />
     </Layout>
   )
 }

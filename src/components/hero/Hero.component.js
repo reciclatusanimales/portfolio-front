@@ -2,7 +2,16 @@ import React from "react"
 import { Link } from "gatsby"
 import { graphql, useStaticQuery } from "gatsby"
 
-import { Header, HeroCenter, HeroInfo, HeroImg, HeroTitle, HeroPhoto } from './Hero.stlyes'
+import { ButtonDark } from "../layout/layout/Layout.styles"
+
+import {
+  Header,
+  HeroCenter,
+  HeroInfo,
+  HeroImg,
+  HeroTitle,
+  HeroPhoto,
+} from "./Hero.stlyes"
 
 const query = graphql`
   {
@@ -17,7 +26,6 @@ const query = graphql`
 `
 
 const Hero = () => {
-  
   const {
     file: {
       childImageSharp: { fluid },
@@ -25,25 +33,22 @@ const Hero = () => {
   } = useStaticQuery(query)
 
   return (
-
     <Header>
-     <HeroCenter className="section-center">
-      <HeroInfo>
-        <HeroTitle>
-          <div className="underline"></div>
-          <h1>i'm john</h1>
-          <h4>freelance web and mobile UI/UX Designer</h4>
-          <Link to="/contact" className="btn">
-            contact
-          </Link>
-          {/* <SocialLinks /> */}
-        </HeroTitle>
-      </HeroInfo>
-      <HeroImg>
-        <HeroPhoto fluid={fluid} className="hero-photo" /> 
-      </HeroImg>
-    </HeroCenter>
-  </Header>
+      <HeroCenter className="section-center">
+        <HeroInfo>
+          <HeroTitle>
+            <div className="underline"></div>
+            <h1>Daniel Reyes Veas</h1>
+            <h4>programador fullstack</h4>
+            <ButtonDark to="/contact">contacto</ButtonDark>
+            {/* <SocialLinks /> */}
+          </HeroTitle>
+        </HeroInfo>
+        <HeroImg>
+          <HeroPhoto fluid={fluid} className="hero-photo" />
+        </HeroImg>
+      </HeroCenter>
+    </Header>
   )
 }
 

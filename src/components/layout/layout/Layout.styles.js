@@ -1,11 +1,12 @@
-import { createGlobalStyle } from 'styled-components';
+import { Link } from "gatsby"
+import styled, { createGlobalStyle } from "styled-components"
 
 export const LayoutStyles = createGlobalStyle`
     
     :root {
         --clr-white: #fff;
-        --ff-primary: "Roboto", sans-serif;
-        --ff-secondary: "Open Sans", sans-serif;
+        --ff-primary: "Bitter", sans-serif;
+        --ff-secondary: "Bitter", sans-serif;
         --transition: all 0.3s linear;
         --spacing: 0.2rem;
         --radius: 0.5rem;
@@ -38,10 +39,12 @@ export const LayoutStyles = createGlobalStyle`
         text-decoration: none;
     }
 
-    ${'' /* img:not(.nav-logo) {
+    ${
+      "" /* img:not(.nav-logo) {
         width: 100%;
         display: block;
-    } */}
+    } */
+    }
 
     h1,
     h2,
@@ -94,33 +97,7 @@ export const LayoutStyles = createGlobalStyle`
     }
     /*  global classes */
 
-    .btn {
-        text-transform: uppercase;
-        background: ${({ theme }) => theme.primary5};
-        color: ${({ theme }) => theme.primary1};
-        padding: 0.375rem 0.75rem;
-        letter-spacing: var(--spacing);
-        display: inline-block;
-        font-weight: 700;
-        -webkit-transition: var(--transition);
-        transition: var(--transition);
-        font-size: 0.875rem;
-        border: 2px solid transparent;
-        cursor: pointer;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-        border-radius: var(--radius);
-    }
-    .btn:hover {
-        color: ${({ theme }) => theme.primary1};
-        background: ${({ theme }) => theme.primary7};
-    }
-    .center-btn {
-        display: block;
-        width: 12rem;
-        text-align: center;
-        margin: 0 auto;
-        margin-top: 3rem;
-    }
+  
 
     /* section */
     .section {
@@ -201,7 +178,8 @@ export const LayoutStyles = createGlobalStyle`
     margin-bottom: 4rem;
   }
 
-  ${'' /* .project-img {
+  ${
+    "" /* .project-img {
     border-top-left-radius: var(--radius);
     border-top-right-radius: var(--radius);
     height: 19rem;
@@ -285,9 +263,11 @@ export const LayoutStyles = createGlobalStyle`
       align-items: center;
     }
     .project-img {
-      grid-column: 1 / span 8; */}
+      grid-column: 1 / span 8; */
+  }
       /* grid-column-end: 8; */
-      ${'' /* grid-row: 1 / 1;
+      ${
+        "" /* grid-row: 1 / 1;
       height: 30rem;
       border-radius: var(--radius);
       box-shadow: var(--dark-shadow);
@@ -309,7 +289,8 @@ export const LayoutStyles = createGlobalStyle`
       grid-row: 1 / 1;
       text-align: left;
     }
-  } */}
+  } */
+      }
   /*
   ===============
   About Page
@@ -367,4 +348,37 @@ export const LayoutStyles = createGlobalStyle`
   }
 }
 
+`
+
+export const ButtonDark = styled(Link)`
+  color: white;
+  text-transform: uppercase;
+  padding: 0.375rem 0.75rem;
+  letter-spacing: var(--spacing);
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.5s ease;
+  cursor: pointer;
+  display: block;
+  position: relative;
+  width: 12rem;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 3rem;
+  background-color: ${({ theme }) => theme.primary3};
+  box-shadow: 20px 38px 34px -26px hsla(0, 0%, 0%, 0.2);
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  border: dashed 3.5px ${({ theme }) => theme.primary5};
+  background-image: repeating-linear-gradient(
+    24deg,
+    ${({ theme }) => theme.primary7},
+    ${({ theme }) => theme.primary7} 2px,
+    transparent 0,
+    transparent 5px
+  );
+
+  &:hover {
+    box-shadow: 2px 8px 4px -6px hsla(0, 0%, 0%, 0.3);
+    font-size: 1.1rem;
+  }
 `

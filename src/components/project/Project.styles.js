@@ -1,191 +1,135 @@
-import styled from 'styled-components';
-import { FaGithubSquare, FaShareSquare } from "react-icons/fa"
-import { Link } from 'gatsby'
+import { Link } from "gatsby"
+import styled from "styled-components"
 
-export const ProjectImg = styled.img`
-    height: 100%;
-    width: 100%;
-    border-radius: inherit;
-`;
+export const ProjectContainer = styled.section`
+  margin-top: 80px;
 
-
-
-export const ProjectImgContainer = styled.div`
-    position: relative;
-    border-top-left-radius: var(--radius);
-    border-top-right-radius: var(--radius);
-    height: 14rem;
-    z-index: 1;
-    grid-column: 2 / span 10;
-    grid-row: 1 / span 1;
-    box-shadow: var(--dark-shadow);
-    z-index: 0;        
+  @media (min-width: 40em) {
+    display: grid;
+    grid-template-rows: repeat(3, auto);
+    grid-template-columns: 4fr 4fr 5fr;
+    grid-template-areas: ". . title" "img img content" "img img .";
+    max-width: 1000px;
+    margin-right: auto;
+    margin-left: auto;
 
     &:after {
-        content: "";
-        border-radius: inherit;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(to bottom right, ${({ theme }) => theme.primary5}, #222);
-        opacity: 0.85;
-        transition: var(--transition);
-        z-index:10;
-    }
-    
-    @media screen and (min-width: 576px) {
-        grid-column: 2 / span 10;
-        grid-row: 1 / span 1;
-        height: 16rem;
-    }
-    
-    @media screen and (min-width: 768px) {
-        grid-column: 2 / span 9;
-        grid-row: 1 / span 1;
-        height: 20rem;
-    }
-    
-    @media screen and (min-width: 992px) {
-        grid-column: 2 / span 8;
-        grid-row: 1 / span 1;
-        height: 30rem;
-        border-radius: var(--radius);
-    }
-`;
-
-export const ProjectInfo = styled.div`
-    background: var(--clr-white);
-    padding: 1rem;
-    border-bottom-left-radius: var(--radius);
-    border-bottom-right-radius: var(--radius);
-    box-shadow: var(--dark-shadow);
-    grid-column: 2 / span 10;
-    grid-row: 2 / span 2;
-    z-index: 1;
-
-    h3 {
-        font-weight: 500;
-        margin-bottom: 1.5rem;
-        font-size: 1.5rem;
-    }    
-   
-    @media screen and (min-width: 576px) {
-        padding: 2rem 3rem;
-        grid-column: 2 / span 10;
-        grid-row: 2 / span 2;
-    }
-    
-    @media screen and (min-width: 768px) {
-        padding: 2rem;
-        grid-column: 2 / span 9;
-        grid-row: 2 / span 2;
-    }
-    
-    @media screen and (min-width: 992px) {
-        border-radius: var(--radius);
-        grid-column: 6 / span 6;
-        grid-row: 1 / span 1;
-    }
-    
-`;
-
-export const ProjectContainer = styled.div`
-    display: grid;
-    margin-bottom: 5rem;
-    grid-template-columns: repeat(12, 1fr);
-    align-items: center;
-    cursor: pointer;    
-
-    &:nth-of-type(even) ${ProjectInfo} {
-        text-align: right;
+      border-radius: var(--radius);
+      content: "";
+      grid-column: 2 / -1;
+      grid-row: 1 / 3;
+      position: relative;
+      z-index: 0;
+      background: white;
+      box-shadow: var(--dark-shadow);
     }
 
-    &:hover {
-        ${ProjectImgContainer}:after {
-            opacity: 0;
-        }
-    }
-    
-    @media screen and (min-width: 768px) {            
-        &:nth-of-type(even) ${ProjectImgContainer} {
-            grid-column: 3 / span 9;
-            grid-row: 1 / 1;
-        }
-        
-        &:nth-of-type(even) ${ProjectInfo} {
-            grid-column: 3 / span 9;
-            grid-row: 2 / 2;
-            text-align: left;
-        }
-    }
+    &:nth-of-type(even) {
+      grid-template-areas: "title . ." "content img img" ". img img";
 
-    @media screen and (min-width: 992px) {
-        &:nth-of-type(even) ${ProjectImgContainer} {
-            grid-column: 4 / span 8;
-            grid-row: 1 / 1;
-        }
-        
-        &:nth-of-type(even) ${ProjectInfo} {
-            grid-column: 2 / span 6;
-            grid-row: 1 / span 1;
-            text-align: left;
-        }
+      &:after {
+        grid-column: 1 / 3;
+        grid-row: 1 / 3;
+      }
     }
-`;
+  }
+`
 
 export const ProjectTitle = styled(Link)`
-    
-`;
+  font-size: 2rem;
+  margin: 0 0 1rem;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  letter-spacing: var(--spacing);
+  font-weight: bold;
+  color: inherit;
 
-export const ProjectNumber = styled.span`
-    display: inline-block;
-    font-size: 1.25rem;
-    color: ${({ theme }) => theme.primary5};
-    margin-bottom: 0.75rem;
-`;
+  &:after {
+    content: "";
+    position: absolute;
+    width: 6rem;
+    background-color: hsl(0, 0, 80%);
+    height: 2px;
+    top: 0;
+    left: 0;
+  }
+
+  @media (min-width: 40em) {
+    grid-area: title;
+    padding-top: 2rem;
+    padding-left: 2rem;
+    text-align: left;
+    font-size: 2.5rem;
+
+    &:after {
+      left: 2rem;
+      top: 2rem;
+    }
+  }
+`
+
+export const ProjectContent = styled.div`
+  @media (min-width: 40em) {
+    grid-area: content;
+    z-index: 1;
+    padding-bottom: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  color: hsl(0, 0, 30%);
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+
+  @media (min-width: 40em) {
+    margin-bottom: 0;
+  }
+`
 
 export const ProjectDescription = styled.p`
-    color: ${({ theme }) => theme.grey3};
-`;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+`
 
-export const StackImg = styled.img`
-    height: 40px !important;
-    width: auto !important;
-`;
+export const ProjectBtnContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-export const ProjectStack = styled.div`
-    display: none;
+  @media (min-width: 40em) {
+    display: block;
+  }
+`
 
-    @media screen and (min-width: 576px) {
-        display: block;
-    }
+export const ProjectBtn = styled(Link)`
+  text-decoration: none;
+  border: 1px solid hsl(209, 61%, 16%);
+  border-radius: 1em;
+  padding: 1em 2em;
+  z-index: 1;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: inherit;
+  background-color: white;
+  display: inline-block;
+`
 
-    ${StackImg} {
-        display: inline-block;
-        padding: 0.25rem 0.3rem;
-    }
-`;
+export const ProjectImgContainer = styled.div`
+  z-index: 1;
+  @media (min-width: 40em) {
+    grid-area: img;
+  }
 
-export const ProjectGithub = styled(FaGithubSquare)`
-    color: ${({ theme }) => theme.primary5};
-    font-size: 1.25rem;
-    margin-right: 0.5rem;
-    transition: var(--transition);
+  position: relative;
+`
 
-    &:hover {
-        color: ${({ theme }) => theme.primary1};
-    }
-`;
-
-export const ProjectSquare = styled(FaShareSquare)`
-    color: ${({ theme }) => theme.primary5};
-    font-size: 1.25rem;
-    margin-right: 0.5rem;
-    transition: var(--transition);
-
-    &:hover {
-        color: ${({ theme }) => theme.primary1};
-    }
-`;
+export const ProjectImg = styled.img`
+  border-radius: var(--radius);
+  max-width: 100%;
+  vertical-align: middle;
+  box-shadow: 0 0.2em 1.2em hsla(20, 20, 20, 10%);
+`

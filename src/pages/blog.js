@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import Layout from "../components/layout/Layout.component"
+import Layout from "../components/layout/layout/Layout.component"
 import Blogs from "../components/blogs/Blogs.component"
 
 import SEO from "../components/seo"
@@ -11,7 +11,6 @@ const Blog = ({
     allBlogs: { nodes: blogs },
   },
 }) => {
-
   return (
     <Layout>
       <SEO title="Blog" />
@@ -29,7 +28,7 @@ export const query = graphql`
         slug
         content
         description
-        category{
+        category {
           name
         }
         created_at(formatString: "MMMM Do, YYYY")

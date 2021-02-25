@@ -1,35 +1,47 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { ProjectContainer, ProjectImg, ProjectImgContainer, ProjectInfo, ProjectNumber, ProjectTitle, ProjectDescription, ProjectStack, StackImg, ProjectGithub, ProjectSquare } from './Project.styles'
 
-const Project = ({ pk, description, title, subtitle, github, stack, url, image, index }) => {
+import Button from "../layout/button/Button.component"
+import {
+  ProjectContainer,
+  ProjectTitle,
+  ProjectContent,
+  ProjectDescription,
+  ProjectBtnContainer,
+  ProjectBtn,
+  ProjectImgContainer,
+  ProjectImg,
+} from "./Project.styles"
 
+const Project = ({
+  pk,
+  description,
+  title,
+  subtitle,
+  github,
+  stack,
+  url,
+  image,
+  index,
+}) => {
   return (
     <ProjectContainer>
-      {image && (
-        <ProjectImgContainer>
-          <ProjectImg src={image} alt="project" />
-        </ProjectImgContainer>
-        // <Image fluid={image.childImageSharp.fluid} className="project-img" />
-      )}
-      <ProjectInfo>
-        <ProjectNumber>0{index + 1}.</ProjectNumber>
-        <ProjectTitle to={`/projects/${pk}`} key={pk}>{title || "default title"}</ProjectTitle>
-        <ProjectDescription dangerouslySetInnerHTML={{__html: description}} ></ProjectDescription>
-        <ProjectStack>
-          {stack.map(item => {
-            return <StackImg src={item.image} key={item.id} alt={item.name} />
-          })}
-        </ProjectStack>
-        {/* <div className="project-links">
-          <a href={github}>
-            <ProjectGithub className="project-icon" />
-          </a>
-          <a href={url}>
-            <ProjectSquare className="project-icon" />
-          </a>
-        </div> */}
-      </ProjectInfo>
+      <ProjectTitle to={`/projects/${pk}`} key={pk}>
+        {title}
+      </ProjectTitle>
+      <ProjectImgContainer>
+        <ProjectImg src={image} alt="Image" />
+      </ProjectImgContainer>
+      <ProjectContent>
+        <ProjectDescription>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus,
+          laborum suscipit doloremque, expedita voluptatum maiores corporis modi
+          assumenda esse consectetur error nulla, vero alias.
+        </ProjectDescription>
+        <ProjectBtnContainer>
+          <Button to={`/projects/${pk}`}>Detalles</Button>
+        </ProjectBtnContainer>
+      </ProjectContent>
     </ProjectContainer>
   )
 }

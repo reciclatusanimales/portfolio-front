@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import Layout from "../components/layout/Layout.component"
+import Layout from "../components/layout/layout/Layout.component"
 import Projects from "../components/projects/Projects.component"
 
 import SEO from "../components/seo"
@@ -11,7 +11,6 @@ const ProjectsPage = ({
     allProjects: { nodes: projects },
   },
 }) => {
-
   return (
     <Layout>
       <SEO title="Projects" />
@@ -23,8 +22,8 @@ const ProjectsPage = ({
 }
 export const query = graphql`
   {
-    allProjects{
-      nodes{
+    allProjects {
+      nodes {
         github
         id
         pk
@@ -33,7 +32,7 @@ export const query = graphql`
         title
         url
         image
-        stack{
+        stack {
           id
           slug
           name

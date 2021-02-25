@@ -31,7 +31,7 @@ const About = () => {
         </AboutImg>
         <AboutInfo>
             <AboutTitle className="section-title">
-                <h2>about</h2>
+                <h2>Sobre mí</h2>
                 <div className="underline"></div>
             </AboutTitle>
             <p>

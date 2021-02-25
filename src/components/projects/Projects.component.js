@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 
-import Title from "../title/Title.component"
+import Title from "../layout/title/Title.component"
 import Project from "../project/Project.component"
 
 import { ProjectsContainer, SectionCenter } from "./Projects.styles"
@@ -17,7 +17,7 @@ const Projects = ({ projects, title, showLink }) => {
       </SectionCenter>
       {showLink && (
         <Link to="/projects" className="btn center-btn">
-          projects
+          proyectos
         </Link>
       )}
     </ProjectsContainer>
@@ -25,4 +25,3 @@ const Projects = ({ projects, title, showLink }) => {
 }
 
 export default Projects
-  

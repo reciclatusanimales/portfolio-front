@@ -1,20 +1,18 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Layout from "../components/layout/Layout.component"
+import Layout from "../components/layout/layout/Layout.component"
 import SEO from "../components/seo"
 
-import ProjectDetail from '../components/project-detail/ProjectDetail.component'
+import ProjectDetail from "../components/project-detail/ProjectDetail.component"
 
 const ProjectTemplate = ({ data }) => {
-
   const { title, subtitle } = data.project
 
   return (
     <Layout>
       <SEO title={title} description={subtitle} />
-      
-      <ProjectDetail project={data.project} />
 
+      <ProjectDetail project={data.project} />
     </Layout>
   )
 }
@@ -25,10 +23,10 @@ export const query = graphql`
       pk
       title
       subtitle
-      description      
+      description
       content
       image
-      stack{
+      stack {
         id
         slug
         name

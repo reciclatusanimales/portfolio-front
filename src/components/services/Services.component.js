@@ -1,10 +1,10 @@
 import React from "react"
 
-import Title from "../title/Title.component"
+import Title from "../layout/title/Title.component"
 
 import services from "../../utils/services"
 
-import { Service } from './Services.styles'
+import { Service } from "./Services.styles"
 
 const Services = () => {
   return (
