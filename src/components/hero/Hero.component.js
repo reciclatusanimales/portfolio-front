@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import { graphql, useStaticQuery } from "gatsby"
 
-import { ButtonDark } from "../layout/layout/Layout.styles"
+import Button from "../layout/button/Button.component"
 
 import {
   Header,
@@ -40,7 +40,7 @@ const Hero = () => {
             <div className="underline"></div>
             <h1>Daniel Reyes Veas</h1>
             <h4>programador fullstack</h4>
-            <ButtonDark to="/contact">contacto</ButtonDark>
+            <Button to="/contact">contacto</Button>
             {/* <SocialLinks /> */}
           </HeroTitle>
         </HeroInfo>

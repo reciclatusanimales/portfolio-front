@@ -69,6 +69,12 @@ export const NavLinks = styled.ul`
     justify-self: end;
 
     a {
+      background: linear-gradient(
+          to bottom,
+          transparent 62%,
+          ${({ theme }) => theme.secondary10} 0
+        )
+        center center/0% 75% no-repeat;
       text-transform: capitalize;
       color: ${({ theme }) => theme.grey1};
       font-weight: bold;
@@ -78,7 +84,7 @@ export const NavLinks = styled.ul`
     }
 
     a:hover {
-      color: ${({ theme }) => theme.primary5};
+      background-size: 100% 100%;
     }
   }
 `

@@ -6,7 +6,11 @@ import Hero from "../components/hero/Hero.component"
 import Services from "../components/services/Services.component"
 import About from "../components/about/About.component"
 import Skills from "../components/skills/Skills.component"
+import Jobs from "../components/jobs/Jobs.component"
+import Timeline from "../components/timeline/Timeline.component"
 import LatestWorks from "../components/latest-works/LatestWorks.component"
+import LatestWorksCopy from "../components/latest-works2/LatestWorksCopy.component"
+import LatestWorks2 from "../components/latest-works2/LatestWorks2.component"
 
 import SEO from "../components/seo"
 import Contact from "../components/contact/Contact.component"
@@ -25,9 +29,11 @@ export default ({ data }) => {
       <Services />
       {/* <Timeline /> */}
       <LatestWorks projects={projects} />
+      {/* <LatestWorksCopy projects={projects} /> */}
+      {/* <LatestWorks2 projects={projects} /> */}
       <Contact />
-      {/* <Skills /> */}
-      {/* <Jobs /> */}
+      {/* <Skills />
+      <Jobs /> */}
       {/* <Blogs blogs={blogs} title="latest articles" showLink /> */}
     </Layout>
   )

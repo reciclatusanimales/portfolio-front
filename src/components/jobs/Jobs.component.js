@@ -2,9 +2,16 @@ import React from "react"
 import { Link } from "gatsby"
 import { graphql, useStaticQuery } from "gatsby"
 
-import Title from "../title/Title.component"
+import Title from "../layout/title/Title.component"
 
-import { JobsCenter, BtnContainer, JobInfo, JobDescription, JobIcon, JobButton } from './Jobs.styles'
+import {
+  JobsCenter,
+  BtnContainer,
+  JobInfo,
+  JobDescription,
+  JobIcon,
+  JobButton,
+} from "./Jobs.styles"
 
 const query = graphql`
   {

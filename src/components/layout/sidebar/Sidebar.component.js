@@ -10,6 +10,7 @@ import {
   Side,
   CloseBtn,
   SidebarLinks,
+  SidebarLink,
   SidebarSocialIcons,
   SidebarSocialIcon,
 } from "./Sidebar.styles"
@@ -23,9 +24,9 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       <SidebarLinks isOpen={isOpen}>
         {links.map(link => {
           return (
-            <li key={link.id}>
+            <SidebarLink key={link.id}>
               <Link to={link.url}>{link.text}</Link>
-            </li>
+            </SidebarLink>
           )
         })}
       </SidebarLinks>

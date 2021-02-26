@@ -29,11 +29,13 @@ export const Text = styled.p`
 `
 
 export const LatestWorksCenter = styled.div`
-  padding-left: 5rem;
-  padding-right: 3rem;
+  padding-left: 2rem;
+  padding-right: 1rem;
 
   @media screen and (min-width: 676px) {
     display: grid;
+    padding-left: 3rem;
+    padding-right: 2rem;
     grid-template-columns: 1fr 1fr;
     -webkit-column-gap: 3rem;
     -moz-column-gap: 3rem;
@@ -42,11 +44,15 @@ export const LatestWorksCenter = styled.div`
   }
 
   @media screen and (min-width: 992px) {
+    padding-left: 4rem;
+    padding-right: 3rem;
     grid-template-columns: 2fr 2fr;
     grid-gap: 2.5rem;
   }
 
   @media screen and (min-width: 1170px) {
+    padding-left: 5rem;
+    padding-right: 4rem;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 200px 200px;
     gap: 3.5rem;
@@ -138,11 +144,26 @@ export const WorkFooter = styled.div`
 `
 
 export const WorkStackImg = styled.img`
-  height: 40px !important;
+  height: 25px !important;
   width: auto !important;
   margin: 5px;
   display: flex;
   align-items: center;
+
+  @media screen and (min-width: 676px) {
+    height: 28px !important;
+    width: auto !important;
+  }
+
+  @media screen and (min-width: 992px) {
+    height: 30px !important;
+    width: auto !important;
+  }
+
+  @media screen and (min-width: 1170px) {
+    height: 33px !important;
+    width: auto !important;
+  }
 `
 
 export const WorkStack = styled.div`

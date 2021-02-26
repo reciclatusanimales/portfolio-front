@@ -7,6 +7,13 @@ export const lightTheme = {
   primary9: "#fceec5",
   primary10: "#e5db7a",
 
+  secondary1: "#391318",
+  secondary3: "#e6a5b0",
+  secondary5: "#7b1420",
+  secondary7: "#cc3354",
+  secondary9: "#cd6a7f",
+  secondary10: "#d392a0",
+
   grey1: "hsl(209, 61%, 16%)",
   grey3: "hsl(209, 34%, 30%)",
   grey5: "#222725",
@@ -21,6 +28,13 @@ export const darkTheme = {
   primary7: "#cc3354",
   primary9: "#cd6a7f",
   primary10: "#d392a0",
+
+  secondary1: "#513c06",
+  secondary3: "#fbeab6",
+  secondary5: "#e9b949",
+  secondary7: "#f9da8b",
+  secondary9: "#fceec5",
+  secondary10: "#e5db7a",
 
   grey1: "hsl(209, 61%, 16%)",
   grey3: "hsl(209, 34%, 30%)",

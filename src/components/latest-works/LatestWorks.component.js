@@ -62,7 +62,7 @@ const LatestWorksCopy = ({ projects }) => {
         })}
       </LatestWorksCenter>
 
-      <Button to={`/projects`}>todos</Button>
+      <Button to={`/projects`}>ver todos</Button>
     </SectionContainer>
   )
 }

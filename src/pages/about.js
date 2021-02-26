@@ -1,15 +1,33 @@
 import React from "react"
 
+import styled from "styled-components"
 import Layout from "../components/layout/layout/Layout.component"
 import Title from "../components/layout/title/Title.component"
 import { graphql, useStaticQuery } from "gatsby"
 import Image from "gatsby-image"
 
 import SEO from "../components/seo"
-import {
-  WorkStack,
-  WorkStackImg,
-} from "../components/latest-works/LatestWorks.styles"
+
+export const WorkStackImg = styled.img`
+  height: 40px !important;
+  width: auto !important;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+`
+
+export const WorkStack = styled.div`
+  display: none;
+
+  @media screen and (min-width: 576px) {
+    display: block;
+  }
+
+  ${WorkStackImg} {
+    display: inline-block;
+    padding: 0.25rem 0.3rem;
+  }
+`
 
 const About = () => {
   const title = "Sobre mí"
