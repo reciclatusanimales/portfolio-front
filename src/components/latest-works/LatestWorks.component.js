@@ -1,3 +1,4 @@
+import Image from "gatsby-image"
 import React from "react"
 
 import Button from "../layout/button/Button.component"
@@ -8,13 +9,16 @@ import {
   SectionContainer,
   SectionTitle,
   Text,
+  WorkImg,
   WorkContent,
   WorkTitle,
   WorkDescription,
   WorkFooter,
   WorkStack,
   WorkStackImg,
+  WorkStackTag,
 } from "./LatestWorks.styles"
+import logo from "../../assets/clics_small.jpg"
 
 const LatestWorksCopy = ({ projects }) => {
   return (
@@ -38,20 +42,18 @@ const LatestWorksCopy = ({ projects }) => {
               target="_blank"
               rel="noreferrer"
             >
+              <WorkImg src={project.image} />
               <WorkContent>
                 <WorkTitle to={`/projects/${project.pk}`}>
                   {project.title}
                 </WorkTitle>
                 <WorkDescription>{project.subtitle}</WorkDescription>
+
                 <WorkFooter>
                   <WorkStack>
-                    {project.stack.map(item => {
+                    {project.stack.slice(0, 6).map(item => {
                       return (
-                        <WorkStackImg
-                          src={item.image}
-                          key={item.id}
-                          alt={item.name}
-                        />
+                        <WorkStackTag key={item.slug}>{item.name}</WorkStackTag>
                       )
                     })}
                   </WorkStack>

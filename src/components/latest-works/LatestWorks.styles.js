@@ -9,7 +9,6 @@ export const SectionContainer = styled.section`
 export const SectionTitle = styled.div`
   margin-bottom: 4rem;
   text-align: center;
-  color: #1a1a1a;
 `
 
 export const Underline = styled.div`
@@ -74,6 +73,24 @@ export const LatestWorksCenter = styled.div`
     }
   }
 `
+export const WorkContent = styled.div`
+  background-color: #fff;
+  color: #1a1a1a;
+  top: 0;
+  left: 0;
+  padding: calc(8px * 2);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #fff;
+  border-radius: var(--radius);
+  position: relative;
+  z-index: 3;
+  color: white;
+  opacity: 0;
+  transition: 0.5s;
+`
 
 export const Work = styled.article`
   position: relative;
@@ -104,21 +121,25 @@ export const Work = styled.article`
   @media screen and (min-width: 1170px) {
     height: 100%;
   }
+
+  &:hover {
+    ${WorkContent} {
+      opacity: 1;
+    }
+  }
 `
 
-export const WorkContent = styled.div`
-  background-color: #fff;
-  color: #1a1a1a;
+export const WorkImg = styled.img`
   position: absolute;
+  object-fit: cover;
   top: 0;
-  right: 0;
-  bottom: 0;
   left: 0;
-  padding: calc(8px * 2);
-  display: flex;
-  flex-direction: column;
-  border: 2px solid #fff;
+  width: 100%;
+  height: 100%;
   border-radius: var(--radius);
+  max-width: 100%;
+  vertical-align: middle;
+  box-shadow: 0 0.2em 1.2em hsla(20, 20, 20, 10%);
 `
 
 export const WorkTitle = styled(Link)`
@@ -128,7 +149,7 @@ export const WorkTitle = styled(Link)`
   font-weight: 700;
   letter-spacing: -0.02em;
   font-weight: bold;
-  color: inherit;
+  color: ${({ theme }) => theme.grey1};
 `
 
 export const WorkDescription = styled.p`
@@ -166,7 +187,7 @@ export const WorkStackImg = styled.img`
   }
 `
 
-export const WorkStack = styled.div`
+export const WorkStack2 = styled.div`
   display: none;
 
   @media screen and (min-width: 576px) {
@@ -176,5 +197,50 @@ export const WorkStack = styled.div`
   ${WorkStackImg} {
     display: inline-block;
     padding: 0.25rem 0.3rem;
+  }
+`
+
+export const WorkStack = styled.ul`
+  list-style: none;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+`
+
+export const WorkStackTag = styled.li`
+  float: left;
+  font-size: 0.8rem;
+  background: gray;
+  border-radius: 3px 0 0 3px;
+  display: inline-block;
+  height: 22px;
+  line-height: 22px;
+  padding: 0 20px 0 23px;
+  position: relative;
+  margin: 0 10px 10px 0;
+  text-decoration: none;
+  -webkit-transition: color 0.2s;
+
+  &:before {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
+    content: "";
+    height: 6px;
+    left: 10px;
+    position: absolute;
+    width: 6px;
+    top: 10px;
+  }
+
+  &:after {
+    background: #fff;
+    border-bottom: 11px solid transparent;
+    border-left: 10px solid gray;
+    border-top: 11px solid transparent;
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
   }
 `

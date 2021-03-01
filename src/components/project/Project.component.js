@@ -26,12 +26,12 @@ const Project = ({
 }) => {
   const data = useStaticQuery(graphql`
     query {
-      allFile(filter: { internal: { mediaType: { regex: "images/" } } }) {
+      allFile(filter: { relativeDirectory: { eq: "projects" } }) {
         edges {
           node {
             relativePath
             childImageSharp {
-              fluid(maxWidth: 300) {
+              fluid {
                 ...GatsbyImageSharpFluid
               }
             }

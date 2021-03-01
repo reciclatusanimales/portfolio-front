@@ -19,7 +19,7 @@ export const ServicesCenter = styled.div`
   &:hover > * {
     opacity: 0.4;
     transform: scale(0.9);
-    filter: blur(4px);
+    filter: blur(2px);
   }
 
   & > *:hover {
