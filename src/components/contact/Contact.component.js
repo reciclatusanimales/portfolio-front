@@ -3,8 +3,6 @@ import React, { useState } from "react"
 import FormInput from "../layout/form-input/FormInput.component"
 import FormTextarea from "../layout/form-input/FormTextarea.component"
 
-import Button from "../layout/button/Button.component"
-
 import {
   ContactSection,
   FormContainer,
@@ -65,7 +63,7 @@ const Contact = () => {
             />
           </FormGroup>
           <FormGroup>
-            <Button type="submit">enviar</Button>
+            <Submit type="submit">enviar</Submit>
           </FormGroup>
         </form>
       </FormContainer>

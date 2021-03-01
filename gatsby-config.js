@@ -76,23 +76,6 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-source-custom-api",
-      options: {
-        url: "http://api.reciclatusanimales.com/api/blogs",
-        rootKey: "blogs",
-        schemas: {
-          blogs: `
-              title: String
-              description: String
-              image: String, 
-              content: String, 
-              slug: String,
-              created_at: Date
-            `,
-        },
-      },
-    },
-    {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [

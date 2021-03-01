@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
 import { graphql, useStaticQuery } from "gatsby"
 
 import Button from "../layout/button/Button.component"
@@ -12,6 +11,7 @@ import {
   HeroTitle,
   HeroPhoto,
 } from "./Hero.stlyes"
+import { Underline } from "../layout/layout/Layout.styles"
 
 const query = graphql`
   {
@@ -34,18 +34,17 @@ const Hero = () => {
 
   return (
     <Header>
-      <HeroCenter className="section-center">
+      <HeroCenter>
         <HeroInfo>
           <HeroTitle>
-            <div className="underline"></div>
+            <Underline style={{ marginLeft: 0 }} />
             <h1>Daniel Reyes Veas</h1>
-            <h4>programador fullstack</h4>
+            <h4>Programador Fullstack</h4>
             <Button to="/contact">contacto</Button>
-            {/* <SocialLinks /> */}
           </HeroTitle>
         </HeroInfo>
         <HeroImg>
-          <HeroPhoto fluid={fluid} className="hero-photo" />
+          <HeroPhoto fluid={fluid} />
         </HeroImg>
       </HeroCenter>
     </Header>

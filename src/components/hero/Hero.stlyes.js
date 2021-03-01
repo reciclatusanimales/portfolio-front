@@ -22,12 +22,16 @@ export const Header = styled.header`
 `
 
 export const HeroCenter = styled.div`
+  width: 90vw;
+  margin: 0 auto;
+  max-width: 1170px;
   height: 100%;
   display: grid;
   align-items: center;
   min-height: calc(100vh - 5rem);
 
   @media screen and (min-width: 992px) {
+    width: 95vw;
     grid-template-columns: 1fr 1fr;
   }
 `

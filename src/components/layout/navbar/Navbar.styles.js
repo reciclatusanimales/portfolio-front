@@ -71,8 +71,8 @@ export const NavLinks = styled.ul`
     a {
       background: linear-gradient(
           to bottom,
-          transparent 62%,
-          ${({ theme }) => theme.secondary10} 0
+          transparent 75%,
+          ${({ theme }) => theme.primary5} 0
         )
         center center/0% 75% no-repeat;
       color: ${({ theme }) => theme.grey1};

@@ -1,19 +1,18 @@
 import React from "react"
-import { Link } from "gatsby"
-
 import Layout from "../components/layout/layout/Layout.component"
-
 import SEO from "../components/seo"
 import Button from "../components/layout/button/Button.component"
+import {
+  NotFound,
+  NotFoundError,
+} from "../components/layout/layout/Layout.styles"
 
 const NotFoundPage = () => (
   <Layout>
     <SEO title="404: Not found" />
-    <div className="not-found">
+    <NotFound>
       <div>
-        <div className="not-found-error" title="404">
-          404
-        </div>
+        <NotFoundError title="404">404</NotFoundError>
 
         <h2>La página que buscas no existe.</h2>
         <p>
@@ -21,7 +20,7 @@ const NotFoundPage = () => (
           <Button to="/">Volver</Button>
         </p>
       </div>
-    </div>
+    </NotFound>
   </Layout>
 )
 export default NotFoundPage

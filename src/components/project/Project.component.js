@@ -8,7 +8,6 @@ import {
   ProjectContent,
   ProjectDescription,
   ProjectBtnContainer,
-  ProjectBtn,
   ProjectImgContainer,
   ProjectImg,
 } from "./Project.styles"

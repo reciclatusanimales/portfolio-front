@@ -1,11 +1,11 @@
 import React from "react"
-import { Link } from "gatsby"
 
 import Title from "../layout/title/Title.component"
 import { SectionCenter } from "../layout/layout/Layout.styles"
 import Project from "../project/Project.component"
 
 import { ProjectsContainer } from "./Projects.styles"
+import Button from "../layout/button/Button.component"
 
 const Projects = ({ projects, title, showLink }) => {
   return (
@@ -16,11 +16,7 @@ const Projects = ({ projects, title, showLink }) => {
           return <Project key={project.id} index={index} {...project} />
         })}
       </SectionCenter>
-      {showLink && (
-        <Link to="/projects" className="btn center-btn">
-          proyectos
-        </Link>
-      )}
+      {showLink && <Button to="/projects">proyectos</Button>}
     </ProjectsContainer>
   )
 }

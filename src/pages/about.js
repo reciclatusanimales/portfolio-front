@@ -1,33 +1,20 @@
 import React from "react"
 
-import styled from "styled-components"
 import Layout from "../components/layout/layout/Layout.component"
-import Title from "../components/layout/title/Title.component"
 import { graphql, useStaticQuery } from "gatsby"
-import Image from "gatsby-image"
 
 import SEO from "../components/seo"
-
-export const WorkStackImg = styled.img`
-  height: 40px !important;
-  width: auto !important;
-  margin: 5px;
-  display: flex;
-  align-items: center;
-`
-
-export const WorkStack = styled.div`
-  display: none;
-
-  @media screen and (min-width: 576px) {
-    display: block;
-  }
-
-  ${WorkStackImg} {
-    display: inline-block;
-    padding: 0.25rem 0.3rem;
-  }
-`
+import {
+  AboutCenter,
+  AboutImage,
+  AboutInfo,
+  AboutSection,
+  AboutText,
+  AboutTitle,
+  Underline,
+  WorkStack,
+  WorkStackImg,
+} from "../components/layout/layout/Layout.styles"
 
 const About = () => {
   const title = "Sobre mí"
@@ -44,20 +31,23 @@ const About = () => {
   return (
     <Layout>
       <SEO title="About Me" description="about webdev" />
-      <section className="about-page">
-        <div className="section-center about-center">
-          <Image fluid={fluid} className="about-img" />
-          <article className="about-text">
-            <Title title={title} />
-            <p>{info}</p>
+      <AboutSection>
+        <AboutCenter>
+          <AboutImage fluid={fluid} />
+          <AboutText>
+            <AboutTitle>
+              <h2>{title}</h2>
+              <Underline style={{ marginLeft: 0 }} />
+            </AboutTitle>
+            <AboutInfo>{info}</AboutInfo>
             <WorkStack>
               {stacks.map(item => (
                 <WorkStackImg src={item.image} key={item.id} alt={item.name} />
               ))}
             </WorkStack>
-          </article>
-        </div>
-      </section>
+          </AboutText>
+        </AboutCenter>
+      </AboutSection>
     </Layout>
   )
 }

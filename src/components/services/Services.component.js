@@ -1,16 +1,12 @@
 import React from "react"
-
-import Title from "../layout/title/Title.component"
-
 import services from "../../utils/services"
-
-import { Service } from "./Services.styles"
+import { Underline } from "../layout/layout/Layout.styles"
+import { ServicesSection, ServicesCenter, Service } from "./Services.styles"
 
 const Services = () => {
   return (
-    <section className="section bg-grey">
-      {/* <Title title="services" /> */}
-      <div className="section-center services-center">
+    <ServicesSection>
+      <ServicesCenter>
         {services.map(service => {
           const { id, icon, title, text } = service
 
@@ -18,13 +14,13 @@ const Services = () => {
             <Service key={id}>
               {icon}
               <h4>{title}</h4>
-              <div className="underline"></div>
+              <Underline />
               <p>{text}</p>
             </Service>
           )
         })}
-      </div>
-    </section>
+      </ServicesCenter>
+    </ServicesSection>
   )
 }
 

@@ -1,6 +1,34 @@
 import styled from "styled-components"
 
+export const ServicesSection = styled.section`
+  padding: 5rem 0;
+  background: ${({ theme }) => theme.grey10};
+`
+
 export const ServicesCenter = styled.div`
+  width: 90vw;
+  margin: 0 auto;
+  max-width: 1170px;
+  visibility: hidden;
+
+  & > * {
+    visibility: visible;
+    transition: opacity 150ms linear 100ms, transform 150ms ease-in-out 100ms;
+  }
+
+  &:hover > * {
+    opacity: 0.4;
+    transform: scale(0.9);
+    filter: blur(4px);
+  }
+
+  & > *:hover {
+    opacity: 1;
+    transform: scale(1);
+    transition-delay: 0ms, 0ms;
+    filter: blur(0);
+  }
+
   @media screen and (min-width: 676px) {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -10,6 +38,7 @@ export const ServicesCenter = styled.div`
   }
   @media screen and (min-width: 992px) {
     grid-template-columns: 1fr 1fr 1fr;
+    width: 95vw;
   }
 `
 
@@ -21,6 +50,7 @@ export const Service = styled.div`
   text-align: center;
   -webkit-transition: var(--transition);
   transition: var(--transition);
+  cursor: default;
 
   .service-icon {
     font-size: 2rem;

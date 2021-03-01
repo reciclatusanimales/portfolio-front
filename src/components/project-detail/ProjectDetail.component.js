@@ -1,6 +1,5 @@
 import React from "react"
 import ReactMarkdown from "react-markdown"
-import ReactMarkdownWithHtml from "react-markdown/with-html"
 import Button from "../layout/button/Button.component"
 import { ProjectTemplate, ProjectStack, StackImg } from "./ProjectDetail.styles"
 import { SectionCenter } from "../layout/layout/Layout.styles"
@@ -9,7 +8,7 @@ import SyntaxHighlighter from "react-syntax-highlighter"
 import { monokaiSublime } from "react-syntax-highlighter/dist/esm/styles/hljs"
 
 const ProjectDetail = ({ project }) => {
-  const { title, subtitle, image, content, description, stack } = project
+  const { title, subtitle, stack } = project
   const markdown = `
   >_Están pasando demasiadas cosas raras para que todo pueda seguir tan normal._
 
@@ -128,9 +127,9 @@ const ProjectDetail = ({ project }) => {
   return (
     <ProjectTemplate>
       <SectionCenter>
-        <article className="project-content">
+        <article>
           <Title title={title} />
-          {/* <h3>{subtitle}</h3> */}
+          <h3>{subtitle}</h3>
 
           <ProjectStack>
             {stack.map(item => {

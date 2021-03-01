@@ -1,12 +1,19 @@
 import React from "react"
 
-const Title = ({ title }) => {
+import styled from "styled-components"
+import { Underline } from "../layout/Layout.styles"
 
+export const TitleContainer = styled.div`
+  margin-bottom: 4rem;
+  text-align: center;
+`
+
+const Title = ({ title }) => {
   return (
-    <div className="section-title">
-      <h2>{title || "default title"}</h2>
-      <div className="underline"></div>
-    </div>
+    <TitleContainer>
+      <h2>{title || "Título"}</h2>
+      <Underline />
+    </TitleContainer>
   )
 }
 
