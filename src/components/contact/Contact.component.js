@@ -34,7 +34,7 @@ const Contact = () => {
 
   return (
     <ContactSection>
-      <Title title="contacto" />
+      <Title title="Contacto" />
 
       <FormContainer>
         <form onSubmit={handleSubmit}>

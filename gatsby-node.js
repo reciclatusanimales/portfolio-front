@@ -8,7 +8,7 @@ exports.createPages = async ({ graphql, actions }) => {
   //     allBlogs {
   //       nodes {
   //         slug
-  //       }          
+  //       }
   //     }
   //   }
   // `)
@@ -18,7 +18,7 @@ exports.createPages = async ({ graphql, actions }) => {
       allProjects {
         nodes {
           pk
-        }          
+        }
       }
     }
   `)
@@ -42,5 +42,4 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
-  
 }

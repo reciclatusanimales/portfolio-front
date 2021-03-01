@@ -75,7 +75,6 @@ export const NavLinks = styled.ul`
           ${({ theme }) => theme.secondary10} 0
         )
         center center/0% 75% no-repeat;
-      text-transform: capitalize;
       color: ${({ theme }) => theme.grey1};
       font-weight: bold;
       letter-spacing: var(--spacing);

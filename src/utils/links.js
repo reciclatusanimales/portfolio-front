@@ -1,12 +1,12 @@
 export default [
   {
     id: 1,
-    text: "inicio",
+    text: "Inicio",
     url: "/",
   },
   {
     id: 2,
-    text: "proyectos",
+    text: "Proyectos",
     url: "/projects/",
   },
   // {
@@ -16,12 +16,12 @@ export default [
   // },
   {
     id: 4,
-    text: "sobre mí",
+    text: "Sobre mí",
     url: "/about/",
   },
   {
     id: 5,
-    text: "contacto",
+    text: "Contacto",
     url: "/contact/",
   },
 ]

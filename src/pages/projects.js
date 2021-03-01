@@ -15,7 +15,7 @@ const ProjectsPage = ({
     <Layout>
       <SEO title="Projects" />
       <section className="projects-page">
-        <Projects projects={projects} title="proyectos" />
+        <Projects projects={projects} />
       </section>
     </Layout>
   )
@@ -32,6 +32,7 @@ export const query = graphql`
         title
         url
         image
+        imageName
         stack {
           id
           slug

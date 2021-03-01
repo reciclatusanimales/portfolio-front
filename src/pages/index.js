@@ -51,6 +51,7 @@ export const query = graphql`
         subtitle
         url
         image
+        imageName
         stack {
           id
           slug

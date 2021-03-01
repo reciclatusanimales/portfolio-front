@@ -1,5 +1,6 @@
 import { Link } from "gatsby"
 import styled from "styled-components"
+import Image from "gatsby-image"
 
 export const ProjectContainer = styled.section`
   margin-top: 80px;
@@ -127,7 +128,7 @@ export const ProjectImgContainer = styled.div`
   position: relative;
 `
 
-export const ProjectImg = styled.img`
+export const ProjectImg = styled(Image)`
   border-radius: var(--radius);
   max-width: 100%;
   vertical-align: middle;

@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-
+import { graphql, useStaticQuery } from "gatsby"
 import Button from "../layout/button/Button.component"
 import {
   ProjectContainer,
@@ -22,15 +22,42 @@ const Project = ({
   stack,
   url,
   image,
+  imageName,
   index,
 }) => {
+  const data = useStaticQuery(graphql`
+    query {
+      allFile(filter: { internal: { mediaType: { regex: "images/" } } }) {
+        edges {
+          node {
+            relativePath
+            childImageSharp {
+              fluid(maxWidth: 300) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const imageFluid = data.allFile.edges.find(
+    ({ node }) => node.relativePath === imageName
+  )
+
   return (
     <ProjectContainer>
       <ProjectTitle to={`/projects/${pk}`} key={pk}>
         {title}
       </ProjectTitle>
       <ProjectImgContainer>
-        <ProjectImg src={image} alt="Image" />
+        {imageFluid && (
+          <ProjectImg
+            fluid={imageFluid.node.childImageSharp.fluid}
+            alt="Image"
+          />
+        )}
       </ProjectImgContainer>
       <ProjectContent>
         <ProjectDescription>

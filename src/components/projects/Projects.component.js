@@ -10,7 +10,7 @@ import { ProjectsContainer } from "./Projects.styles"
 const Projects = ({ projects, title, showLink }) => {
   return (
     <ProjectsContainer>
-      <Title title={title} />
+      <Title title="Proyectos" />
       <SectionCenter>
         {projects.map((project, index) => {
           return <Project key={project.id} index={index} {...project} />

@@ -20,7 +20,7 @@ const LatestWorksCopy = ({ projects }) => {
   return (
     <SectionContainer>
       <SectionTitle>
-        <Title title="proyectos" />
+        <Title title="Proyectos" />
         <Text>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt sed
           reiciendis quis provident vero cum accusamus illum perferendis

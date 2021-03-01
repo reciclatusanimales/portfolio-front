@@ -39,6 +39,12 @@ export const LayoutStyles = createGlobalStyle`
         text-decoration: none;
     }
 
+    blockquote {
+      border-left: 5px solid ${({ theme }) => theme.primary10};;
+      margin: 1.5em 10px;
+      padding: 0.5em 10px;
+    }
+
     ${
       "" /* img:not(.nav-logo) {
         width: 100%;
@@ -51,7 +57,6 @@ export const LayoutStyles = createGlobalStyle`
     h3,
     h4 {
         letter-spacing: var(--spacing);
-        text-transform: capitalize;
         line-height: 1.25;
         margin-bottom: 0.75rem;
         font-family: var(--ff-primary);
