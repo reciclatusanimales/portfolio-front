@@ -3,14 +3,19 @@ import PropTypes from "prop-types"
 import { graphql, useStaticQuery } from "gatsby"
 import Button from "../layout/button/Button.component"
 import {
-  ProjectContainer,
-  ProjectTitle,
-  ProjectContent,
-  ProjectDescription,
-  ProjectBtnContainer,
-  ProjectImgContainer,
-  ProjectImg,
+  Container,
+  TitleContainer,
+  Title,
+  Content,
+  Description,
+  BtnContainer,
+  ImgContainer,
+  Img,
+  IconsContainer,
+  OpenIcon,
 } from "./Project.styles"
+
+import { FaExternalLinkAlt, FaGithub } from "react-icons/fa"
 
 const Project = ({
   pk,
@@ -46,29 +51,37 @@ const Project = ({
   )
 
   return (
-    <ProjectContainer>
-      <ProjectTitle to={`/projects/${pk}`} key={pk}>
-        {title}
-      </ProjectTitle>
-      <ProjectImgContainer>
+    <Container>
+      <TitleContainer>
+        <Title to={`/projects/${pk}`} key={pk}>
+          {title}
+        </Title>
+        <IconsContainer>
+          <OpenIcon href={github} target="_blank">
+            <FaGithub />
+          </OpenIcon>
+          <OpenIcon href={url} target="_blank">
+            <FaExternalLinkAlt />
+          </OpenIcon>
+        </IconsContainer>
+      </TitleContainer>
+
+      <ImgContainer>
         {imageFluid && (
-          <ProjectImg
-            fluid={imageFluid.node.childImageSharp.fluid}
-            alt="Image"
-          />
+          <Img fluid={imageFluid.node.childImageSharp.fluid} alt="Image" />
         )}
-      </ProjectImgContainer>
-      <ProjectContent>
-        <ProjectDescription>
+      </ImgContainer>
+      <Content>
+        <Description>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus,
           laborum suscipit doloremque, expedita voluptatum maiores corporis modi
           assumenda esse consectetur error nulla, vero alias.
-        </ProjectDescription>
-        <ProjectBtnContainer>
+        </Description>
+        <BtnContainer>
           <Button to={`/projects/${pk}`}>Detalles</Button>
-        </ProjectBtnContainer>
-      </ProjectContent>
-    </ProjectContainer>
+        </BtnContainer>
+      </Content>
+    </Container>
   )
 }
 

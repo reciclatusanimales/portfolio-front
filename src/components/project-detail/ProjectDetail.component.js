@@ -8,7 +8,7 @@ import SyntaxHighlighter from "react-syntax-highlighter"
 import { monokaiSublime } from "react-syntax-highlighter/dist/esm/styles/hljs"
 
 const ProjectDetail = ({ project }) => {
-  const { title, subtitle, stack } = project
+  const { title, stack } = project
   const markdown = `
   >_Están pasando demasiadas cosas raras para que todo pueda seguir tan normal._
 
@@ -115,11 +115,20 @@ const ProjectDetail = ({ project }) => {
   const renderers = {
     code: ({ language, value }) => {
       return (
-        <SyntaxHighlighter
-          language={language}
-          style={monokaiSublime}
-          children={value}
-        />
+        <>
+          <div className="terminal-window">
+            <div className="terminal-icons">
+              <span></span>
+            </div>
+            <div className="terminal-title">root@reciclatusanimales.com: ~</div>
+          </div>
+          <SyntaxHighlighter
+            language={language}
+            style={monokaiSublime}
+            children={value}
+          />
+          <div className="terminal-foot"></div>
+        </>
       )
     },
   }
@@ -129,7 +138,6 @@ const ProjectDetail = ({ project }) => {
       <SectionCenter>
         <article>
           <Title title={title} />
-          <h3>{subtitle}</h3>
 
           <ProjectStack>
             {stack.map(item => {

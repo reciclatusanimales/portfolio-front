@@ -67,12 +67,9 @@ export const Service = styled.div`
     transition: var(--transition);
   }
   &:hover {
-    background: ${({ theme }) => theme.primary9};
-    color: var(--clr-white);
+    background: ${({ theme }) => theme.primary10};
   }
-  &:hover p {
-    color: var(--clr-white);
-  }
+
   &:hover .underline {
     background: var(--clr-white);
   }

@@ -6,11 +6,11 @@ export const ProjectTemplate = styled.section`
 `
 
 export const StackImg = styled.img`
-  height: 30px !important;
+  height: 25px !important;
   width: auto !important;
 
   @media screen and (min-width: 992px) {
-    height: 50px !important;
+    height: 40px !important;
     width: auto !important;
   }
 `
@@ -19,7 +19,7 @@ export const ProjectStack = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: 1rem;
+  margin-bottom: 5rem;
 
   ${StackImg} {
     display: inline-block;

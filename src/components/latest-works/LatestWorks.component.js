@@ -1,30 +1,31 @@
-import Image from "gatsby-image"
 import React from "react"
 
+import { FaExternalLinkAlt, FaGithub } from "react-icons/fa"
 import Button from "../layout/button/Button.component"
-import Title from "../layout/title/Title.component"
+import MainTitle from "../layout/title/Title.component"
 import {
-  LatestWorksCenter,
-  Work,
   SectionContainer,
   SectionTitle,
   Text,
-  WorkImg,
-  WorkContent,
-  WorkTitle,
-  WorkDescription,
-  WorkFooter,
-  WorkStack,
-  WorkStackImg,
-  WorkStackTag,
+  ContainerCenter,
+  Work,
+  TitleContainer,
+  Title,
+  IconsContainer,
+  OpenIcon,
+  Img,
+  Content,
+  Description,
+  Footer,
+  Stack,
+  StackTag,
 } from "./LatestWorks.styles"
-import logo from "../../assets/clics_small.jpg"
 
 const LatestWorksCopy = ({ projects }) => {
   return (
     <SectionContainer>
       <SectionTitle>
-        <Title title="Proyectos" />
+        <MainTitle title="Proyectos" />
         <Text>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt sed
           reiciendis quis provident vero cum accusamus illum perferendis
@@ -32,7 +33,7 @@ const LatestWorksCopy = ({ projects }) => {
           officia temporibus inventore a.
         </Text>
       </SectionTitle>
-      <LatestWorksCenter>
+      <ContainerCenter>
         {projects.slice(0, 4).map((project, index) => {
           return (
             <Work
@@ -42,27 +43,34 @@ const LatestWorksCopy = ({ projects }) => {
               target="_blank"
               rel="noreferrer"
             >
-              <WorkImg src={project.image} />
-              <WorkContent>
-                <WorkTitle to={`/projects/${project.pk}`}>
-                  {project.title}
-                </WorkTitle>
-                <WorkDescription>{project.subtitle}</WorkDescription>
+              <Img src={project.image} />
+              <Content>
+                <TitleContainer>
+                  <Title to={`/projects/${project.pk}`}>{project.title}</Title>
+                  <IconsContainer>
+                    <OpenIcon href={project.github} target="_blank">
+                      <FaGithub />
+                    </OpenIcon>
+                    <OpenIcon href={project.url} target="_blank">
+                      <FaExternalLinkAlt />
+                    </OpenIcon>
+                  </IconsContainer>
+                </TitleContainer>
 
-                <WorkFooter>
-                  <WorkStack>
+                <Description>{project.subtitle}</Description>
+
+                <Footer>
+                  <Stack>
                     {project.stack.slice(0, 6).map(item => {
-                      return (
-                        <WorkStackTag key={item.slug}>{item.name}</WorkStackTag>
-                      )
+                      return <StackTag key={item.slug}>{item.name}</StackTag>
                     })}
-                  </WorkStack>
-                </WorkFooter>
-              </WorkContent>
+                  </Stack>
+                </Footer>
+              </Content>
             </Work>
           )
         })}
-      </LatestWorksCenter>
+      </ContainerCenter>
 
       <Button to={`/projects`}>ver todos</Button>
     </SectionContainer>

@@ -7,6 +7,7 @@ export const LayoutStyles = createGlobalStyle`
     :root {
         --clr-white: #fff;
         --ff-primary: "Bitter", sans-serif;
+        --ff-terminal: "Ubuntu Mono", sans-serif;
         --ff-secondary: "Bitter", sans-serif;
         --transition: all 0.3s linear;
         --spacing: 0.2rem;
@@ -101,7 +102,72 @@ export const LayoutStyles = createGlobalStyle`
             line-height: 1;
         }
     }
-    /*  global classes */
+    
+    .terminal-window {
+      background: #565950;
+      font-family: var(--ff-terminal);;
+      border-radius: 10px 10px 0 0;
+      display: flex;
+      color: white;
+      font-weight: bold;
+      flex-flow: row wrap;
+      position: relative;
+      align-items: center;
+      width: 100%;
+      height: 2em;
+    }
+
+    .terminal-title {
+      flex: 1;
+      text-align: center;
+      font-size: 0.8em;
+      padding: 0.65em 0.75em;
+    }
+
+    .terminal-icons {
+      padding: 0.65em 0.75em;
+      position: absolute;
+
+      span{
+        display: inline-block;
+        float: left;
+        width: 0.75em;
+        height: 0.75em;
+        border-radius: 50%;
+        margin-right: 0.5em;
+        background: #f4c025;
+      }
+
+      &:before {
+        display: inline-block;
+        float: left;
+        width: 0.75em;
+        height: 0.75em;
+        border-radius: 50%;
+        margin-right: 0.5em;
+        content: '';
+        background: #e4514f;
+      }
+      
+      &:after {
+        display: inline-block;
+        float: left;
+        width: 0.75em;
+        height: 0.75em;
+        border-radius: 50%;
+        margin-right: 0.5em;
+        content: '';
+        background: #3ec930;
+      }
+    }
+
+    .terminal-foot {
+      background: #23241F;
+      border-radius: 0 0 10px 10px;
+      width: 100%;
+      height: 1em;
+    }
+    
 `
 
 export const Section = styled.section`

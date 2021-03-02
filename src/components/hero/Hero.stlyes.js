@@ -79,6 +79,5 @@ export const HeroPhoto = styled(Image)`
   -o-object-fit: cover;
   object-fit: cover;
   border-radius: var(--radius);
-  /* place the image in front of ::before */
   position: relative;
 `

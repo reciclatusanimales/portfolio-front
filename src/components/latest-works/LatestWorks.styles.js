@@ -27,14 +27,14 @@ export const Text = styled.p`
   color: #1a1a1a;
 `
 
-export const LatestWorksCenter = styled.div`
+export const ContainerCenter = styled.div`
   padding-left: 2rem;
-  padding-right: 1rem;
+  padding-right: 2rem;
 
   @media screen and (min-width: 676px) {
     display: grid;
     padding-left: 3rem;
-    padding-right: 2rem;
+    padding-right: 3rem;
     grid-template-columns: 1fr 1fr;
     -webkit-column-gap: 3rem;
     -moz-column-gap: 3rem;
@@ -44,14 +44,14 @@ export const LatestWorksCenter = styled.div`
 
   @media screen and (min-width: 992px) {
     padding-left: 4rem;
-    padding-right: 3rem;
+    padding-right: 4rem;
     grid-template-columns: 2fr 2fr;
     grid-gap: 2.5rem;
   }
 
   @media screen and (min-width: 1170px) {
     padding-left: 5rem;
-    padding-right: 4rem;
+    padding-right: 5rem;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 200px 200px;
     gap: 3.5rem;
@@ -73,7 +73,7 @@ export const LatestWorksCenter = styled.div`
     }
   }
 `
-export const WorkContent = styled.div`
+export const Content = styled.div`
   background-color: #fff;
   color: #1a1a1a;
   top: 0;
@@ -92,19 +92,31 @@ export const WorkContent = styled.div`
   transition: 0.5s;
 `
 
+export const Img = styled.img`
+  position: absolute;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius);
+  max-width: 100%;
+  vertical-align: middle;
+  box-shadow: 0 0.2em 1.2em hsla(20, 20, 20, 10%);
+  transition: 0.5s;
+`
+
 export const Work = styled.article`
   position: relative;
-  background: ${({ theme }) => theme.primary5};
   border-radius: var(--radius);
   margin-bottom: 5rem;
   height: 15rem;
   opacity: 0.9;
+  cursor: default;
 
   &:before {
     content: "";
     position: absolute;
-    top: -22px;
-    left: -20px;
     border: 3px dashed #fff;
     border-radius: var(--radius);
     background-image: repeating-linear-gradient(
@@ -123,28 +135,32 @@ export const Work = styled.article`
   }
 
   &:hover {
-    ${WorkContent} {
+    ${Content} {
       opacity: 1;
+      top: 22px;
+      left: 20px;
+    }
+
+    ${Img} {
+      top: 22px;
+      left: 20px;
     }
   }
 `
-
-export const WorkImg = styled.img`
-  position: absolute;
-  object-fit: cover;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: var(--radius);
-  max-width: 100%;
-  vertical-align: middle;
-  box-shadow: 0 0.2em 1.2em hsla(20, 20, 20, 10%);
+export const TitleContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 1rem;
 `
 
-export const WorkTitle = styled(Link)`
+export const IconsContainer = styled.div`
+  display: flex;
+  align-items: center;
+`
+
+export const Title = styled(Link)`
   font-size: 2rem;
-  margin: 0 0 1rem;
   line-height: 1.125;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -152,11 +168,17 @@ export const WorkTitle = styled(Link)`
   color: ${({ theme }) => theme.grey1};
 `
 
-export const WorkDescription = styled.p`
+export const OpenIcon = styled.a`
+  color: ${({ theme }) => theme.grey1};
+  font-size: 1.2rem;
+  margin-right: 1rem;
+`
+
+export const Description = styled.p`
   color: #919495;
 `
 
-export const WorkFooter = styled.div`
+export const Footer = styled.div`
   margin-top: auto;
   font-size: calc(8px * 2);
   line-height: calc(8px * 2);
@@ -164,7 +186,7 @@ export const WorkFooter = styled.div`
   justify-content: space-between;
 `
 
-export const WorkStackImg = styled.img`
+export const StackImg = styled.img`
   height: 25px !important;
   width: auto !important;
   margin: 5px;
@@ -187,30 +209,30 @@ export const WorkStackImg = styled.img`
   }
 `
 
-export const WorkStack2 = styled.div`
+export const Stack2 = styled.div`
   display: none;
 
   @media screen and (min-width: 576px) {
     display: block;
   }
 
-  ${WorkStackImg} {
+  ${StackImg} {
     display: inline-block;
     padding: 0.25rem 0.3rem;
   }
 `
 
-export const WorkStack = styled.ul`
+export const Stack = styled.ul`
   list-style: none;
   margin: 0;
   overflow: hidden;
   padding: 0;
 `
 
-export const WorkStackTag = styled.li`
+export const StackTag = styled.li`
   float: left;
   font-size: 0.8rem;
-  background: gray;
+  background: ${({ theme }) => theme.primary10};
   border-radius: 3px 0 0 3px;
   display: inline-block;
   height: 22px;
@@ -230,13 +252,13 @@ export const WorkStackTag = styled.li`
     left: 10px;
     position: absolute;
     width: 6px;
-    top: 10px;
+    top: 8px;
   }
 
   &:after {
     background: #fff;
     border-bottom: 11px solid transparent;
-    border-left: 10px solid gray;
+    border-left: 10px solid ${({ theme }) => theme.primary10};
     border-top: 11px solid transparent;
     content: "";
     position: absolute;
