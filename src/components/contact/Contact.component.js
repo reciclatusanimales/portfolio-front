@@ -10,18 +10,34 @@ import {
   Submit,
 } from "./Contact.styles"
 import Title from "../layout/title/Title.component"
+import axios from "axios"
 
 const Contact = () => {
   const [userCredentials, setUserCredentials] = useState({
     name: "",
-    email: "",
-    message: "",
+    from: "",
+    subject: "",
+    content: "",
   })
 
-  const { name, email, message } = userCredentials
+  const { name, from, content, subject } = userCredentials
 
-  const handleSubmit = async event => {
+  const handleSubmit = event => {
     event.preventDefault()
+
+    const template_slug = process.env.GATSBY_CONTACT_TEMPLATE_SLUG
+
+    axios
+      .post(`${process.env.GATSBY_EMAIL_API_URL}/add-email`, {
+        ...userCredentials,
+        template_slug,
+      })
+      .then(function (response) {
+        console.log(response.data)
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
   }
 
   const handleChange = event => {
@@ -35,7 +51,7 @@ const Contact = () => {
       <Title title="Contacto" />
 
       <FormContainer>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} noValidate>
           <FormGroup>
             <FormInput
               name="name"
@@ -46,18 +62,26 @@ const Contact = () => {
               required
             />
             <FormInput
-              name="email"
+              name="from"
               type="email"
               handleChange={handleChange}
-              value={email}
+              value={from}
               label="email"
               required
             />
+            <FormInput
+              name="subject"
+              type="text"
+              handleChange={handleChange}
+              value={subject}
+              label="asunto"
+              required
+            />
             <FormTextarea
-              name="message"
+              name="content"
               handleChange={handleChange}
               rows="5"
-              value={message}
+              value={content}
               label="mensaje"
               required
             />
