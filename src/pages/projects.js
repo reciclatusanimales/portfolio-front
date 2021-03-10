@@ -8,7 +8,7 @@ import SEO from "../components/seo"
 
 const ProjectsPage = ({
   data: {
-    allProjects: { nodes: projects },
+    api: { allProjects: projects },
   },
 }) => {
   return (
@@ -22,17 +22,16 @@ const ProjectsPage = ({
 }
 export const query = graphql`
   {
-    allProjects {
-      nodes {
+    api {
+      allProjects {
         github
         id
-        pk
         content
         description
         title
         url
         image
-        imageName
+        imageUrl
         stack {
           id
           slug

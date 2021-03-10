@@ -15,6 +15,15 @@ module.exports = {
         path: `${__dirname}/src/assets`,
       },
     },
+    {
+      resolve: "gatsby-source-graphql",
+      options: {
+        typeName: "api",
+        // Field under which the remote schema will be accessible. You'll use this in your Gatsby query
+        fieldName: "api",
+        url: "http://127.0.0.1:8080/graphql",
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -27,52 +36,6 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/icon.png`, // This path is relative to the root of the site.
-      },
-    },
-    {
-      resolve: "gatsby-source-custom-api",
-      options: {
-        url: "http://api.reciclatusanimales.com/api/projects",
-        rootKey: "projects",
-        schemas: {
-          projects: `
-              title: String
-              description: String
-              image: String, 
-              github: String, 
-              url: String, 
-              featured: Boolean
-            `,
-        },
-      },
-    },
-    {
-      resolve: "gatsby-source-custom-api",
-      options: {
-        url: "http://api.reciclatusanimales.com/api/stacks",
-        rootKey: "stacks",
-        schemas: {
-          stacks: `
-              name: String
-              slug: String
-              image: String, 
-              order: Int,                             
-            `,
-        },
-      },
-    },
-    {
-      resolve: "gatsby-source-custom-api",
-      options: {
-        url: "http://api.reciclatusanimales.com/api/jobs",
-        rootKey: "jobs",
-        schemas: {
-          jobs: `
-              company: String
-              position: String
-              date: Date
-            `,
-        },
       },
     },
     {
@@ -91,4 +54,8 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
+  proxy: {
+    prefix: "/api",
+    url: "http://127.0.0.1:8080",
+  },
 }

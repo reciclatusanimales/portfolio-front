@@ -12,7 +12,7 @@ import Contact from "../components/contact/Contact.component"
 
 export default ({ data }) => {
   const {
-    allProjects: { nodes: projects },
+    api: { allProjects: projects },
   } = data
 
   return (
@@ -29,17 +29,16 @@ export default ({ data }) => {
 
 export const query = graphql`
   {
-    allProjects(filter: { featured: { eq: true } }) {
-      nodes {
+    api {
+      allProjects {
         github
         id
-        pk
         description
         title
         subtitle
         url
         image
-        imageName
+        imageUrl
         stack {
           id
           slug

@@ -25,7 +25,7 @@ const About = () => {
     file: {
       childImageSharp: { fluid },
     },
-    allStacks: { nodes: stacks },
+    api: { allStacks: stacks },
   } = useStaticQuery(query)
 
   return (
@@ -42,7 +42,11 @@ const About = () => {
             <AboutInfo>{info}</AboutInfo>
             <WorkStack>
               {stacks.map(item => (
-                <WorkStackImg src={item.image} key={item.id} alt={item.name} />
+                <WorkStackImg
+                  src={item.image}
+                  key={item.slug}
+                  alt={item.name}
+                />
               ))}
             </WorkStack>
           </AboutText>
@@ -56,14 +60,15 @@ export default About
 
 export const query = graphql`
   {
-    allStacks {
-      nodes {
+    api {
+      allStacks {
         name
         slug
         image
         order
       }
     }
+
     file(relativePath: { eq: "hero-img.png" }) {
       childImageSharp {
         fluid {

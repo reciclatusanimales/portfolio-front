@@ -3,6 +3,9 @@ import React, { useState } from "react"
 import FormInput from "../layout/form-input/FormInput.component"
 import FormTextarea from "../layout/form-input/FormTextarea.component"
 
+import { getCookie } from "../../utils"
+import { graphql, useStaticQuery } from "gatsby"
+
 import {
   ContactSection,
   FormContainer,
@@ -27,17 +30,20 @@ const Contact = () => {
 
     const template_slug = process.env.GATSBY_CONTACT_TEMPLATE_SLUG
 
-    axios
-      .post(`${process.env.GATSBY_EMAIL_API_URL}/add-email`, {
+    fetch("http://127.0.0.1:8080/send-email", {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify({
         ...userCredentials,
         template_slug,
-      })
-      .then(function (response) {
-        console.log(response.data)
-      })
-      .catch(function (error) {
-        console.log(error)
-      })
+      }),
+    }).then(function (data) {
+      console.log(data)
+    })
   }
 
   const handleChange = event => {

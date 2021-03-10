@@ -3,22 +3,22 @@ const path = require("path")
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const projects = await graphql(`
+  const query = await graphql(`
     {
-      allProjects {
-        nodes {
-          pk
+      api {
+        allProjects {
+          id
         }
       }
     }
   `)
 
-  projects.data.allProjects.nodes.forEach(project => {
+  query.data.api.allProjects.forEach(project => {
     createPage({
-      path: `/projects/${project.pk}`,
+      path: `/projects/${project.id}`,
       component: path.resolve(`src/templates/project-template.js`),
       context: {
-        pk: project.pk,
+        id: Number(project.id),
       },
     })
   })

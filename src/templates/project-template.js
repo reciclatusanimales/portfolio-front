@@ -6,31 +6,35 @@ import SEO from "../components/seo"
 import ProjectDetail from "../components/project-detail/ProjectDetail.component"
 
 const ProjectTemplate = ({ data }) => {
-  const { title, subtitle } = data.project
+  const { getProject: project } = data.api
+  const { title, subtitle } = project
 
   return (
     <Layout>
       <SEO title={title} description={subtitle} />
 
-      <ProjectDetail project={data.project} />
+      <ProjectDetail project={project} />
     </Layout>
   )
 }
 
 export const query = graphql`
-  query GetSingleProject($pk: Int) {
-    project: projects(pk: { eq: $pk }) {
-      pk
-      title
-      subtitle
-      description
-      content
-      image
-      stack {
+  query($id: Int!) {
+    api {
+      getProject(id: $id) {
         id
-        slug
-        name
+        title
+        subtitle
+        description
+        content
         image
+        imageUrl
+        stack {
+          id
+          slug
+          name
+          image
+        }
       }
     }
   }

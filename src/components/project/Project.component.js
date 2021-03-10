@@ -18,7 +18,7 @@ import {
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa"
 
 const Project = ({
-  pk,
+  id,
   description,
   title,
   subtitle,
@@ -26,7 +26,6 @@ const Project = ({
   stack,
   url,
   image,
-  imageName,
   index,
 }) => {
   const data = useStaticQuery(graphql`
@@ -47,22 +46,26 @@ const Project = ({
   `)
 
   const imageFluid = data.allFile.edges.find(
-    ({ node }) => node.relativePath === imageName
+    ({ node }) => node.relativePath === image
   )
 
   return (
     <Container>
       <TitleContainer>
-        <Title to={`/projects/${pk}`} key={pk}>
+        <Title to={`/projects/${id}`} key={id}>
           {title}
         </Title>
         <IconsContainer>
-          <OpenIcon href={github} target="_blank">
-            <FaGithub />
-          </OpenIcon>
-          <OpenIcon href={url} target="_blank">
-            <FaExternalLinkAlt />
-          </OpenIcon>
+          {github && (
+            <OpenIcon href={github} target="_blank">
+              <FaGithub />
+            </OpenIcon>
+          )}
+          {url && (
+            <OpenIcon href={url} target="_blank">
+              <FaExternalLinkAlt />
+            </OpenIcon>
+          )}
         </IconsContainer>
       </TitleContainer>
 
@@ -72,13 +75,9 @@ const Project = ({
         )}
       </ImgContainer>
       <Content>
-        <Description>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus,
-          laborum suscipit doloremque, expedita voluptatum maiores corporis modi
-          assumenda esse consectetur error nulla, vero alias.
-        </Description>
+        <Description dangerouslySetInnerHTML={{ __html: description }} />
         <BtnContainer>
-          <Button to={`/projects/${pk}`}>Detalles</Button>
+          <Button to={`/projects/${id}`}>Detalles</Button>
         </BtnContainer>
       </Content>
     </Container>
@@ -88,7 +87,7 @@ const Project = ({
 Project.propTypes = {
   title: PropTypes.string.isRequired,
   github: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
+  url: PropTypes.string,
   description: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   stack: PropTypes.arrayOf(PropTypes.object).isRequired,

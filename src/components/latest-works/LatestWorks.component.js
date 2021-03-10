@@ -43,10 +43,10 @@ const LatestWorksCopy = ({ projects }) => {
               target="_blank"
               rel="noreferrer"
             >
-              <Img src={project.image} />
+              <Img src={project.imageUrl} />
               <Content>
                 <TitleContainer>
-                  <Title to={`/projects/${project.pk}`}>{project.title}</Title>
+                  <Title to={`/projects/${project.id}`}>{project.title}</Title>
                   <IconsContainer>
                     <OpenIcon href={project.github} target="_blank">
                       <FaGithub />
