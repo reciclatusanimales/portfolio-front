@@ -3,9 +3,6 @@ import React, { useState } from "react"
 import FormInput from "../layout/form-input/FormInput.component"
 import FormTextarea from "../layout/form-input/FormTextarea.component"
 
-import { getCookie } from "../../utils"
-import { graphql, useStaticQuery } from "gatsby"
-
 import {
   ContactSection,
   FormContainer,
@@ -13,37 +10,37 @@ import {
   Submit,
 } from "./Contact.styles"
 import Title from "../layout/title/Title.component"
-import axios from "axios"
+
+const initialState = {
+  name: "",
+  email: "",
+  subject: "",
+  content: "",
+}
 
 const Contact = () => {
-  const [userCredentials, setUserCredentials] = useState({
-    name: "",
-    from: "",
-    subject: "",
-    content: "",
-  })
+  const [userCredentials, setUserCredentials] = useState(initialState)
 
-  const { name, from, content, subject } = userCredentials
+  const { name, email, content, subject } = userCredentials
 
   const handleSubmit = event => {
     event.preventDefault()
 
-    const template_slug = process.env.GATSBY_CONTACT_TEMPLATE_SLUG
-
-    fetch("http://127.0.0.1:8080/send-email", {
+    fetch(`${process.env.GATSBY_EMAIL_API_URL}`, {
       method: "POST",
-      mode: "no-cors",
-      headers: {
-        Accept: "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-      body: JSON.stringify({
-        ...userCredentials,
-        template_slug,
-      }),
-    }).then(function (data) {
-      console.log(data)
+      body: JSON.stringify(userCredentials),
     })
+      .then(response => response.json())
+      .then(function (data) {
+        if (data.success) {
+          console.log("OK")
+          setUserCredentials(initialState)
+          // TODO: success message
+        } else {
+          console.log("NOTOK")
+          // TODO: success message
+        }
+      })
   }
 
   const handleChange = event => {
@@ -68,10 +65,10 @@ const Contact = () => {
               required
             />
             <FormInput
-              name="from"
+              name="email"
               type="email"
               handleChange={handleChange}
-              value={from}
+              value={email}
               label="email"
               required
             />
