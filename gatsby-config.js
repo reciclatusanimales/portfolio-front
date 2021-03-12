@@ -19,9 +19,8 @@ module.exports = {
       resolve: "gatsby-source-graphql",
       options: {
         typeName: "api",
-        // Field under which the remote schema will be accessible. You'll use this in your Gatsby query
         fieldName: "api",
-        url: "http://127.0.0.1:8080/graphql",
+        url: "https://api.reciclatusanimales.com/graphql",
       },
     },
     `gatsby-transformer-sharp`,
@@ -35,16 +34,13 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/icon.png`,
       },
     },
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [
-          `Bitter`,
-          `source sans pro\:300,400,400i,700`, // you can also specify font weights and styles
-        ],
+        fonts: [`Bitter`, `source sans pro\:300,400,400i,700`],
         display: "swap",
       },
     },
