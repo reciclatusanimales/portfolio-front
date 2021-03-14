@@ -15,7 +15,8 @@ import {
   OpenIcon,
   Img,
   Content,
-  Description,
+  Subtitle,
+  Summary,
   Footer,
   Stack,
   StackTag,
@@ -57,7 +58,8 @@ const LatestWorksCopy = ({ projects }) => {
                   </IconsContainer>
                 </TitleContainer>
 
-                <Description>{project.subtitle}</Description>
+                <Summary dangerouslySetInnerHTML={{ __html: project.summary }} />
+                <Subtitle>{project.subtitle}</Subtitle>
 
                 <Footer>
                   <Stack>

@@ -170,12 +170,31 @@ export const Title = styled(Link)`
 
 export const OpenIcon = styled.a`
   color: ${({ theme }) => theme.grey1};
-  font-size: 1.2rem;
-  margin-right: 1rem;
+  font-size: 1rem;
+  margin-left: 0.5rem;
+
+  @media screen and (min-width: 676px) {
+    font-size: 1.2rem;
+    margin-left: 1rem;
+  }
 `
 
-export const Description = styled.p`
+export const Subtitle = styled.p`
+  display: block;
   color: #919495;
+  
+  @media screen and (min-width: 1170px) {
+    display: none;
+  }
+`
+
+export const Summary = styled.div`
+  display: none;
+  font-size: 0.875rem;
+
+  @media screen and (min-width: 1170px) {
+    display: block;
+  }
 `
 
 export const Footer = styled.div`
@@ -231,17 +250,23 @@ export const Stack = styled.ul`
 
 export const StackTag = styled.li`
   float: left;
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   background: ${({ theme }) => theme.primary10};
   border-radius: 3px 0 0 3px;
   display: inline-block;
   height: 22px;
   line-height: 22px;
-  padding: 0 20px 0 23px;
+  padding: 0 13px 0 18px;
   position: relative;
-  margin: 0 10px 10px 0;
+  margin: 0 5px 10px 0;
   text-decoration: none;
   -webkit-transition: color 0.2s;
+
+  @media screen and (min-width: 676px) {
+    font-size: 0.8rem;
+    padding: 0 20px 0 23px;
+    margin: 0 10px 10px 0;
+  }
 
   &:before {
     background: #fff;

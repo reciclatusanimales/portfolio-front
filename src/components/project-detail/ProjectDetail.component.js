@@ -13,14 +13,14 @@ const ProjectDetail = ({ project }) => {
   // >_Están pasando demasiadas cosas raras para que todo pueda seguir tan normal._
 
   // [Clics](https://clics.reciclatusanimales.com) es una comunidad que reúne distintas funcionalidades implementadas con múltiples tecnologías tales como NodeJS (Express), NextJS (React) y TailwindCSS.
-  // Aquí los usuarios pueden interactuar entre ellos a través de grupos, posts, comentarios, invitaciones, _likes_ (o me agrada) y mensajes. Posee su propio sistema de notificaciones y un chat en tiempo real.
+  // Aquí los usuarios pueden interactuar entre ellos a través de grupos, posts, comentarios, invitaciones, _likes_ y mensajes. Posee su propio sistema de notificaciones y un chat en tiempo real.
 
   // A pesar de que aparenta ser una aplicación bastante sencilla, la verdad es que ocurren un montón de cosas por detrás del telón.
   // Tres son las aplicaciones que funcionan de manera simultanea para lograrlo.
 
   // <br />
 
-  // ### _Backend_.
+  // ### _Backend_
 
   // <br />
 
@@ -29,10 +29,10 @@ const ProjectDetail = ({ project }) => {
 
   // Se encuentra corriendo dentro del mismo subdominio (clics.reciclatusanimales.com), pero a través del puerto 4000.
 
-  // Esta aplicación se encarga de responder la mayoría de las peticiones del cliente como la gestión de cuentas de usuario, de grupos y temas de la comunidad, como también de gestionar los comentarios, _me agrada_, y _follows_ entre usuarios.
+  // Esta aplicación se encarga de responder la mayoría de las peticiones del cliente como la gestión de cuentas de usuario, de grupos y temas de la comunidad, como también de gestionar los comentarios, _likes_ y _follows_ entre usuarios.
 
   // A la vez, se comunica con la siguiente aplicación (la de notificaciones) mediante un _dispatcher_ accionado por _triggers_ o _subscribers_ presentes en algunas entidades de la base de datos.
-  // Los _subscribers_ están pendiente de la creación, modificación o eliminación de registros en los modelos de comentarios, _likes_, invitaciones a grupos, y _follows_, el último como se puede apreciar en el código a continuación.
+  // Los _subscribers_ están pendiente de la creación, modificación o eliminación de registros en los modelos de comentarios, _likes_, invitaciones a grupos y _follows_, el último como se puede apreciar en el código a continuación.
 
   // ~~~javascript
   //   @EventSubscriber()
@@ -63,7 +63,7 @@ const ProjectDetail = ({ project }) => {
   // Este evento, al igual que los demás _subscribers_, se encarga de llamar a la función \`createNotification()\` que envía los parámetros necesarios para crear la notificación a la siguiente aplicación.
   // Como se encuentra detallado más adelante, la aplicación de notificaciones está construída con __Apollo Server__ y __GraphQL__, por lo que es necesario envíar la petición a un _resolver_ de esta utilizando [graphql-request](https://github.com/prisma-labs/graphql-request).
 
-  // [graphql-request](https://github.com/prisma-labs/graphql-request), permite crear una mínima instancia de un cliente __GraphQL__ (ya que solo ejecuta un llamado) que permitirá hacer la consulta (_mutation_).
+  // [graphql-request](https://github.com/prisma-labs/graphql-request), permite crear una mínima instancia de un cliente __GraphQL__ (ya que solo ejecuta un llamado) que permitirá realizar la solicitud (_mutation_).
 
   // ~~~javascript
   //   const CREATE_NOTIFICATION = gql\`
@@ -94,7 +94,7 @@ const ProjectDetail = ({ project }) => {
   // <br />
   // <br />
 
-  // ### Notificaciones y _chat_.
+  // ### Notificaciones y chat
 
   // <br />
 
@@ -105,8 +105,102 @@ const ProjectDetail = ({ project }) => {
 
   // Aunque esta aplicación es también un _backend_, se implementó de forma independiente a la anterior para que solo se ocupara de las funcionalidades que requieren la ejecución de _web sockets_ para establecer la comunicación bidireccional entre cliente y servidor.
 
-  // Las notificaciones son creadas cuando se recibe una petición desde la aplicación principal de _backend_
+  // Las notificaciones, que son creadas cuando se recibe la petición desde la aplicación principal de _backend_, disparan la _subscription_ _newNotification_ a través del módulo [PubSub](https://www.apollographql.com/docs/apollo-server/data/subscriptions/#production-pubsub-libraries) en el _mutation_ de notificaciones:
 
+  // ~~~javascript
+  // const notification = await Notification.create({
+  //   username,
+  //   type,
+  //   value,
+  //   sendername,
+  //   subName,
+  //   postId,
+  //   commentId,
+  // });
+  
+  // pubsub.publish("NEW_NOTIFICATION", {
+  //   newNotification: notification,
+  // });
+  // ~~~
+  
+  // <br />
+
+  // A su vez, _newNotification_ se encarga de comprobar a través de _withFilter_ si la notificación creada pertenece al usuario autenticado:
+
+  // ~~~javascript
+  //   Subscription: {
+  //     newNotification: {
+  //       subscribe: withFilter(
+  //         (_, __, { user, pubsub }) => {
+  //           if (!user)
+  //             throw new AuthenticationError("Unauthenticated.");
+  //           return pubsub.asyncIterator("NEW_NOTIFICATION");
+  //         },
+  //         ({ newNotification }, __, { user }) => {
+  //           return newNotification.username === user.username;
+  //         }
+  //       ),
+  //     },
+  //   },
+  // ~~~
+
+  // <br />
+
+  // ...retornándola para mostrarla en el _front:_
+
+  // ![Image](https://resources.reciclatusanimales.com/gif/clics-notifications-ws.gif)
+
+  // ![Image](https://resources.reciclatusanimales.com/gif/clics-notifications.gif)
+
+  // <br />
+
+  // De manera similar, las suscripciones en el chat se disparan cada vez que se crea un nuevo mensaje a través de la _mutation_ _newMessage:_
+
+  // ~~~javascript
+  //   const message = await Message.create({
+  //     from: user.username,
+  //     content,
+  //     threadId,
+  //   });
+
+  //   ...
+
+  //   pubsub.publish("NEW_MESSAGE", { newMessage: formatedMessage });
+  // ~~~
+
+  // <br />
+  
+  // Se comprueba que el mensaje haya sido enviado por el usuario autenticado o que él sea el destinatario:
+
+  // <br />
+
+  // ~~~javascript
+  //   Subscription: {
+  //     newMessage: {
+  //       subscribe: withFilter(
+  //         (_, __, { user, pubsub }) => {
+  //           if (!user)
+  //             throw new AuthenticationError("Unauthenticated.");
+  //           return pubsub.asyncIterator("NEW_MESSAGE");
+  //         },
+  //         async ({ newMessage }, __, { user }) => {
+  //           return (
+  //             newMessage.from === user.username ||
+  //             newMessage.to === user.username
+  //           );
+  //         }
+  //       ),
+  //     }
+  //   }
+  // ~~~
+
+  // <br />
+
+  // En cualquiera de los dos casos, se muestra en el _front:_
+
+  // ![Image](https://resources.reciclatusanimales.com/gif/clics-chat-ws.gif)
+
+  // ![Image](https://resources.reciclatusanimales.com/gif/clics-chat.gif)
   // `
 
   const renderers = {
@@ -128,7 +222,11 @@ const ProjectDetail = ({ project }) => {
         </>
       )
     },
+    image: (props) => {
+      return <img {...props} style={{maxWidth: '450px'}} />
+    }
   }
+
 
   return (
     <ProjectTemplate>

@@ -28,10 +28,13 @@ export const query = graphql`
         id
         content
         description
+        summary
         title
         url
         image
         imageUrl
+        thumbnail
+        thumbnailUrl
         stack {
           id
           slug

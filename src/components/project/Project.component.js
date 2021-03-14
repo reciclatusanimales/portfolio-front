@@ -22,10 +22,14 @@ const Project = ({
   description,
   title,
   subtitle,
+  summary,
   github,
   stack,
   url,
   image,
+  imageUrl,
+  thumbnail,
+  thumbnailUrl,
   index,
 }) => {
   const data = useStaticQuery(graphql`
