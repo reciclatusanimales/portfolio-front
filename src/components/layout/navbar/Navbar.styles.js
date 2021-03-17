@@ -85,5 +85,11 @@ export const NavLinks = styled.ul`
     a:hover {
       background-size: 100% 100%;
     }
+
+    li.active {
+      a {
+        background-size: 100% 100%;
+      }
+    }
   }
 `

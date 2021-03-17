@@ -13,6 +13,7 @@ import Contact from "../components/contact/Contact.component"
 export default ({ data }) => {
   const {
     api: { allProjects: projects },
+    api: { allStacks: stacks },
   } = data
 
   return (
@@ -20,7 +21,7 @@ export default ({ data }) => {
       <SEO title="Home" description="this is our home page" />
       <Hero />
       <About />
-      <Services />
+      <Services stacks={stacks} />
       <LatestWorks projects={projects} />
       <Contact />
     </Layout>
@@ -38,6 +39,7 @@ export const query = graphql`
         subtitle
         summary
         url
+        featured
         image
         imageUrl
         thumbnail
@@ -46,8 +48,17 @@ export const query = graphql`
           id
           slug
           name
+          featured
           image
         }
+      }
+      allStacks {
+        name
+        category
+        slug
+        image
+        featured
+        order
       }
     }
   }

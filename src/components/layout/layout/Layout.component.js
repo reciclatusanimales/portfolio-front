@@ -8,12 +8,11 @@ import Footer from "../footer/Footer.component"
 import Navbar from "../navbar/Navbar.component"
 import Sidebar from "../sidebar/Sidebar.component"
 
-import { useTheme } from "../../../hooks/useTheme"
 import { lightTheme, darkTheme } from "./themes"
 
-import icon from "../../../images/icon.png"
+import icon from "../../../assets/icon.png"
 import useSeo from "../../../hooks/use-seo"
-
+import ThemeContext from "../../../context/ThemeContext"
 import { LayoutStyles } from "./Layout.styles"
 
 const Layout = ({ children }) => {
@@ -22,36 +21,32 @@ const Layout = ({ children }) => {
   const { title, description } = seo
 
   const [isOpen, setIsOpen] = React.useState(false)
+
   const toggleSidebar = () => {
     setIsOpen(!isOpen)
   }
 
-  const [theme, toggleTheme, componentMounted] = useTheme()
-  const themeMode = theme === "light" ? lightTheme : darkTheme
-
-  if (!componentMounted) {
-    return <div />
-  }
-
   return (
-    <>
-      <Helmet>
-        <title>{title}</title>
-        <meta name="description" content={description} />
-        <link rel="icon" href={icon} />
-      </Helmet>
-      <ThemeProvider theme={themeMode}>
-        <LayoutStyles />
-        <Navbar
-          toggleSidebar={toggleSidebar}
-          theme={theme}
-          toggleTheme={toggleTheme}
-        />
-        <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} />
-        {children}
-        <Footer />
-      </ThemeProvider>
-    </>
+    <ThemeContext.Consumer>
+      {theme => (
+        <>
+          <Helmet>
+            <title>{title}</title>
+            <meta name="description" content={description} />
+            <link rel="icon" href={icon} />
+          </Helmet>
+          <ThemeProvider
+            theme={theme.theme === "light" ? lightTheme : darkTheme}
+          >
+            <LayoutStyles />
+            <Navbar toggleSidebar={toggleSidebar} />
+            <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} />
+            {children}
+            <Footer />
+          </ThemeProvider>
+        </>
+      )}
+    </ThemeContext.Consumer>
   )
 }
 

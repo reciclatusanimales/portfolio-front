@@ -21,7 +21,7 @@ export const Header = styled.header`
   }
 `
 
-export const HeroCenter = styled.div`
+export const Center = styled.div`
   width: 90vw;
   margin: 0 auto;
   max-width: 1170px;
@@ -36,13 +36,13 @@ export const HeroCenter = styled.div`
   }
 `
 
-export const HeroInfo = styled.article`
+export const Info = styled.article`
   h4 {
     color: ${({ theme }) => theme.grey5};
   }
 `
 
-export const HeroTitle = styled.div`
+export const Title = styled.div`
   text-align: left !important;
   margin-bottom: 2rem;
 
@@ -51,7 +51,7 @@ export const HeroTitle = styled.div`
   }
 `
 
-export const HeroImg = styled.article`
+export const Img = styled.article`
   display: none;
 
   @media screen and (min-width: 992px) {
@@ -73,7 +73,7 @@ export const HeroImg = styled.article`
   }
 `
 
-export const HeroPhoto = styled(Image)`
+export const Photo = styled(Image)`
   max-width: 25rem;
   max-height: 30rem;
   -o-object-fit: cover;

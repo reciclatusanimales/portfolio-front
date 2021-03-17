@@ -66,11 +66,32 @@ export const Service = styled.div`
     -webkit-transition: var(--transition);
     transition: var(--transition);
   }
-  &:hover {
+  ${"" /* &:hover {
     background: ${({ theme }) => theme.primary10};
-  }
+  } */}
 
   &:hover .underline {
     background: var(--clr-white);
+  }
+`
+
+export const StackImg = styled.img`
+  height: 40px !important;
+  width: auto !important;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+`
+
+export const Stack = styled.div`
+  display: none;
+
+  @media screen and (min-width: 576px) {
+    display: block;
+  }
+
+  ${StackImg} {
+    display: inline-block;
+    padding: 0.25rem 0.3rem;
   }
 `

@@ -3,15 +3,11 @@ import { graphql, useStaticQuery } from "gatsby"
 
 import Button from "../layout/button/Button.component"
 
-import {
-  Header,
-  HeroCenter,
-  HeroInfo,
-  HeroImg,
-  HeroTitle,
-  HeroPhoto,
-} from "./Hero.stlyes"
+import Typewriter from "../layout/typewriter/Typewriter.component"
+import { Header, Center, Info, Img, Title, Photo } from "./Hero.stlyes"
+
 import { Underline } from "../layout/layout/Layout.styles"
+import ThemeContext from "../../context/ThemeContext"
 
 const query = graphql`
   {
@@ -25,6 +21,17 @@ const query = graphql`
   }
 `
 
+const text = [
+  "ReactJS",
+  "Redux",
+  "Gatsby",
+  "Next.js",
+  "Express.js",
+  "Firebase",
+  "Django",
+  "Laravel",
+]
+
 const Hero = () => {
   const {
     file: {
@@ -33,21 +40,30 @@ const Hero = () => {
   } = useStaticQuery(query)
 
   return (
-    <Header>
-      <HeroCenter>
-        <HeroInfo>
-          <HeroTitle>
-            <Underline style={{ marginLeft: 0 }} />
-            <h1>Daniel Reyes Veas</h1>
-            <h4>Programador Fullstack</h4>
-            <Button to="/contact">contacto</Button>
-          </HeroTitle>
-        </HeroInfo>
-        <HeroImg>
-          <HeroPhoto fluid={fluid} />
-        </HeroImg>
-      </HeroCenter>
-    </Header>
+    <ThemeContext.Consumer>
+      {theme => (
+        <Header>
+          <Center>
+            <Info>
+              <Title>
+                <Underline style={{ marginLeft: 0 }} />
+                <h1>Daniel Reyes Veas</h1>
+                <h4>Programador Fullstack</h4>
+
+                <Typewriter text={text} />
+
+                <Button to={theme.resumeURL} target="_blank" link>
+                  cv
+                </Button>
+              </Title>
+            </Info>
+            <Img>
+              <Photo fluid={fluid} />
+            </Img>
+          </Center>
+        </Header>
+      )}
+    </ThemeContext.Consumer>
   )
 }
 

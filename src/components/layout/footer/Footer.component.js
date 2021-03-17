@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
-
-import socialLinks from "../../../utils/socialLinks"
+import { FaFilePdf, FaGitAlt, FaGithub } from "react-icons/fa"
+import ThemeContext from "../../../context/ThemeContext"
 
 import {
   FooterContainer,
@@ -15,20 +15,38 @@ const Footer = () => {
   }, [])
 
   return (
-    <FooterContainer>
-      <FooterSocialIcons>
-        {socialLinks.map(link => {
-          return (
-            <li key={link.id}>
-              <FooterSocialIcon href={link.url}>{link.icon}</FooterSocialIcon>
+    <ThemeContext.Consumer>
+      {theme => (
+        <FooterContainer>
+          <FooterSocialIcons>
+            <li>
+              <FooterSocialIcon
+                href="https://github.com/reciclatusanimales/"
+                target="_blank"
+              >
+                <FaGithub className="social-icon" />
+              </FooterSocialIcon>
             </li>
-          )
-        })}
-      </FooterSocialIcons>
-      <p>
-        &copy; <span id="date"></span> www.reciclatusanimales.com
-      </p>
-    </FooterContainer>
+            <li>
+              <FooterSocialIcon href={theme.resumeURL} target="_blank">
+                <FaFilePdf className="social-icon" />
+              </FooterSocialIcon>
+            </li>
+            <li>
+              <FooterSocialIcon
+                href="https://github.com/danielreyesveas/"
+                target="_blank"
+              >
+                <FaGitAlt className="social-icon" />
+              </FooterSocialIcon>
+            </li>
+          </FooterSocialIcons>
+          <p>
+            &copy; <span id="date"></span> reciclatusanimales.com
+          </p>
+        </FooterContainer>
+      )}
+    </ThemeContext.Consumer>
   )
 }
 

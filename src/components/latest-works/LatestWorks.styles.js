@@ -89,7 +89,7 @@ export const Content = styled.div`
   z-index: 3;
   color: white;
   opacity: 0;
-  transition: 0.5s;
+  transition: 0.8s;
 `
 
 export const Img = styled.img`
@@ -103,7 +103,7 @@ export const Img = styled.img`
   max-width: 100%;
   vertical-align: middle;
   box-shadow: 0 0.2em 1.2em hsla(20, 20, 20, 10%);
-  transition: 0.5s;
+  transition: 0.8s;
 `
 
 export const Work = styled.article`
@@ -182,7 +182,7 @@ export const OpenIcon = styled.a`
 export const Subtitle = styled.p`
   display: block;
   color: #919495;
-  
+
   @media screen and (min-width: 1170px) {
     display: none;
   }

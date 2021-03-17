@@ -1,6 +1,5 @@
 import { Link } from "gatsby"
 import styled, { createGlobalStyle } from "styled-components"
-import Image from "gatsby-image"
 
 export const LayoutStyles = createGlobalStyle`
     
@@ -246,13 +245,80 @@ export const AboutCenter = styled.div`
   }
 `
 
-export const AboutImage = styled(Image)`
-  margin-bottom: 2rem;
-  height: 25rem;
+export const AboutVideoContainer = styled.div`
+  border-radius: var(--radius);
+  width: auto;
+  min-width: 15rem;
+  max-width: 35rem;
+  height: 20rem;
+  overflow: hidden;
+  position: relative;
+
+  @media screen and (min-width: 576px) {
+    margin-bottom: 3rem;
+  }
 
   @media screen and (min-width: 992px) {
-    grid-column: 1 / span 5;
-    margin-bottom: 0;
+    grid-column: 1 / span 6;
+  }
+`
+
+export const AboutVideo = styled.video`
+  position: relative;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  animation: fadeIn ease 2.5s;
+  -webkit-animation: fadeIn ease 2.5s;
+  -moz-animation: fadeIn ease 2.5s;
+  -o-animation: fadeIn ease 2.5s;
+  -ms-animation: fadeIn ease 2.5s;
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @-moz-keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @-webkit-keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @-o-keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @-ms-keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 `
 
@@ -261,7 +327,7 @@ export const AboutText = styled.article`
   margin-right: 0;
 
   @media screen and (min-width: 992px) {
-    grid-column: 6 / -1;
+    grid-column: 7 / -1;
   }
 `
 
@@ -274,7 +340,7 @@ export const AboutInfo = styled.p`
   line-height: 2;
 `
 
-export const WorkStackImg = styled.img`
+export const AboutStackImg = styled.img`
   height: 40px !important;
   width: auto !important;
   margin: 5px;
@@ -282,14 +348,14 @@ export const WorkStackImg = styled.img`
   align-items: center;
 `
 
-export const WorkStack = styled.div`
+export const AboutStack = styled.div`
   display: none;
 
   @media screen and (min-width: 576px) {
     display: block;
   }
 
-  ${WorkStackImg} {
+  ${AboutStackImg} {
     display: inline-block;
     padding: 0.25rem 0.3rem;
   }

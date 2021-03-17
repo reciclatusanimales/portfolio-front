@@ -30,6 +30,7 @@ export const query = graphql`
         description
         summary
         title
+        featured
         url
         image
         imageUrl
@@ -38,6 +39,7 @@ export const query = graphql`
         stack {
           id
           slug
+          featured
           name
           image
         }

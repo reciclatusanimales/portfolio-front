@@ -2,18 +2,21 @@ import React from "react"
 
 import Layout from "../components/layout/layout/Layout.component"
 import { graphql, useStaticQuery } from "gatsby"
+import video from "../assets/code.mp4"
+import poster from "../assets/code.gif"
 
 import SEO from "../components/seo"
 import {
   AboutCenter,
-  AboutImage,
+  AboutVideoContainer,
+  AboutVideo,
   AboutInfo,
   AboutSection,
   AboutText,
   AboutTitle,
   Underline,
-  WorkStack,
-  WorkStackImg,
+  AboutStack,
+  AboutStackImg,
 } from "../components/layout/layout/Layout.styles"
 
 const About = () => {
@@ -22,9 +25,6 @@ const About = () => {
     "Franzen af pitchfork, mumblecore try-hard kogi XOXO roof party la croix cardigan neutra retro tattooed copper mug. Meditation lomo biodiesel scenester cred actually godard PBR&B. Fam VHS enamel pin try-hard echo park raw denim unicorn fanny pack vape authentic. Helvetica fixie church-key, small batch jianbing messenger bag scenester +1 before they sold out bespoke paleo hammock"
 
   const {
-    file: {
-      childImageSharp: { fluid },
-    },
     api: { allStacks: stacks },
   } = useStaticQuery(query)
 
@@ -33,22 +33,27 @@ const About = () => {
       <SEO title="About Me" description="about webdev" />
       <AboutSection>
         <AboutCenter>
-          <AboutImage fluid={fluid} />
+          <AboutVideoContainer>
+            <AboutVideo preload="auto" poster={poster} loop autoPlay muted>
+              <source src={video} type="video/mp4" />
+              Your browser does not support HTML5 video.
+            </AboutVideo>
+          </AboutVideoContainer>
           <AboutText>
             <AboutTitle>
               <h2>{title}</h2>
               <Underline style={{ marginLeft: 0 }} />
             </AboutTitle>
             <AboutInfo>{info}</AboutInfo>
-            <WorkStack>
+            <AboutStack>
               {stacks.map(item => (
-                <WorkStackImg
+                <AboutStackImg
                   src={item.image}
                   key={item.slug}
                   alt={item.name}
                 />
               ))}
-            </WorkStack>
+            </AboutStack>
           </AboutText>
         </AboutCenter>
       </AboutSection>
@@ -63,17 +68,10 @@ export const query = graphql`
     api {
       allStacks {
         name
+        category
         slug
         image
         order
-      }
-    }
-
-    file(relativePath: { eq: "hero-img.png" }) {
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
-        }
       }
     }
   }

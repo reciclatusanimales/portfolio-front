@@ -58,14 +58,21 @@ const LatestWorksCopy = ({ projects }) => {
                   </IconsContainer>
                 </TitleContainer>
 
-                <Summary dangerouslySetInnerHTML={{ __html: project.summary }} />
+                <Summary
+                  dangerouslySetInnerHTML={{ __html: project.summary }}
+                />
                 <Subtitle>{project.subtitle}</Subtitle>
 
                 <Footer>
                   <Stack>
-                    {project.stack.slice(0, 6).map(item => {
-                      return <StackTag key={item.slug}>{item.name}</StackTag>
-                    })}
+                    {project.stack
+                      .filter(stack => stack.featured)
+                      .slice(0, 6)
+                      .map(stack => {
+                        return (
+                          <StackTag key={stack.slug}>{stack.name}</StackTag>
+                        )
+                      })}
                   </Stack>
                 </Footer>
               </Content>
