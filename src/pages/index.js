@@ -18,7 +18,7 @@ export default ({ data }) => {
 
   return (
     <Layout>
-      <SEO title="Home" description="this is our home page" />
+      <SEO title="Reciclatusanimales" description="Inicio" />
       <Hero />
       <About />
       <Services stacks={stacks} />

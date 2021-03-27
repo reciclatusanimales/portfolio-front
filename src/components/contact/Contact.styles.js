@@ -53,6 +53,22 @@ export const FormGroup = styled.div`
   padding: 1rem 1.5rem;
 `
 
+export const SuccessMessage = styled.div`
+  color: #32d190;
+  font-size: 14px;
+  text-align: center;
+  font-weight: 700;
+  text-transform: uppercase;
+`
+
+export const ErrorMessage = styled.div`
+  color: #cd5c5c;
+  font-size: 14px;
+  text-align: center;
+  font-weight: 700;
+  text-transform: uppercase;
+`
+
 export const Field = styled.div`
   label {
     flex: 0 0 150px;
@@ -70,7 +86,7 @@ export const Field = styled.div`
     text-transform: uppercase;
     letter-spacing: var(--spacing);
 
-    ::placeholder {
+    &:placeholder {
       font-family: var(--ff-primary);
       color: ${({ theme }) => theme.grey1};
       text-transform: uppercase;

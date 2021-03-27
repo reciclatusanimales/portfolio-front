@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Helmet } from "react-helmet"
 import PropTypes from "prop-types"
 
@@ -20,33 +20,23 @@ const Layout = ({ children }) => {
 
   const { title, description } = seo
 
-  const [isOpen, setIsOpen] = React.useState(false)
-
-  const toggleSidebar = () => {
-    setIsOpen(!isOpen)
-  }
+  const { theme } = useContext(ThemeContext)
 
   return (
-    <ThemeContext.Consumer>
-      {theme => (
-        <>
-          <Helmet>
-            <title>{title}</title>
-            <meta name="description" content={description} />
-            <link rel="icon" href={icon} />
-          </Helmet>
-          <ThemeProvider
-            theme={theme.theme === "light" ? lightTheme : darkTheme}
-          >
-            <LayoutStyles />
-            <Navbar toggleSidebar={toggleSidebar} />
-            <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} />
-            {children}
-            <Footer />
-          </ThemeProvider>
-        </>
-      )}
-    </ThemeContext.Consumer>
+    <>
+      <Helmet>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="icon" href={icon} />
+      </Helmet>
+      <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+        <LayoutStyles />
+        <Navbar />
+        <Sidebar />
+        {children}
+        <Footer />
+      </ThemeProvider>
+    </>
   )
 }
 

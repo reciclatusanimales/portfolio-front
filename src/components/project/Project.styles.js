@@ -59,13 +59,11 @@ export const TitleContainer = styled.div`
     padding-top: 2rem;
     padding-left: 2rem;
     padding-right: 1rem;
-    font-size: 2.2rem;
   }
 
   @media screen and (min-width: 992px) {
     padding-right: 2rem;
     padding-right: 2rem;
-    font-size: 2.5rem;
   }
 `
 
@@ -88,7 +86,7 @@ export const OpenIcon = styled.a`
 
 export const Title = styled(Link)`
   grid-area: title;
-  font-size: 2rem;
+  font-size: 1.8rem;
   letter-spacing: var(--spacing);
   font-weight: bold;
   color: inherit;
@@ -101,6 +99,10 @@ export const Title = styled(Link)`
     height: 2px;
     top: 0;
     left: 0;
+  }
+
+  @media screen and (min-width: 576px) {
+    font-size: 2rem;
   }
 
   @media screen and (min-width: 676px) {

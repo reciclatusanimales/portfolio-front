@@ -77,6 +77,7 @@ export const NavLinks = styled.ul`
         center center/0% 75% no-repeat;
       color: ${({ theme }) => theme.grey1};
       font-weight: bold;
+      border-radius: 3px;
       letter-spacing: var(--spacing);
       -webkit-transition: var(--transition);
       transition: var(--transition);

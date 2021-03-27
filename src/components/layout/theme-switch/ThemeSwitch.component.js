@@ -1,7 +1,10 @@
-import React from "react"
+import React, { useContext } from "react"
+import ThemeContext from "../../../context/ThemeContext"
 import { Container, Label, Switch } from "./ThemeSwitch.styles"
 
-export default function ThemeSwitch({ theme, toggleTheme }) {
+export default function ThemeSwitch() {
+  const { theme, toggleTheme } = useContext(ThemeContext)
+
   return (
     <Container>
       <Switch

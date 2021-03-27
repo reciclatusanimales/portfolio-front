@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: "Portafolio",
-    description: "Portafolio Daniel Reyes Veas",
+    title: "Reciclatusanimales",
+    description: "Portafolio de Daniel Reyes Veas",
     author: "Daniel Reyes Veas",
     image: "/hero-img.jpeg",
     siteUrl: "https://reciclatusanimales.com",

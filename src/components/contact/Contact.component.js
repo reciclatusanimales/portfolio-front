@@ -7,6 +7,8 @@ import {
   ContactSection,
   FormContainer,
   FormGroup,
+  ErrorMessage,
+  SuccessMessage,
   Submit,
 } from "./Contact.styles"
 import Title from "../layout/title/Title.component"
@@ -20,11 +22,18 @@ const initialState = {
 
 const Contact = () => {
   const [userCredentials, setUserCredentials] = useState(initialState)
-
+  const [showMessage, setShowMessage] = useState(false)
+  const [showError, setShowError] = useState(false)
   const { name, email, content, subject } = userCredentials
 
   const handleSubmit = event => {
     event.preventDefault()
+
+    if (name === "" && email === "" && content === "" && subject === "") {
+      return setShowError(true)
+    }
+
+    setShowError(false)
 
     fetch(`${process.env.GATSBY_EMAIL_API_URL}`, {
       method: "POST",
@@ -35,7 +44,7 @@ const Contact = () => {
         if (data.success) {
           console.log("OK")
           setUserCredentials(initialState)
-          // TODO: success message
+          setShowMessage(true)
         } else {
           console.log("NOTOK")
           // TODO: success message
@@ -90,6 +99,13 @@ const Contact = () => {
             />
           </FormGroup>
           <FormGroup>
+            <SuccessMessage>
+              {showMessage &&
+                "💾 Tu mensaje ha sido enviado, muy pronto te responderé."}
+            </SuccessMessage>
+            <ErrorMessage error>
+              {showError && "Debes completar todos los campos."}
+            </ErrorMessage>
             <Submit type="submit">enviar</Submit>
           </FormGroup>
         </form>

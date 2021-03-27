@@ -6,7 +6,7 @@ export const ProjectTemplate = styled.section`
 `
 
 export const StackImg = styled.img`
-  height: 25px !important;
+  height: 30px !important;
   width: auto !important;
 
   @media screen and (min-width: 992px) {

@@ -333,15 +333,16 @@ export const AboutText = styled.article`
 
 export const AboutTitle = styled.div`
   text-align: left;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 `
 
 export const AboutInfo = styled.p`
   line-height: 2;
+  margin-bottom: 2rem;
 `
 
 export const AboutStackImg = styled.img`
-  height: 40px !important;
+  height: 33px !important;
   width: auto !important;
   margin: 5px;
   display: flex;
@@ -353,6 +354,7 @@ export const AboutStack = styled.div`
 
   @media screen and (min-width: 576px) {
     display: block;
+    text-align: center;
   }
 
   ${AboutStackImg} {

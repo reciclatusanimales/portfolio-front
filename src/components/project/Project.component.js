@@ -90,7 +90,7 @@ const Project = ({
 
 Project.propTypes = {
   title: PropTypes.string.isRequired,
-  github: PropTypes.string.isRequired,
+  github: PropTypes.string,
   url: PropTypes.string,
   description: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,

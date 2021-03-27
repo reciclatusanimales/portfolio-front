@@ -1,22 +1,26 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import { Link } from "gatsby"
 
 import { FaAlignJustify } from "react-icons/fa"
 
 import ThemeSwitch from "../theme-switch/ThemeSwitch.component"
-
 import links from "../../../utils/links"
 
 import { Nav, NavCenter, NavHeader, NavBtn, NavLinks } from "./Navbar.styles"
-import ThemeContext from "../../../context/ThemeContext"
 import { globalHistory as history } from "@reach/router"
+import ThemeContext from "../../../context/ThemeContext"
 
-const Navbar = ({ toggleSidebar, theme, toggleTheme }) => {
+const Navbar = () => {
   const {
     location: { pathname: path },
   } = history
 
+  const { showSidebar, setShowSidebar } = useContext(ThemeContext)
   const [showTheme, setShowTheme] = useState(true)
+
+  const toggleSidebar = () => {
+    setShowSidebar(!showSidebar)
+  }
 
   useEffect(() => {
     const navbar = document.querySelector("#nav")
@@ -36,37 +40,27 @@ const Navbar = ({ toggleSidebar, theme, toggleTheme }) => {
   }, [])
 
   return (
-    <ThemeContext.Consumer>
-      {theme => (
-        <Nav id="nav">
-          <NavCenter>
-            <NavHeader>
-              {showTheme && (
-                <ThemeSwitch
-                  theme={theme.theme}
-                  toggleTheme={theme.toggleTheme}
-                />
-              )}
-              <NavBtn type="button" id="nav-btn" onClick={toggleSidebar}>
-                <FaAlignJustify></FaAlignJustify>
-              </NavBtn>
-            </NavHeader>
-            <NavLinks>
-              {links.map(link => {
-                return (
-                  <li
-                    key={link.id}
-                    className={path === link.url ? "active" : ""}
-                  >
-                    <Link to={link.url}>{link.text}</Link>
-                  </li>
-                )
-              })}
-            </NavLinks>
-          </NavCenter>
-        </Nav>
-      )}
-    </ThemeContext.Consumer>
+    <Nav id="nav">
+      <NavCenter>
+        <NavHeader>
+          {showTheme && <ThemeSwitch />}
+          <NavBtn type="button" id="nav-btn" onClick={toggleSidebar}>
+            <FaAlignJustify></FaAlignJustify>
+          </NavBtn>
+        </NavHeader>
+        <NavLinks>
+          {links.map(link => {
+            return (
+              <li key={link.id} className={path === link.url ? "active" : ""}>
+                <Link to={link.url}>
+                  <span>{link.text}</span>
+                </Link>
+              </li>
+            )
+          })}
+        </NavLinks>
+      </NavCenter>
+    </Nav>
   )
 }
 

@@ -7,6 +7,7 @@ const ThemeContextProvider = ({ children }) => {
   const { resume } = filesURL
 
   const [theme, setTheme] = useState("light")
+  const [showSidebar, setShowSidebar] = useState(false)
   const [resumeURL, setResumeURL] = useState(resume.light)
 
   const setMode = mode => {
@@ -39,6 +40,8 @@ const ThemeContextProvider = ({ children }) => {
     theme,
     toggleTheme,
     resumeURL,
+    showSidebar,
+    setShowSidebar,
   }
 
   return (

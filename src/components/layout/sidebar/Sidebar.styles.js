@@ -41,18 +41,27 @@ export const CloseBtn = styled.button`
   }
 `
 
-export const SidebarLink = styled.li``
-
 export const SidebarLinks = styled.ul`
+  li a {
+    background: linear-gradient(
+        to bottom,
+        transparent 72%,
+        ${({ theme }) => theme.primary9} 0
+      )
+      center center/0% 75% no-repeat;
+  }
+
   ${({ isOpen }) =>
     isOpen &&
     `
-        ${SidebarLink} {
+        li {            
             opacity: 0;
             animation: slideRight 0.5s ease-in-out 0.3s forwards;
+            display: flex;
+            justify-content: center;
         }
-        ${SidebarLink} a {
-            display: block;
+        
+        li a {
             text-align: center;
             text-transform: capitalize;
             color: inherit;
@@ -61,30 +70,29 @@ export const SidebarLinks = styled.ul`
             font-size: 2rem;
             font-weight: bold;            
             transition: var(--transition);
-            border-radius: var(--radius);
+            border-radius: 5px;
             transition: background-size .4s ease;
-            background: linear-gradient(to bottom, transparent 62%, #fff87e 0) center center/0% 75% no-repeat;
         }
 
-        ${SidebarLink} a:hover {
+        li a:hover {
             background: ${({ theme }) => theme.primary9};
             color: ${({ theme }) => theme.primary5};
             background-size: 100% 100%;
         }
 
-        ${SidebarLink}:nth-of-type(1) {
+        li:nth-of-type(1) {
             animation-delay: 0.25s;
         }
-        ${SidebarLink}:nth-of-type(2) {
+        li:nth-of-type(2) {
             animation-delay: 0.5s;
         }
-        ${SidebarLink}:nth-of-type(3) {
+        li:nth-of-type(3) {
             animation-delay: 0.75s;
         }
-        ${SidebarLink}:nth-of-type(4) {
+        li:nth-of-type(4) {
             animation-delay: 1s;
         }
-        ${SidebarLink}:nth-of-type(5) {
+        li:nth-of-type(5) {
             animation-delay: 1.25s;
         }
 
@@ -102,10 +110,10 @@ export const SidebarLinks = styled.ul`
 `
 
 export const SidebarSocialIcons = styled.ul`
-  margin-top: 1rem;
+  margin-top: 6rem;
   width: 15rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 
   ${({ isOpen }) =>
     isOpen &&
@@ -115,19 +123,13 @@ export const SidebarSocialIcons = styled.ul`
             animation: slideUp 0.5s ease-in-out 0.3s forwards;
         }
         li:nth-of-type(1) {
-            animation-delay: 0.25s;
+            animation-delay: 0.33s;
         }
         li:nth-of-type(2) {
-            animation-delay: 0.5s;
+            animation-delay: 0.66s;
         }
         li:nth-of-type(3) {
-            animation-delay: 0.75s;
-        }
-        li:nth-of-type(4) {
             animation-delay: 1s;
-        }
-        li:nth-of-type(5) {
-            animation-delay: 1.25s;
         }
         @keyframes slideUp {
             0% {
@@ -149,6 +151,13 @@ export const SidebarSocialIcon = styled.a`
   transition: var(--transition);
 
   &:hover {
-    color: ${({ theme }) => theme.primary5};
+    svg {
+      color: ${({ theme }) => theme.primary5};
+      transform: scale(1.2);
+    }
+  }
+
+  svg {
+    transition: var(--transition);
   }
 `
