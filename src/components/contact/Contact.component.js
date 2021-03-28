@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-
+import axios from "axios"
 import FormInput from "../layout/form-input/FormInput.component"
 import FormTextarea from "../layout/form-input/FormTextarea.component"
 
@@ -9,6 +9,7 @@ import {
   FormGroup,
   ErrorMessage,
   SuccessMessage,
+  Spinner,
   Submit,
 } from "./Contact.styles"
 import Title from "../layout/title/Title.component"
@@ -23,33 +24,36 @@ const initialState = {
 const Contact = () => {
   const [userCredentials, setUserCredentials] = useState(initialState)
   const [showMessage, setShowMessage] = useState(false)
-  const [showError, setShowError] = useState(false)
+  const [error, setError] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
   const { name, email, content, subject } = userCredentials
 
   const handleSubmit = event => {
     event.preventDefault()
 
     if (name === "" && email === "" && content === "" && subject === "") {
-      return setShowError(true)
+      return setError("Debes completar todos los campos.")
     }
 
-    setShowError(false)
+    setError(false)
+    setIsLoading(true)
 
-    fetch(`${process.env.GATSBY_EMAIL_API_URL}`, {
+    axios(`${process.env.GATSBY_EMAIL_API_URL}`, {
       method: "POST",
       body: JSON.stringify(userCredentials),
     })
-      .then(response => response.json())
-      .then(function (data) {
-        if (data.success) {
-          console.log("OK")
+      .then(response => {
+        if (response.data.success) {
           setUserCredentials(initialState)
           setShowMessage(true)
         } else {
-          console.log("NOTOK")
-          // TODO: success message
+          setError("🔥 Se produjo un error, vuelve a intentarlo por favor.")
         }
       })
+      .catch(error =>
+        setError("🔥 Se produjo un error, vuelve a intentarlo por favor.")
+      )
+      .finally(() => setIsLoading(false))
   }
 
   const handleChange = event => {
@@ -103,10 +107,11 @@ const Contact = () => {
               {showMessage &&
                 "💾 Tu mensaje ha sido enviado, muy pronto te responderé."}
             </SuccessMessage>
-            <ErrorMessage error>
-              {showError && "Debes completar todos los campos."}
-            </ErrorMessage>
-            <Submit type="submit">enviar</Submit>
+            <ErrorMessage error>{error}</ErrorMessage>
+
+            <Submit type="submit" isLoading={isLoading}>
+              {isLoading ? <Spinner /> : "enviar"}
+            </Submit>
           </FormGroup>
         </form>
       </FormContainer>

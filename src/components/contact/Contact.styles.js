@@ -100,6 +100,7 @@ export const Field = styled.div`
 `
 
 export const Submit = styled.button`
+  pointer-events: ${({ isLoading }) => (isLoading ? "none" : "auto")};
   color: ${({ theme }) => theme.grey5};
   text-transform: uppercase;
   padding: 0.375rem 0.75rem;
@@ -130,5 +131,31 @@ export const Submit = styled.button`
   &:hover {
     box-shadow: 2px 8px 4px -6px hsla(0, 0%, 0%, 0.3);
     font-size: 1.1rem;
+  }
+`
+
+export const Spinner = styled.span`
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-top-color: ${({ theme }) => theme.primary5};
+  border-left-color: ${({ theme }) => theme.primary5};
+  animation: spinner 400ms linear infinite;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  vertical-align: middle;
+  z-index: 100;
+
+  @keyframes spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 `
