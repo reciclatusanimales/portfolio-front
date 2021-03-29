@@ -21,7 +21,7 @@ export const TypingCursor = styled.p`
     animation-duration: 0.7s;
     animation-iteration-count: infinite;
     height: 22px;
-    width: 5px;
+    width: 3px;
   }
 
   @keyframes blink {

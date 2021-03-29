@@ -10,6 +10,11 @@ import { monokaiSublime } from "react-syntax-highlighter/dist/esm/styles/hljs"
 const ProjectDetail = ({ project }) => {
   const { title, stack, content } = project
   const markdown = `
+
+  🔗[https://cuenteros.reciclatusanimales.com](https://cuenteros.reciclatusanimales.com)
+  <br />
+  💾[https://github.com/reciclatusanimales/cuenteros](https://github.com/reciclatusanimales/cuenteros)
+
   [Cuenteros](https://cuenteros.reciclatusanimales.com) es una comindad literaria desarrollada con __Django__, __Javascript__ y __PostgreSQL__.
   
   ![Image](https://resources.reciclatusanimales.com/image/cuenteros-post.png)  
@@ -17,7 +22,7 @@ const ProjectDetail = ({ project }) => {
   Comenzó como un blog para la publicación de cuentos, relatos y pequeñas historias del ámbito literario, pero de a poco fue creciendo incorporando más funcionaliades. Desde las publicaciones y sus respectivos comentarios y respuestas, hasta los likes, marcadores, mensajes entre usuarios y posteriores notificaciones y chat en tiempo ~~casi~~ real.
   
   ![Image](https://resources.reciclatusanimales.com/image/cuenteros.png)
-
+  
   El chat, en realidad, no utiliza ningún _socket_ de __Javascript__ o _channel_ de __Django__. No funciona en tiempo real. Solo simula hacerlo.
   <br />
   Y lo hace a través de __AJAX__, realizando una solicitud al servidor cada 2.5 segundos en busca de cambios en el estado del hilo de mensajes.
@@ -116,7 +121,7 @@ const ProjectDetail = ({ project }) => {
 
           <ReactMarkdown
             renderers={renderers}
-            children={content}
+            children={markdown}
             allowDangerousHtml={true}
             escapeHtml={false}
           />

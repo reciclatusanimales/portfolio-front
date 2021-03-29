@@ -4,6 +4,7 @@ export const ContactSection = styled.section`
   display: grid;
   place-items: center;
   padding: 5rem 0;
+  min-height: calc(100vh - 5rem - 9rem);
 `
 
 export const FormContainer = styled.article`

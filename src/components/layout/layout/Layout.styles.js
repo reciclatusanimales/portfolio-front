@@ -166,6 +166,17 @@ export const LayoutStyles = createGlobalStyle`
       width: 100%;
       height: 1em;
     }
+
+    .hidden {
+      opacity: 0;
+    }
+
+    .visible {
+      opacity: 1;
+      transition: all 0.8s ease-in-out;
+      -moz-transition: all 0.8s ease-in-out;
+      -webkit-transition: all 0.8s  ease-in-out;
+    }
     
 `
 
@@ -229,6 +240,7 @@ export const ButtonDark = styled(Link)`
 
 export const AboutSection = styled.section`
   padding: 7rem 0;
+  min-height: calc(100vh - 5rem - 9rem);
 `
 
 export const AboutCenter = styled.div`

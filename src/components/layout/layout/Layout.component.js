@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import { Helmet } from "react-helmet"
 import PropTypes from "prop-types"
 
@@ -19,12 +19,20 @@ const Layout = ({ children }) => {
   const seo = useSeo()
 
   const { title, description } = seo
+  const { theme, firstLoad, setFirstLoad } = useContext(ThemeContext)
 
-  const { theme } = useContext(ThemeContext)
+  useEffect(() => {
+    setTimeout(() => setFirstLoad(false), 0)
+    // eslint-disable-next-line
+  }, [])
 
   return (
     <>
-      <Helmet>
+      <Helmet
+        bodyAttributes={{
+          class: firstLoad ? "hidden" : "visible",
+        }}
+      >
         <title>{title}</title>
         <meta name="description" content={description} />
         <link rel="icon" href={icon} />

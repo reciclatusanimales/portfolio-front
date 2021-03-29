@@ -38,10 +38,11 @@ const Contact = () => {
     setError(false)
     setIsLoading(true)
 
-    axios(`${process.env.GATSBY_EMAIL_API_URL}`, {
-      method: "POST",
-      body: JSON.stringify(userCredentials),
-    })
+    axios
+      .post(
+        `${process.env.GATSBY_EMAIL_API_URL}`,
+        JSON.stringify(userCredentials)
+      )
       .then(response => {
         if (response.data.success) {
           setUserCredentials(initialState)

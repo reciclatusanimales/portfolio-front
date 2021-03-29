@@ -11,7 +11,7 @@ export const Side = styled.aside`
   display: grid;
   place-items: center;
   opacity: 0;
-  transition: var(--transition);
+  transition: all 0.5s linear;
   transform: translateX(-100%);
 
   ${({ isOpen }) =>
@@ -71,7 +71,7 @@ export const SidebarLinks = styled.ul`
             font-weight: bold;            
             transition: var(--transition);
             border-radius: 5px;
-            transition: background-size .4s ease;
+            transition: background-size .25s ease;
         }
 
         li a:hover {
@@ -81,19 +81,19 @@ export const SidebarLinks = styled.ul`
         }
 
         li:nth-of-type(1) {
-            animation-delay: 0.25s;
+            animation-delay: 0.3s;
         }
         li:nth-of-type(2) {
-            animation-delay: 0.5s;
+            animation-delay: 0.55s;
         }
         li:nth-of-type(3) {
-            animation-delay: 0.75s;
+            animation-delay: 0.8s;
         }
         li:nth-of-type(4) {
-            animation-delay: 1s;
+            animation-delay: 1.05s;
         }
         li:nth-of-type(5) {
-            animation-delay: 1.25s;
+            animation-delay: 1.30s;
         }
 
         @keyframes slideRight {
@@ -123,13 +123,13 @@ export const SidebarSocialIcons = styled.ul`
             animation: slideUp 0.5s ease-in-out 0.3s forwards;
         }
         li:nth-of-type(1) {
-            animation-delay: 0.33s;
+            animation-delay: 0.38s;
         }
         li:nth-of-type(2) {
-            animation-delay: 0.66s;
+            animation-delay: 0.71s;
         }
         li:nth-of-type(3) {
-            animation-delay: 1s;
+            animation-delay: 1.05s;
         }
         @keyframes slideUp {
             0% {
@@ -147,8 +147,8 @@ export const SidebarSocialIcons = styled.ul`
 export const SidebarSocialIcon = styled.a`
   font-size: 1.5rem;
   color: ${({ theme }) => theme.grey1};
-  -webkit-transition: var(--transition);
-  transition: var(--transition);
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
 
   &:hover {
     svg {
@@ -158,6 +158,6 @@ export const SidebarSocialIcon = styled.a`
   }
 
   svg {
-    transition: var(--transition);
+    transition: all 0.2s linear;
   }
 `

@@ -6,8 +6,9 @@ export const ThemeContext = createContext()
 const ThemeContextProvider = ({ children }) => {
   const { resume } = filesURL
 
-  const [theme, setTheme] = useState("light")
+  const [theme, setTheme] = useState(null)
   const [showSidebar, setShowSidebar] = useState(false)
+  const [firstLoad, setFirstLoad] = useState(true)
   const [resumeURL, setResumeURL] = useState(resume.light)
 
   const setMode = mode => {
@@ -38,6 +39,8 @@ const ThemeContextProvider = ({ children }) => {
 
   const values = {
     theme,
+    firstLoad,
+    setFirstLoad,
     toggleTheme,
     resumeURL,
     showSidebar,
