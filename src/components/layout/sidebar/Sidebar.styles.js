@@ -49,6 +49,26 @@ export const SidebarLinks = styled.ul`
         ${({ theme }) => theme.primary9} 0
       )
       center center/0% 75% no-repeat;
+    text-align: center;
+    text-transform: capitalize;
+    color: inherit;
+    letter-spacing: var(--spacing);
+    margin-bottom: 0.5rem;
+    font-size: 2rem;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-size 0.25s ease;
+  }
+
+  li {
+    display: flex;
+    justify-content: center;
+  }
+
+  li a:hover {
+    background: ${({ theme }) => theme.primary9};
+    color: ${({ theme }) => theme.primary5};
+    background-size: 100% 100%;
   }
 
   ${({ isOpen }) =>
@@ -57,29 +77,8 @@ export const SidebarLinks = styled.ul`
         li {            
             opacity: 0;
             animation: slideRight 0.5s ease-in-out 0.3s forwards;
-            display: flex;
-            justify-content: center;
         }
-        
-        li a {
-            text-align: center;
-            text-transform: capitalize;
-            color: inherit;
-            letter-spacing: var(--spacing);
-            margin-bottom: 0.5rem;
-            font-size: 2rem;
-            font-weight: bold;            
-            transition: var(--transition);
-            border-radius: 5px;
-            transition: background-size .25s ease;
-        }
-
-        li a:hover {
-            background: ${({ theme }) => theme.primary9};
-            color: ${({ theme }) => theme.primary5};
-            background-size: 100% 100%;
-        }
-
+            
         li:nth-of-type(1) {
             animation-delay: 0.3s;
         }

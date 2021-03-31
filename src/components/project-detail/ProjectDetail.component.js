@@ -121,7 +121,7 @@ const ProjectDetail = ({ project }) => {
 
           <ReactMarkdown
             renderers={renderers}
-            children={markdown}
+            children={content}
             allowDangerousHtml={true}
             escapeHtml={false}
           />
