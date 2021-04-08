@@ -31,6 +31,7 @@ const Project = ({
   thumbnail,
   thumbnailUrl,
   index,
+  ...props
 }) => {
   const data = useStaticQuery(graphql`
     query {
@@ -54,7 +55,7 @@ const Project = ({
   )
 
   return (
-    <Container>
+    <Container {...props}>
       <TitleContainer>
         <Title to={`/projects/${id}`} key={id}>
           {title}

@@ -65,45 +65,45 @@ export const SidebarLinks = styled.ul`
     justify-content: center;
   }
 
-  li a:hover {
-    background: ${({ theme }) => theme.primary9};
-    color: ${({ theme }) => theme.primary5};
-    background-size: 100% 100%;
-  }
-
   ${({ isOpen }) =>
     isOpen &&
     `
         li {            
-            opacity: 0;
-            animation: slideRight 0.5s ease-in-out 0.3s forwards;
+          opacity: 0;
+          animation: slideRight 0.5s ease-in-out 0.3s forwards;
+        }
+
+        li a:hover {
+          background: ${({ theme }) => theme.primary9};
+          color: ${({ theme }) => theme.primary5};
+          background-size: 100% 100%;
         }
             
         li:nth-of-type(1) {
-            animation-delay: 0.3s;
+          animation-delay: 0.3s;
         }
         li:nth-of-type(2) {
-            animation-delay: 0.55s;
+          animation-delay: 0.55s;
         }
         li:nth-of-type(3) {
-            animation-delay: 0.8s;
+          animation-delay: 0.8s;
         }
         li:nth-of-type(4) {
-            animation-delay: 1.05s;
+          animation-delay: 1.05s;
         }
         li:nth-of-type(5) {
-            animation-delay: 1.30s;
+          animation-delay: 1.30s;
         }
 
         @keyframes slideRight {
-            0% {
-                transform: translateX(-200px);
-                opacity: 0;
-            }
-            100% {
-                transform: translateX(0);
-                opacity: 1;
-            }
+          0% {
+            transform: translateX(-200px);
+            opacity: 0;
+          }
+          100% {
+            transform: translateX(0);
+            opacity: 1;
+          }
         }
     `}
 `

@@ -11,13 +11,13 @@ import {
 
 const Services = ({ stacks }) => {
   return (
-    <ServicesSection>
+    <ServicesSection className="scroll-container">
       <ServicesCenter>
         {services.map(service => {
-          const { id, icon, title } = service
+          const { id, icon, title, className } = service
 
           return (
-            <Service key={id}>
+            <Service key={id} className={className}>
               {icon}
               <h4>{title}</h4>
               <Underline />

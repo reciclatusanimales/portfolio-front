@@ -9,11 +9,24 @@ import Button from "../layout/button/Button.component"
 
 const Projects = ({ projects, title, showLink }) => {
   return (
-    <ProjectsContainer>
-      <Title title="Proyectos" />
+    <ProjectsContainer className="scroll-container">
+      <Title title="Proyectos" className="fade-in-auto" />
       <SectionCenter>
         {projects.map((project, index) => {
-          return <Project key={project.id} index={index} {...project} />
+          return (
+            <Project
+              key={project.id}
+              index={index}
+              {...project}
+              className={`${
+                index === 0
+                  ? "slide-in-left-auto"
+                  : index % 2 === 0
+                  ? "scroll-element js-scroll slide-left"
+                  : "scroll-element js-scroll slide-right"
+              }`}
+            />
+          )
         })}
       </SectionCenter>
       {showLink && <Button to="/projects">proyectos</Button>}

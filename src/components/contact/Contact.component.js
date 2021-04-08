@@ -64,11 +64,15 @@ const Contact = () => {
   }
 
   return (
-    <ContactSection>
-      <Title title="Contacto" />
+    <ContactSection className="scroll-container">
+      <Title title="Contacto" className="scroll-element js-scroll fade-in" />
 
       <FormContainer>
-        <form onSubmit={handleSubmit} noValidate>
+        <form
+          onSubmit={handleSubmit}
+          noValidate
+          className="scroll-element js-scroll fade-in"
+        >
           <FormGroup>
             <FormInput
               name="name"

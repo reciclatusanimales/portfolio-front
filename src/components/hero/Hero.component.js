@@ -45,7 +45,7 @@ const Hero = () => {
     <Header>
       <Center>
         <Info>
-          <Title>
+          <Title className="slide-in-left-auto">
             <Underline style={{ marginLeft: 0 }} />
             <h1>Daniel Reyes Veas</h1>
             <h4>Programador Fullstack</h4>
@@ -57,7 +57,7 @@ const Hero = () => {
             </Button>
           </Title>
         </Info>
-        <Img>
+        <Img className="slide-in-right-auto">
           <Photo fluid={fluid} />
         </Img>
       </Center>

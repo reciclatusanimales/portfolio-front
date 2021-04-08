@@ -30,12 +30,12 @@ const About = () => {
   } = useStaticQuery(query)
 
   return (
-    <Section>
+    <Section className="scroll-container">
       <AboutCenter>
-        <AboutImg>
+        <AboutImg className="scroll-element js-scroll fade-in-bottom">
           <AboutPhoto fluid={fluid} />
         </AboutImg>
-        <AboutInfo>
+        <AboutInfo className="scroll-element js-scroll slide-right">
           <AboutTitle>
             <h2>Sobre mí</h2>
             <Underline style={{ marginLeft: 0 }} />

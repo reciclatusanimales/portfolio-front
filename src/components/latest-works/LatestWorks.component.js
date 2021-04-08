@@ -24,8 +24,8 @@ import {
 
 const LatestWorksCopy = ({ projects }) => {
   return (
-    <SectionContainer>
-      <SectionTitle>
+    <SectionContainer className="scroll-container">
+      <SectionTitle className="scroll-element js-scroll fade-in">
         <MainTitle title="Proyectos" />
         <Text>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt sed
@@ -40,7 +40,9 @@ const LatestWorksCopy = ({ projects }) => {
             <Work
               key={index}
               href={project.url}
-              className={`work-${index + 1}`}
+              className={`work-${index + 1} scroll-element js-scroll slide-${
+                index % 2 === 0 ? "left" : "right"
+              }`}
               target="_blank"
               rel="noreferrer"
             >
@@ -81,7 +83,9 @@ const LatestWorksCopy = ({ projects }) => {
         })}
       </ContainerCenter>
 
-      <Button to={`/projects`}>ver todos</Button>
+      <Button className="scroll-element js-scroll fade-in" to={`/projects`}>
+        ver todos
+      </Button>
     </SectionContainer>
   )
 }

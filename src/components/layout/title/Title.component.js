@@ -2,9 +2,9 @@ import React from "react"
 
 import { TitleContainer, Underline } from "./Title.styles"
 
-const Title = ({ title }) => {
+const Title = ({ title, ...props }) => {
   return (
-    <TitleContainer>
+    <TitleContainer {...props}>
       <h2>{title || "Título"}</h2>
       <Underline />
     </TitleContainer>
