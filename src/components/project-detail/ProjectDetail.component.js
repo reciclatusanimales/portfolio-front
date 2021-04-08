@@ -126,7 +126,9 @@ const ProjectDetail = ({ project }) => {
             escapeHtml={false}
           />
         </article>
-        <Button to="/projects">proyectos</Button>
+        <Button to="/projects" aria-label="Proyectos">
+          proyectos
+        </Button>
       </SectionCenter>
     </ProjectTemplate>
   )

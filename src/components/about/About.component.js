@@ -13,7 +13,7 @@ import { FadeInBottom, FadeInRight } from "../layout/scroll/Scroll.styles"
 
 const query = graphql`
   {
-    file(relativePath: { eq: "about-img.jpeg" }) {
+    file(relativePath: { eq: "about-img.webp" }) {
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid
@@ -59,7 +59,7 @@ const About = () => {
               profesionales más complejos y diversos.
             </p>
             <p>
-              Comencé programando en PHP y Javascript y luego utilizando los
+              Comencé programando en PHP y Javascript, y luego utilizando los
               frameworks Laravel y AngularJS. Con bases de datos MySql, SQL
               Server y PostgreSQL. Actualmente, me encuentro desarrollando en
               Python, con Django y en JS con Expres.js para construir _backend_,

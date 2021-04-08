@@ -3,8 +3,9 @@ module.exports = {
     title: "Reciclatusanimales",
     description: "Portafolio de Daniel Reyes Veas",
     author: "Daniel Reyes Veas",
-    image: "/hero-img.jpeg",
+    image: "/hero-img.webp",
     siteUrl: "https://reciclatusanimales.com",
+    startUrl: "https://reciclatusanimales.com",
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -38,10 +39,15 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-fonts`,
+      resolve: `@slixites/gatsby-plugin-google-fonts`,
       options: {
         fonts: [`Bitter`, `source sans pro\:300,400,400i,700`],
         display: "swap",
+        preconnect: true,
+        attributes: {
+          rel: "stylesheet preload prefetch",
+          as: "style",
+        },
       },
     },
     `gatsby-plugin-emotion`,

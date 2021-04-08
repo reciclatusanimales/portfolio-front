@@ -6,6 +6,7 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "@emotion/core": "^10.0.28",
+    "@slixites/gatsby-plugin-google-fonts": "^1.1.1",
     "axios": "^0.21.1",
     "babel-plugin-styled-components": "^1.10.7",
     "gatsby": "^2.32.8",

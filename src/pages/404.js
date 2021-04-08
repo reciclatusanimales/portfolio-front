@@ -17,7 +17,9 @@ const NotFoundPage = () => (
         <h2>La página que buscas no existe.</h2>
         <p>
           {`Cómo has llegado aquí es todo un misterio.... Pincha para volver a tierra firme.`}
-          <Button to="/">Volver</Button>
+          <Button to="/" aria-label="Volver">
+            Volver
+          </Button>
         </p>
       </div>
     </NotFound>

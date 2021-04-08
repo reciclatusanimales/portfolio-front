@@ -44,7 +44,12 @@ const Navbar = () => {
       <NavCenter>
         <NavHeader>
           {showTheme && <ThemeSwitch />}
-          <NavBtn type="button" id="nav-btn" onClick={toggleSidebar}>
+          <NavBtn
+            type="button"
+            id="nav-btn"
+            onClick={toggleSidebar}
+            aria-label="Menú Lateral"
+          >
             <FaAlignJustify></FaAlignJustify>
           </NavBtn>
         </NavHeader>
