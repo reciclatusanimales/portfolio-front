@@ -15,13 +15,6 @@ const Scroll = ({ scroll, children }) => {
     )
   }
 
-  const elementOutofView = el => {
-    const elementTop = el.getBoundingClientRect().top
-    return (
-      elementTop > (window.innerHeight || document.documentElement.clientHeight)
-    )
-  }
-
   useEffect(() => {
     const el = containerRef.current
     setScrolled(elementInView(el, 1.25))

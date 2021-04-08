@@ -13,7 +13,7 @@ import { FadeInBottom, FadeInRight } from "../layout/scroll/Scroll.styles"
 
 const query = graphql`
   {
-    file(relativePath: { eq: "about-img.jpeg" }) {
+    file(relativePath: { eq: "about-img.webp" }) {
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid

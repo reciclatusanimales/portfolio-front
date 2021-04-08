@@ -11,7 +11,7 @@ import ThemeContext from "../../context/ThemeContext"
 
 const query = graphql`
   {
-    file(relativePath: { eq: "hero-img.jpeg" }) {
+    file(relativePath: { eq: "hero-img.webp" }) {
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid
@@ -52,7 +52,12 @@ const Hero = () => {
 
             <Typewriter text={text} />
 
-            <Button to={resumeURL} target="_blank" link>
+            <Button
+              to={resumeURL}
+              target="_blank"
+              link
+              aria-label="Descargar CV"
+            >
               cv
             </Button>
           </Title>

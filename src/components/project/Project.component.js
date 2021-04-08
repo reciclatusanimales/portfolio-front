@@ -82,7 +82,9 @@ const Project = ({
       <Content>
         <Description dangerouslySetInnerHTML={{ __html: description }} />
         <BtnContainer>
-          <Button to={`/projects/${id}`}>Detalles</Button>
+          <Button to={`/projects/${id}`} aria-label="Proyectos">
+            Detalles
+          </Button>
         </BtnContainer>
       </Content>
     </Container>

@@ -55,7 +55,9 @@ const ProjectsPage = ({
 
         <Scroll scroll={scroll}>
           <FadeInBottom>
-            <Button to="/projects">proyectos</Button>
+            <Button to="/projects" aria-label="Proyectos">
+              proyectos
+            </Button>
           </FadeInBottom>
         </Scroll>
       </ProjectsContainer>

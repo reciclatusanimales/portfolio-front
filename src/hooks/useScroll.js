@@ -1,16 +1,18 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 
 let throttleTimer = false
+let handler = null
 
 export default function useScroll() {
   const [scroll, setScroll] = useState(0)
+  const timer = useRef(null)
 
   const throttle = (callback, time) => {
     if (throttleTimer) return
 
     throttleTimer = true
 
-    setTimeout(() => {
+    timer.current = setTimeout(() => {
       callback()
       throttleTimer = false
     }, time)
@@ -22,18 +24,17 @@ export default function useScroll() {
   }
 
   useEffect(() => {
-    window.addEventListener(
-      "scroll",
-      () => {
-        throttle(handleScroll, 250)
-      },
-      {
-        passive: true,
-      }
-    )
+    const handler = () => {
+      throttle(handleScroll, 250)
+    }
+
+    window.addEventListener("scroll", handler, {
+      passive: true,
+    })
 
     return () => {
-      window.removeEventListener("scroll", handleScroll)
+      if (timer.current) clearTimeout(timer.current)
+      window.removeEventListener("scroll", handler)
     }
     // eslint-disable-next-line
   }, [])

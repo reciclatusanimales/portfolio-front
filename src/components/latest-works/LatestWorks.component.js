@@ -46,7 +46,7 @@ const LatestWorksCopy = ({ projects }) => {
         {projects.slice(0, 4).map((project, index) => {
           const projectComp = (
             <Work href={project.url} target="_blank" rel="noreferrer">
-              <Img src={project.imageUrl} />
+              <Img src={project.imageUrl} alt={project.title} />
               <Content>
                 <TitleContainer>
                   <Title to={`/projects/${project.id}`}>{project.title}</Title>
@@ -97,7 +97,9 @@ const LatestWorksCopy = ({ projects }) => {
       </ContainerCenter>
 
       <FadeInBottom>
-        <Button to={`/projects`}>ver todos</Button>
+        <Button to={`/projects`} aria-label="Ver Todos">
+          ver todos
+        </Button>
       </FadeInBottom>
     </SectionContainer>
   )
