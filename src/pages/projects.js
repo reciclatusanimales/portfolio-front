@@ -12,12 +12,10 @@ import {
 } from "../components/layout/layout/Layout.styles"
 import {
   FadeIn,
-  FadeInBottom,
   FadeInLeft,
   FadeInRight,
 } from "../components/layout/scroll/Scroll.styles"
 import Project from "../components/project/Project.component"
-import Button from "../components/layout/button/Button.component"
 import Title from "../components/layout/title/Title.component"
 
 const ProjectsPage = ({
@@ -52,14 +50,6 @@ const ProjectsPage = ({
             )
           })}
         </SectionCenter>
-
-        <Scroll scroll={scroll}>
-          <FadeInBottom>
-            <Button to="/projects" aria-label="Proyectos">
-              proyectos
-            </Button>
-          </FadeInBottom>
-        </Scroll>
       </ProjectsContainer>
     </Layout>
   )

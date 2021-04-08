@@ -35,10 +35,8 @@ const LatestWorksCopy = ({ projects }) => {
         <SectionTitle>
           <MainTitle title="Proyectos" />
           <Text>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt
-            sed reiciendis quis provident vero cum accusamus illum perferendis
-            debitis, alias porro? Incidunt, veniam? Dicta adipisci accusamus
-            officia temporibus inventore a.
+            Estos son algunos proyectos en los que he estado trabajando
+            recientemente.
           </Text>
         </SectionTitle>
       </FadeIn>
