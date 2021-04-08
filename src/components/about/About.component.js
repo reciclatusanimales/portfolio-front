@@ -54,13 +54,17 @@ const About = () => {
               trabajado en distintas empresas, en las que he tenido la
               oportunidad de adquirir nuevos conocimientos y ponerlos en
               práctica desarrollando aplicaciones del mundo real. Asimismo, he
-              integrado equipos de desarrollo de proyectos, lo que me ha
-              permitido
+              integrado equipos de desarrollo de distintos tipos de proyectos,
+              lo que me ha permitido desenvolverme en procesos y grupos de
+              profesionales más complejos y diversos.
             </p>
             <p>
-              Comencé programando en PHP y Javascript, ...y luego utilizando los
+              Comencé programando en PHP y Javascript y luego utilizando los
               frameworks Laravel y AngularJS. Con bases de datos MySql, SQL
-              Server y
+              Server y PostgreSQL. Actualmente, me encuentro desarrollando en
+              Python, con Django y en JS con Expres.js para construir _backend_,
+              mientras que para el _front_ me he inclinado por ReactJS, con
+              Next.js, GatsbyJS, Redux y recientemente con React Native.
             </p>
           </AboutInfo>
         </FadeInRight>

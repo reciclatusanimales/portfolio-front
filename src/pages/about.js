@@ -20,10 +20,6 @@ import {
 } from "../components/layout/layout/Layout.styles"
 
 const About = () => {
-  const title = "Sobre mí"
-  const info =
-    "Franzen af pitchfork, mumblecore try-hard kogi XOXO roof party la croix cardigan neutra retro tattooed copper mug. Meditation lomo biodiesel scenester cred actually godard PBR&B. Fam VHS enamel pin try-hard echo park raw denim unicorn fanny pack vape authentic."
-
   const {
     api: { allStacks: stacks },
   } = useStaticQuery(query)
@@ -36,15 +32,21 @@ const About = () => {
           <AboutVideoContainer>
             <AboutVideo preload="auto" poster={poster} loop autoPlay muted>
               <source src={video} type="video/mp4" />
-              Your browser does not support HTML5 video.
+              Tu navegador no soporta video HTML5.
             </AboutVideo>
           </AboutVideoContainer>
           <AboutText>
             <AboutTitle>
-              <h2>{title}</h2>
+              <h2>Sobre mí</h2>
               <Underline style={{ marginLeft: 0 }} />
             </AboutTitle>
-            <AboutInfo>{info}</AboutInfo>
+            <AboutInfo>
+              Lo que más me gusta del mundo de la programación es lo vasto que
+              puede llegar a ser. <br />
+              Vengo del mundo de la música, donde tampoco existen limitaciones
+              para poder crear libremente, y eso representa para mí la mayor
+              motivación al momento de ponerme a escribir código.
+            </AboutInfo>
             <AboutStack>
               {stacks.map(item => (
                 <AboutStackImg
