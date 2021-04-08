@@ -8,31 +8,34 @@ import {
   Stack,
   StackImg,
 } from "./Services.styles"
+import { FadeIn } from "../layout/scroll/Scroll.styles"
 
 const Services = ({ stacks }) => {
   return (
-    <ServicesSection className="scroll-container">
+    <ServicesSection>
       <ServicesCenter>
         {services.map(service => {
-          const { id, icon, title, className } = service
+          const { id, icon, title } = service
 
           return (
-            <Service key={id} className={className}>
-              {icon}
-              <h4>{title}</h4>
-              <Underline />
-              <Stack>
-                {stacks
-                  .filter(stack => stack.category === id)
-                  .map(stack => (
-                    <StackImg
-                      src={stack.image}
-                      key={stack.slug}
-                      alt={stack.name}
-                    />
-                  ))}
-              </Stack>
-            </Service>
+            <FadeIn key={id}>
+              <Service>
+                {icon}
+                <h4>{title}</h4>
+                <Underline />
+                <Stack>
+                  {stacks
+                    .filter(stack => stack.category === id)
+                    .map(stack => (
+                      <StackImg
+                        src={stack.image}
+                        key={stack.slug}
+                        alt={stack.name}
+                      />
+                    ))}
+                </Stack>
+              </Service>
+            </FadeIn>
           )
         })}
       </ServicesCenter>

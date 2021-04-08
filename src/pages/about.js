@@ -31,7 +31,7 @@ const About = () => {
   return (
     <Layout>
       <SEO title="Sobre mí" description="about webdev" />
-      <AboutSection className="fade-in-auto">
+      <AboutSection>
         <AboutCenter>
           <AboutVideoContainer>
             <AboutVideo preload="auto" poster={poster} loop autoPlay muted>

@@ -2,6 +2,12 @@ import React from "react"
 
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa"
 import Button from "../layout/button/Button.component"
+import {
+  FadeIn,
+  FadeInBottom,
+  FadeInLeft,
+  FadeInRight,
+} from "../layout/scroll/Scroll.styles"
 import MainTitle from "../layout/title/Title.component"
 import {
   SectionContainer,
@@ -24,28 +30,22 @@ import {
 
 const LatestWorksCopy = ({ projects }) => {
   return (
-    <SectionContainer className="scroll-container">
-      <SectionTitle className="scroll-element js-scroll fade-in">
-        <MainTitle title="Proyectos" />
-        <Text>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt sed
-          reiciendis quis provident vero cum accusamus illum perferendis
-          debitis, alias porro? Incidunt, veniam? Dicta adipisci accusamus
-          officia temporibus inventore a.
-        </Text>
-      </SectionTitle>
+    <SectionContainer>
+      <FadeIn>
+        <SectionTitle>
+          <MainTitle title="Proyectos" />
+          <Text>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt
+            sed reiciendis quis provident vero cum accusamus illum perferendis
+            debitis, alias porro? Incidunt, veniam? Dicta adipisci accusamus
+            officia temporibus inventore a.
+          </Text>
+        </SectionTitle>
+      </FadeIn>
       <ContainerCenter>
         {projects.slice(0, 4).map((project, index) => {
-          return (
-            <Work
-              key={index}
-              href={project.url}
-              className={`work-${index + 1} scroll-element js-scroll slide-${
-                index % 2 === 0 ? "left" : "right"
-              }`}
-              target="_blank"
-              rel="noreferrer"
-            >
+          const projectComp = (
+            <Work href={project.url} target="_blank" rel="noreferrer">
               <Img src={project.imageUrl} />
               <Content>
                 <TitleContainer>
@@ -80,12 +80,25 @@ const LatestWorksCopy = ({ projects }) => {
               </Content>
             </Work>
           )
+          return index % 2 === 0 ? (
+            <FadeInLeft
+              key={index}
+              className={`work-${index + 1}`}
+              children={projectComp}
+            />
+          ) : (
+            <FadeInRight
+              key={index}
+              className={`work-${index + 1}`}
+              children={projectComp}
+            />
+          )
         })}
       </ContainerCenter>
 
-      <Button className="scroll-element js-scroll fade-in" to={`/projects`}>
-        ver todos
-      </Button>
+      <FadeInBottom>
+        <Button to={`/projects`}>ver todos</Button>
+      </FadeInBottom>
     </SectionContainer>
   )
 }

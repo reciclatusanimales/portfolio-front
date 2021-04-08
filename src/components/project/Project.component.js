@@ -55,7 +55,7 @@ const Project = ({
   )
 
   return (
-    <Container {...props}>
+    <Container index={index}>
       <TitleContainer>
         <Title to={`/projects/${id}`} key={id}>
           {title}

@@ -103,15 +103,19 @@ export const LayoutStyles = createGlobalStyle`
     }
 
     .slide-in-left-auto {
-      animation: slide-in-left 1s ease-in-out both;
+      animation: slide-in-left .75s ease-in-out both;
     }
 
     .slide-in-right-auto {
-      animation: slide-in-right 1s ease-in-out both;
+      animation: slide-in-right .75s ease-in-out both;
     }
 
     .fade-in-auto {
-      animation: fade-in 1s ease-in-out both;
+      animation: fade-in .75s ease-in-out both;
+    }
+    
+    .fade-in-bottom-auto {
+      animation: fade-in-bottom .75s ease-in-out both;
     }
 
     .js-scroll {
@@ -124,19 +128,19 @@ export const LayoutStyles = createGlobalStyle`
     }
 
     .scrolled.fade-in {
-      animation: fade-in 1s ease-in-out both;
+      animation: fade-in .75s ease-in-out both;
     }
 
     .scrolled.fade-in-bottom {
-      animation: fade-in-bottom 1s ease-in-out both;
+      animation: fade-in-bottom .75s ease-in-out both;
     }
 
     .scrolled.slide-left {
-      animation: slide-in-left 1s ease-in-out both;
+      animation: slide-in-left .75s ease-in-out both;
     }
 
     .scrolled.slide-right {
-      animation: slide-in-right 1s ease-in-out both;
+      animation: slide-in-right .75s ease-in-out both;
     }
 
     /* ----------------------------------------------
@@ -286,6 +290,11 @@ export const SectionCenter = styled.div`
   }
 `
 
+export const ProjectsContainer = styled.section`
+  padding: 5rem 0;
+  background: ${({ theme }) => theme.grey10};
+`
+
 export const Underline = styled.div`
   width: 5rem;
   height: 0.25rem;
@@ -357,6 +366,7 @@ export const AboutVideoContainer = styled.div`
   height: 20rem;
   overflow: hidden;
   position: relative;
+  animation: slide-in-left 0.75s ease-in-out both;
 
   @media screen and (min-width: 576px) {
     margin-bottom: 3rem;
@@ -438,11 +448,13 @@ export const AboutText = styled.article`
 export const AboutTitle = styled.div`
   text-align: left;
   margin-bottom: 1rem;
+  animation: slide-in-right 0.75s ease-in-out both;
 `
 
 export const AboutInfo = styled.p`
   line-height: 2;
   margin-bottom: 2rem;
+  animation: slide-in-right 0.75s ease-in-out both;
 `
 
 export const AboutStackImg = styled.img`
@@ -451,6 +463,7 @@ export const AboutStackImg = styled.img`
   margin: 5px;
   display: flex;
   align-items: center;
+  animation: fade-in-bottom 0.75s ease-in-out both;
 `
 
 export const AboutStack = styled.div`

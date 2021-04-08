@@ -37,6 +37,7 @@ export const Center = styled.div`
 `
 
 export const Info = styled.article`
+  animation: slide-in-left 1s ease-in-out both;
   h4 {
     color: ${({ theme }) => theme.grey5};
   }
@@ -69,6 +70,7 @@ export const Img = styled.article`
       top: 2rem;
       right: -2rem;
       border-radius: var(--radius);
+      animation: slide-in-right 1s ease-in-out both;
     }
   }
 `
@@ -80,4 +82,5 @@ export const Photo = styled(Image)`
   object-fit: cover;
   border-radius: var(--radius);
   position: relative;
+  animation: fade-in-bottom 1s ease-in-out both;
 `

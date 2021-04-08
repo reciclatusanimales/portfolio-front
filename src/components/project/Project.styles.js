@@ -30,15 +30,16 @@ export const Container = styled.section`
       box-shadow: var(--dark-shadow);
     }
 
-    &:nth-of-type(even) {
-      grid-template-areas: "title . title3" "content img img" ". img img";
+    ${({ index }) =>
+      index % 2 === 0 &&
+      `   
+        grid-template-areas: "title . title3" "content img img" ". img img";
 
-      &:after {
-        grid-column: 1 / 3;
-        grid-row: 1 / 3;
-      }
-    }
-  }
+        &:after {
+          grid-column: 1 / 3;
+          grid-row: 1 / 3;
+        }
+    `}
 `
 
 export const TitleContainer = styled.div`

@@ -13,6 +13,7 @@ import {
   Submit,
 } from "./Contact.styles"
 import Title from "../layout/title/Title.component"
+import { FadeInLeft, FadeInRight } from "../layout/scroll/Scroll.styles"
 
 const initialState = {
   name: "",
@@ -64,62 +65,62 @@ const Contact = () => {
   }
 
   return (
-    <ContactSection className="scroll-container">
-      <Title title="Contacto" className="scroll-element js-scroll fade-in" />
+    <ContactSection>
+      <FadeInRight>
+        <Title title="Contacto" />
+      </FadeInRight>
 
-      <FormContainer>
-        <form
-          onSubmit={handleSubmit}
-          noValidate
-          className="scroll-element js-scroll fade-in"
-        >
-          <FormGroup>
-            <FormInput
-              name="name"
-              type="name"
-              handleChange={handleChange}
-              value={name}
-              label="nombre"
-              required
-            />
-            <FormInput
-              name="email"
-              type="email"
-              handleChange={handleChange}
-              value={email}
-              label="email"
-              required
-            />
-            <FormInput
-              name="subject"
-              type="text"
-              handleChange={handleChange}
-              value={subject}
-              label="asunto"
-              required
-            />
-            <FormTextarea
-              name="content"
-              handleChange={handleChange}
-              rows="5"
-              value={content}
-              label="mensaje"
-              required
-            />
-          </FormGroup>
-          <FormGroup>
-            <SuccessMessage>
-              {showMessage &&
-                "💾 Tu mensaje ha sido enviado, muy pronto te responderé."}
-            </SuccessMessage>
-            <ErrorMessage error>{error}</ErrorMessage>
+      <FadeInLeft>
+        <FormContainer>
+          <form onSubmit={handleSubmit} noValidate>
+            <FormGroup>
+              <FormInput
+                name="name"
+                type="name"
+                handleChange={handleChange}
+                value={name}
+                label="nombre"
+                required
+              />
+              <FormInput
+                name="email"
+                type="email"
+                handleChange={handleChange}
+                value={email}
+                label="email"
+                required
+              />
+              <FormInput
+                name="subject"
+                type="text"
+                handleChange={handleChange}
+                value={subject}
+                label="asunto"
+                required
+              />
+              <FormTextarea
+                name="content"
+                handleChange={handleChange}
+                rows="5"
+                value={content}
+                label="mensaje"
+                required
+              />
+            </FormGroup>
+            <FormGroup>
+              <SuccessMessage>
+                {showMessage &&
+                  "💾 Tu mensaje ha sido enviado, muy pronto te responderé."}
+              </SuccessMessage>
+              <ErrorMessage error>{error}</ErrorMessage>
 
-            <Submit type="submit" isLoading={isLoading}>
-              {isLoading ? <Spinner /> : "enviar"}
-            </Submit>
-          </FormGroup>
-        </form>
-      </FormContainer>
+              <Submit type="submit" isLoading={isLoading}>
+                {isLoading ? <Spinner /> : "enviar"}
+              </Submit>
+            </FormGroup>
+          </form>
+        </FormContainer>
+      </FadeInLeft>
     </ContactSection>
   )
 }
