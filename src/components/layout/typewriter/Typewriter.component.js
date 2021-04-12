@@ -32,7 +32,6 @@ function typeWriter(ar) {
     }
   } else {
     if (element.textContent.length > 0) {
-      element.classList.add("cursor")
       element.textContent = element.textContent.substring(
         0,
         element.textContent.length - 1

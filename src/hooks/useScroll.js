@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react"
 
 let throttleTimer = false
-let handler = null
 
 export default function useScroll() {
   const [scroll, setScroll] = useState(0)

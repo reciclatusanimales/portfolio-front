@@ -10,71 +10,124 @@ import { monokaiSublime } from "react-syntax-highlighter/dist/esm/styles/hljs"
 const ProjectDetail = ({ project }) => {
   const { title, stack, content } = project
   const markdown = `
+  El último proyecto, aunque en realidad es el más importante, es el servidor que alberga a todas las aplicaciones de [reciclatusanimales.com](https://reciclatusanimales.com).
 
-  🔗[https://cuenteros.reciclatusanimales.com](https://cuenteros.reciclatusanimales.com)
   <br />
-  💾[https://github.com/reciclatusanimales/cuenteros](https://github.com/reciclatusanimales/cuenteros)
 
-  [Cuenteros](https://cuenteros.reciclatusanimales.com) es una comindad literaria desarrollada con __Django__, __Javascript__ y __PostgreSQL__.
-  
-  ![Image](https://resources.reciclatusanimales.com/image/cuenteros-post.png)  
+  ![Image](https://resources.reciclatusanimales.com/image/server.png)
 
-  Comenzó como un blog para la publicación de cuentos, relatos y pequeñas historias del ámbito literario, pero de a poco fue creciendo incorporando más funcionaliades. Desde las publicaciones y sus respectivos comentarios y respuestas, hasta los likes, marcadores, mensajes entre usuarios y posteriores notificaciones y chat en tiempo ~~casi~~ real.
-  
-  ![Image](https://resources.reciclatusanimales.com/image/cuenteros.png)
-  
-  El chat, en realidad, no utiliza ningún _socket_ de __Javascript__ o _channel_ de __Django__. No funciona en tiempo real. Solo simula hacerlo.
+  Es un servidor VPS con SO Centos 7 con IP 107.6.142.229.
+  Los servicios que están corriendo en él son NGINX, Gunicorn, PostgreSQL, PM2, entre otros.
+
+  ~~~python
+    from django.utils.deprecation import MiddlewareMixin
+    from django.core.exceptions import PermissionDenied
+    from .models import ApiKey
+    from django.urls import reverse
+
+    class AuthMiddleware(MiddlewareMixin):
+
+      def __init__(self, get_response):
+          self.get_response = get_response
+
+      def process_request(self, request):
+              if(request.path.startswith(reverse('admin:index')) or request.path == reverse('home')):
+                  return None
+                  
+              api_key = request.headers.get('Api-Key')
+              
+              try:
+                  key = ApiKey.objects.get(key=api_key)
+                  return None
+              except ApiKey.DoesNotExist:
+                  raise PermissionDenied("Acceso restringido.")
+
+  ~~~
   <br />
-  Y lo hace a través de __AJAX__, realizando una solicitud al servidor cada 2.5 segundos en busca de cambios en el estado del hilo de mensajes.
-  
-  ~~~javascript    
-    function checkUpdates() {		
-      const thread_id = document.getElementById('send').getAttribute('data-thread-id')
-      const last_update = document.getElementById("last-update").value
 
-      fetch(check_updates_url, {
-        credentials: 'include',
-        method: 'POST',
-        headers: {
-          "X-CSRFToken": getCookie("csrftoken"),
-          "Accept": "application/json",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          "thread_id": Number(thread_id), 
-          "last_update": last_update
-        })
-      }).then(
-        response => response.json()
-      ).then(function(data) {
-        if(data.update_list){
-          updateHtml("chat-list", data.html_list)
-          addEvents()
-        }
-        if(data.update){         
-          updateHtml("chat-detail", data.html)
-          ScrollBottomInThread()
-        }
-      })            
-    }
+  Luego, si las validaciones son franqueadas se crea la instancia del correo en la cola y con la función \`\`\`run_queue()\`\`\` se hace correr la cola.
+
+  ~~~python
+    def send_email(request):
+  
+      ...
+      
+      email_queue = EmailQueue.objects.create(
+        template=template, 
+        email_from=email_from, 
+        email_name=email_name, 
+        email_to=email_to, 
+        subject=subject, 
+        content=content,
+        params=params
+      )
+
+      email_queue.save()
+
+      json_response['success'] = True
+
+      run_queue()
+
+      return api_response(json_response)
+
   ~~~
 
-  Esta función se encarga de consultar por actualizaciones, además de agregar los respectivos _listeners_ a los nuevos elementos creados en el __DOM__.
-
-  \`\`\`setInterval(checkUpdates, 3000)\`\`\`
-
-  
-  ![Image](https://resources.reciclatusanimales.com/gif/cuenteros-xhr.gif)
-  
   <br />
 
-  Una vez que que la respuesta devuelva el booleano \`\`\`update: true\`\`\`, el contenido __HTML__ de la conversación será actualizado, agregando los nuevos mensajes recibidos.
+  Además, el modelo \`\`\`EmailQueue\`\`\` posee un signal que comprueba cada vez que se genera un correo que la plantilla de este tenga una respuesta automática, y de ser así ingresa un nuevo correo a la cola.
+
+  ~~~python
+    
+    import logging
+
+    from django.dispatch import receiver
+    from django.db.models.signals import post_save
+    from core.models import EmailQueue, Template
+    from .constants import default_sender
+
+    logger = logging.getLogger('django')
+
+    @receiver(post_save, sender=EmailQueue)
+    def create_response_email(sender, instance, created, **kwargs):
+      if(created):
+        if(instance.template.response):
+          email_queue = EmailQueue.objects.create(
+            template=instance.template.response, 
+            email_from=default_sender, 
+            email_name=instance.email_name, 
+            email_to=instance.email_from, 
+            subject=instance.template.response.subject, 
+            params=instance.params, 
+            content=''
+          )
+
+          email_queue.save()
+  ~~~
 
   <br />
 
-  ![Image](https://resources.reciclatusanimales.com/gif/cuenteros-chat.gif)
+  Y al volver a crear una instancia \`\`\`EmailQueue\`\`\`, se hace correr nuevamente la cola:
+  <br />
 
+  ![Image](https://resources.reciclatusanimales.com/gif/email-service.gif)
 
+  <br />
+
+  Finalmente y debido a que se necesita correr el comando \`\`\`manage.py process_tasks\`\`\` para la ejecución automática de la cola, el servidor tiene implementado un servicio de inicio automático para esta tarea:  
+
+  ~~~bash
+    [Unit]
+    Description=Email_sender
+
+    [Service]
+    Type=simple
+    WorkingDirectory=/your_working_directory/
+    ExecStart=/your_virtualenv_directory/bin/python /your_working_directory/manage.py process_tasks
+
+    [Install]
+    WantedBy=multi-user.target
+  ~~~
+  
   `
 
   const renderers = {

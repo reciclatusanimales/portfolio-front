@@ -40,6 +40,7 @@ export const Container = styled.section`
           grid-row: 1 / 3;
         }
     `}
+  }
 `
 
 export const TitleContainer = styled.div`

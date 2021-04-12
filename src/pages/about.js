@@ -41,11 +41,18 @@ const About = () => {
               <Underline style={{ marginLeft: 0 }} />
             </AboutTitle>
             <AboutInfo>
-              Lo que más me gusta del mundo de la programación es lo vasto que
+              Comencé programando en PHP y Javascript, y luego utilizando los
+              frameworks Laravel y AngularJS. Con bases de datos MySql, SQL
+              Server y PostgreSQL. <br />
+              Actualmente, me encuentro desarrollando en Python, con Django y en
+              JS con Expres.js para construir _backends_, mientras que para el
+              _front_, ReactJS, con Next.js, GatsbyJS, Redux y recientemente con
+              React Native.
+              {/* Lo que más me gusta del mundo de la programación es lo vasto que
               puede llegar a ser. <br />
               Vengo del mundo de la música, donde tampoco existen limitaciones
               para poder crear libremente, y eso representa para mí la mayor
-              motivación al momento de ponerme a escribir código.
+              motivación al momento de ponerme a escribir código. */}
             </AboutInfo>
             <AboutStack>
               {stacks.map(item => (

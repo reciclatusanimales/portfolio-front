@@ -11,7 +11,7 @@ import Sidebar from "../sidebar/Sidebar.component"
 import { lightTheme, darkTheme } from "./themes"
 
 import icon from "../../../assets/icon.png"
-import useSeo from "../../../hooks/use-seo"
+import useSeo from "../../../hooks/useSeo"
 import ThemeContext from "../../../context/ThemeContext"
 import { LayoutStyles } from "./Layout.styles"
 
