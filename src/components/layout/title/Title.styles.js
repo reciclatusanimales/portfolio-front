@@ -12,4 +12,10 @@ export const Underline = styled.div`
   background: ${({ theme }) => theme.primary5};
   margin-left: auto;
   margin-right: auto;
+
+  -moz-transition: var(--theme-transition);
+  -o-transition: var(--theme-transition);
+  -webkit-transition: var(--theme-transition);
+  -ms-transition: var(--theme-transition);
+  transition: var(--theme-transition);
 `

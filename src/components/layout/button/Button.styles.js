@@ -8,7 +8,6 @@ export const Button = styled(Link)`
   letter-spacing: var(--spacing);
   font-weight: bold;
   font-size: 1rem;
-  transition: all 0.5s ease;
   cursor: pointer;
   display: block;
   position: relative;
@@ -28,6 +27,12 @@ export const Button = styled(Link)`
     rgba(255, 255, 255, 0.75) 0,
     rgba(255, 255, 255, 0.75) 5px
   );
+
+  -moz-transition: var(--theme-transition);
+  -o-transition: var(--theme-transition);
+  -webkit-transition: var(--theme-transition);
+  -ms-transition: var(--theme-transition);
+  transition: var(--theme-transition);
 
   &:hover {
     box-shadow: 2px 8px 4px -6px hsla(0, 0%, 0%, 0.3);
@@ -42,7 +47,6 @@ export const LinkButton = styled.a`
   letter-spacing: var(--spacing);
   font-weight: bold;
   font-size: 1rem;
-  transition: all 0.5s ease;
   cursor: pointer;
   display: block;
   position: relative;
@@ -62,6 +66,12 @@ export const LinkButton = styled.a`
     rgba(255, 255, 255, 0.75) 0,
     rgba(255, 255, 255, 0.75) 5px
   );
+
+  -moz-transition: var(--theme-transition);
+  -o-transition: var(--theme-transition);
+  -webkit-transition: var(--theme-transition);
+  -ms-transition: var(--theme-transition);
+  transition: var(--theme-transition);
 
   &:hover {
     box-shadow: 2px 8px 4px -6px hsla(0, 0%, 0%, 0.3);

@@ -1,6 +1,12 @@
 import { Link } from "gatsby"
 import styled from "styled-components"
 
+export const ProjectImg = styled.img`
+  max-width: 600px;
+  width: 100%;
+  height: auto;
+`
+
 export const ProjectTemplate = styled.section`
   padding: 5rem 0;
 `
@@ -100,4 +106,69 @@ export const Button2 = styled(Link)`
     color: ${({ theme }) => theme.primary1};
     background: ${({ theme }) => theme.primary7};
   }
+`
+
+export const TerminalWindow = styled.div`
+  background: #565950;
+  font-family: var(--ff-terminal);
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  color: white;
+  font-weight: bold;
+  flex-flow: row wrap;
+  position: relative;
+  align-items: center;
+  width: 100%;
+  height: 2em;
+`
+
+export const TerminalIcons = styled.div`
+  padding: 0.65em 0.75em;
+  position: absolute;
+
+  span {
+    display: inline-block;
+    float: left;
+    width: 0.75em;
+    height: 0.75em;
+    border-radius: 50%;
+    margin-right: 0.5em;
+    background: #f4c025;
+  }
+
+  &:before {
+    display: inline-block;
+    float: left;
+    width: 0.75em;
+    height: 0.75em;
+    border-radius: 50%;
+    margin-right: 0.5em;
+    content: "";
+    background: #e4514f;
+  }
+
+  &:after {
+    display: inline-block;
+    float: left;
+    width: 0.75em;
+    height: 0.75em;
+    border-radius: 50%;
+    margin-right: 0.5em;
+    content: "";
+    background: #3ec930;
+  }
+`
+
+export const TerminalTitle = styled.div`
+  flex: 1;
+  text-align: center;
+  font-size: 0.8em;
+  padding: 0.65em 0.75em;
+`
+
+export const TerminalFoot = styled.div`
+  background: #23241f;
+  border-radius: 0 0 10px 10px;
+  width: 100%;
+  height: 1em;
 `

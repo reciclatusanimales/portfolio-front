@@ -9,6 +9,7 @@ export const LayoutStyles = createGlobalStyle`
         --ff-terminal: "Ubuntu Mono", sans-serif;
         --ff-secondary: "Bitter", sans-serif;
         --transition: all 0.3s linear;
+        --theme-transition: all 0.5s linear;
         --spacing: 0.2rem;
         --radius: 0.5rem;
         --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -190,71 +191,6 @@ export const LayoutStyles = createGlobalStyle`
         opacity: 1;
       }
     }
-    
-    .terminal-window {
-      background: #565950;
-      font-family: var(--ff-terminal);;
-      border-radius: 10px 10px 0 0;
-      display: flex;
-      color: white;
-      font-weight: bold;
-      flex-flow: row wrap;
-      position: relative;
-      align-items: center;
-      width: 100%;
-      height: 2em;
-    }
-
-    .terminal-title {
-      flex: 1;
-      text-align: center;
-      font-size: 0.8em;
-      padding: 0.65em 0.75em;
-    }
-
-    .terminal-icons {
-      padding: 0.65em 0.75em;
-      position: absolute;
-
-      span{
-        display: inline-block;
-        float: left;
-        width: 0.75em;
-        height: 0.75em;
-        border-radius: 50%;
-        margin-right: 0.5em;
-        background: #f4c025;
-      }
-
-      &:before {
-        display: inline-block;
-        float: left;
-        width: 0.75em;
-        height: 0.75em;
-        border-radius: 50%;
-        margin-right: 0.5em;
-        content: '';
-        background: #e4514f;
-      }
-      
-      &:after {
-        display: inline-block;
-        float: left;
-        width: 0.75em;
-        height: 0.75em;
-        border-radius: 50%;
-        margin-right: 0.5em;
-        content: '';
-        background: #3ec930;
-      }
-    }
-
-    .terminal-foot {
-      background: #23241F;
-      border-radius: 0 0 10px 10px;
-      width: 100%;
-      height: 1em;
-    }
 
     .hidden {
       opacity: 0;
@@ -295,6 +231,12 @@ export const Underline = styled.div`
   background: ${({ theme }) => theme.primary5};
   margin-left: auto;
   margin-right: auto;
+
+  -moz-transition: var(--theme-transition);
+  -o-transition: var(--theme-transition);
+  -webkit-transition: var(--theme-transition);
+  -ms-transition: var(--theme-transition);
+  transition: var(--theme-transition);
 `
 
 export const ButtonDark = styled(Link)`

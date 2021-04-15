@@ -4,20 +4,17 @@ import styled from "styled-components"
 export const SectionContainer = styled.section`
   padding: 5rem 0;
   background: ${({ theme }) => theme.primary10};
+
+  -moz-transition: var(--theme-transition);
+  -o-transition: var(--theme-transition);
+  -webkit-transition: var(--theme-transition);
+  -ms-transition: var(--theme-transition);
+  transition: var(--theme-transition);
 `
 
 export const SectionTitle = styled.div`
   margin-bottom: 4rem;
   text-align: center;
-`
-
-export const Underline = styled.div`
-  width: 5rem;
-  height: 0.25rem;
-  margin-bottom: 1.25rem;
-  background: ${({ theme }) => theme.primary5};
-  margin-left: auto;
-  margin-right: auto;
 `
 
 export const Text = styled.p`
@@ -260,7 +257,11 @@ export const StackTag = styled.li`
   position: relative;
   margin: 0 5px 10px 0;
   text-decoration: none;
-  -webkit-transition: color 0.2s;
+  -moz-transition: var(--theme-transition);
+  -o-transition: var(--theme-transition);
+  -webkit-transition: var(--theme-transition);
+  -ms-transition: var(--theme-transition);
+  transition: var(--theme-transition);
 
   @media screen and (min-width: 676px) {
     font-size: 0.8rem;
@@ -289,5 +290,10 @@ export const StackTag = styled.li`
     position: absolute;
     right: 0;
     top: 0;
+    -moz-transition: var(--theme-transition);
+    -o-transition: var(--theme-transition);
+    -webkit-transition: var(--theme-transition);
+    -ms-transition: var(--theme-transition);
+    transition: var(--theme-transition);
   }
 `

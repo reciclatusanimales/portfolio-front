@@ -30,6 +30,12 @@ export const AboutImg = styled.article`
       top: 2rem;
       right: -2rem;
       border-radius: var(--radius);
+
+      -moz-transition: var(--theme-transition);
+      -o-transition: var(--theme-transition);
+      -webkit-transition: var(--theme-transition);
+      -ms-transition: var(--theme-transition);
+      transition: var(--theme-transition);
     }
   }
 `

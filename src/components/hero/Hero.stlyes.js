@@ -7,6 +7,11 @@ export const Header = styled.header`
   padding-top: 3.5rem;
   height: 100vh;
   position: relative;
+  -moz-transition: var(--theme-transition);
+  -o-transition: var(--theme-transition);
+  -webkit-transition: var(--theme-transition);
+  -ms-transition: var(--theme-transition);
+  transition: var(--theme-transition);
 
   @media screen and (min-width: 992px) {
     &:before {
@@ -71,6 +76,12 @@ export const Img = styled.article`
       right: -2rem;
       border-radius: var(--radius);
       animation: slide-in-right 1s ease-in-out both;
+
+      -moz-transition: var(--theme-transition);
+      -o-transition: var(--theme-transition);
+      -webkit-transition: var(--theme-transition);
+      -ms-transition: var(--theme-transition);
+      transition: var(--theme-transition);
     }
   }
 `

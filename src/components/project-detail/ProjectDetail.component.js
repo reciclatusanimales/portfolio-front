@@ -1,7 +1,16 @@
 import React from "react"
 import ReactMarkdown from "react-markdown"
 import Button from "../layout/button/Button.component"
-import { ProjectTemplate, ProjectStack, StackImg } from "./ProjectDetail.styles"
+import {
+  ProjectImg,
+  ProjectTemplate,
+  ProjectStack,
+  StackImg,
+  TerminalWindow,
+  TerminalIcons,
+  TerminalTitle,
+  TerminalFoot,
+} from "./ProjectDetail.styles"
 import { SectionCenter } from "../layout/layout/Layout.styles"
 import Title from "../layout/title/Title.component"
 import SyntaxHighlighter from "react-syntax-highlighter"
@@ -14,29 +23,23 @@ const ProjectDetail = ({ project }) => {
     code: ({ language, value }) => {
       return (
         <>
-          <div className="terminal-window">
-            <div className="terminal-icons">
+          <TerminalWindow>
+            <TerminalIcons>
               <span></span>
-            </div>
-            <div className="terminal-title">root@reciclatusanimales.com: ~</div>
-          </div>
+            </TerminalIcons>
+            <TerminalTitle>root@reciclatusanimales.com: ~</TerminalTitle>
+          </TerminalWindow>
           <SyntaxHighlighter
             language={language}
             style={monokaiSublime}
             children={value}
           />
-          <div className="terminal-foot"></div>
+          <TerminalFoot />
         </>
       )
     },
     image: props => {
-      return (
-        <img
-          {...props}
-          style={{ maxWidth: "650px", minWidth: "280px", width: "100%" }}
-          alt="Code"
-        />
-      )
+      return <ProjectImg {...props} alt="Code" />
     },
   }
 
