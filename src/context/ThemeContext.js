@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from "react"
+import React, { createContext, useState, useEffect, useCallback } from "react"
 import filesURL from "../utils/filesURL"
 
 export const ThemeContext = createContext()
@@ -9,13 +9,16 @@ const ThemeContextProvider = ({ children }) => {
   const [theme, setTheme] = useState(null)
   const [showSidebar, setShowSidebar] = useState(false)
   const [firstLoad, setFirstLoad] = useState(true)
-  const [resumeURL, setResumeURL] = useState(resume.light)
+  const [resumeURL, setResumeURL] = useState(resume.dark)
 
-  const setMode = mode => {
-    window.localStorage.setItem("theme", mode)
-    setTheme(mode)
-    setResumeURL(resume[mode])
-  }
+  const setMode = useCallback(
+    mode => {
+      window.localStorage.setItem("theme", mode)
+      setTheme(mode)
+      setResumeURL(resume[mode])
+    },
+    [resume]
+  )
 
   const toggleTheme = () => {
     if (theme === "light") {
@@ -32,10 +35,9 @@ const ThemeContextProvider = ({ children }) => {
       setTheme(localTheme)
       setResumeURL(resume[localTheme])
     } else {
-      setMode("light")
+      setMode("dark")
     }
-    // eslint-disable-next-line
-  }, [])
+  }, [resume, setMode])
 
   const values = {
     theme,

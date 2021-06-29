@@ -45,8 +45,8 @@ const About = () => {
               frameworks Laravel y AngularJS. Con bases de datos MySql, SQL
               Server y PostgreSQL. <br />
               Actualmente, me encuentro desarrollando en Python, con Django y en
-              JS con Expres.js para construir _backends_, mientras que para el
-              _front_, ReactJS, con Next.js, GatsbyJS, Redux y recientemente con
+              JS con Expres.js para construir backend, mientras que para el
+              front, ReactJS, con Next.js, GatsbyJS, Redux y recientemente con
               React Native.
               {/* Lo que más me gusta del mundo de la programación es lo vasto que
               puede llegar a ser. <br />
